@@ -6,6 +6,8 @@ body {
 body, div, ul, li, nav, header, footer, a {
     margin: 0;
     padding: 0;
+    text-decoration: none;
+    color: #32502E
 }
 .header {
     background-color: #32502E;
@@ -25,13 +27,13 @@ body, div, ul, li, nav, header, footer, a {
     margin: 20px 40px 10px 40px;
     justify-content: space-around;
     flex-direction: row;
-    gap: 50px;
-    
+    gap: 50px;  
 }
 .header__nav {
     background-color: #FCF3CF;
     border-radius: 50px;
     margin-right: 40px;
+    margin: auto;
 }
 .header__nav-item {
     list-style: none;
@@ -56,7 +58,7 @@ body, div, ul, li, nav, header, footer, a {
 h1{
     color: #F9E79F;    
     font-family: "Julee";
-    font-size: 40px;
+    font-size: 30px;
     font-weight: bold;
     font-style: italic;
     letter-spacing: 3px;
@@ -68,7 +70,7 @@ h1{
     height: 25px; 
     padding: 15px; 
     text-align: center;
-    font-size: 30px;
+    font-size: 20px;
     margin: auto;
     margin-top: 40px;
     margin-bottom: 30px;
@@ -131,6 +133,7 @@ footer {
     margin: 0; 
     color:rgb(39, 67, 60);
 }
+
 .footer-line {
     border: 1px solid rgb(240, 240, 166);
     margin: 20px 50px;
@@ -142,4 +145,17 @@ footer {
 .contenedor img {
     max-width: 100px;
     margin-right: 10px; 
+}
+
+.button__admon a,
+.button__pago a,
+.button__ventas a {
+    text-decoration: none; 
+    color:rgb(39, 67, 60); 
+}
+
+.button__admon a:hover,
+.button__pago a:hover,
+.button__ventas a:hover {
+  color: #1b2a1b; /* Cambia el color del texto al pasar el cursor sobre los enlaces, puedes cambiar este valor por el color que desees */
 }

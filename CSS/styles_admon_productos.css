@@ -6,6 +6,8 @@ body {
 body, div, ul, li, nav, header, footer, a {
     margin: 0;
     padding: 0;
+    text-decoration: none;
+    color: #32502E
 }
 .header {
 background-color: #32502E;
@@ -55,7 +57,7 @@ align-items: center;
 h1{
     color: #F9E79F;    
     font-family: "Julee";
-    font-size: 40px;
+    font-size: 30px;
     font-weight: bold;
     font-style: italic;
     letter-spacing: 3px;
@@ -73,7 +75,7 @@ input {
     color: #ddd;
     margin: 6px;
     font-family: "Julee";
-    font-size: 18px;
+    font-size: 15px;
 }
 .input__seleccion{
     margin-left: 450px;
@@ -82,18 +84,21 @@ td, th{
     border: 1px solid #000;
     text-align: center;
     padding: 6px;
-    font-family:"Julee";
-    font-size: 18px;
+    font-family: 'Julee';
+    border: none;
+    border-bottom: 1px solid #0004;
 }
-th{
-    background: #C0C0C0;
+td {
+    color: #444;
 }
 table{
-    background: #FCF3CF;
-    width: 50%;
-    border: 2px solid #000;
-    margin:auto;
-    margin-bottom: 20px;
+    width: 100%;
+    border-spacing: 12px;
+    max-width: 700px;
+    margin: auto;
+    box-shadow: 0px 0px 25px #0002;
+    margin-top: 30px;
+    background-color: #dcded6;
 }
 .box1 {
     display: flex; 
@@ -117,6 +122,14 @@ table{
 }
 .lista1 li {
     margin-bottom: 10px;  
+}
+.contenedor {
+    display: flex;
+    align-items: center; 
+}
+.contenedor img {
+    max-width: 100px;
+    margin-right: 10px; 
 }
 footer {
     display: flex; 
