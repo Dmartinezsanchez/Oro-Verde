@@ -1,161 +1,175 @@
 body {
     margin: 0;
-    font-family: "Julee";
-    background-color: #32502E;    
-}
-body, div, ul, li, nav, header, footer, a {
-    margin: 0;
     padding: 0;
-    text-decoration: none;
-    color: #32502E
+    background-color: #32502E;
+    font-family: 'Julee';
 }
+
 .header {
     background-color: #32502E;
     display: flex;
     justify-content: space-between;
     align-items: center;
-}
-.header__logo {
-    max-width: 100%;
-    width: 150px;
-    margin: -15px 70px;
-}
-.header__nav-list {
-    display: flex;
-    height: auto;
-    width: auto;
-    margin: 20px 40px 10px 40px;
-    justify-content: space-around;
-    flex-direction: row;
-    gap: 50px;  
-}
-.header__nav {
-    background-color: #FCF3CF;
-    border-radius: 50px;
-    margin-right: 40px;
-    margin: auto;
-}
-.header__nav-item {
-    list-style: none;
-}
-.header__nav-item a {
-    color: #0B5345;
-    font-family: "Julee";
-    font-size: 25px;
-    font-weight: bold;
-    text-decoration: none;
-    letter-spacing: 3px;
-}
-.header__nav-input {
-    margin: 5px;
-    padding: 6px 9px;
-    border-bottom: 2px solid black;
-    background-color: #FCF3CF;
-    color: black;
-    text-align: center;
-    border-radius: 15px;
-}
-h1{
-    color: #F9E79F;    
-    font-family: "Julee";
-    font-size: 30px;
-    font-weight: bold;
-    font-style: italic;
-    letter-spacing: 3px;
-    text-align: center;
-}
-.button__admon, .button__pago, .button__ventas {
-    background: #FCF3CF;
-    width: 500px;
-    height: 25px; 
-    padding: 15px; 
-    text-align: center;
-    font-size: 20px;
-    margin: auto;
-    margin-top: 40px;
-    margin-bottom: 30px;
-    border-radius: 50px;
-    text-decoration: none;
-}
-.box1 {
-    display: flex; 
-    align-items: center; 
-    color: rgb(39, 67, 60);
-    flex: 1; 
-    margin: 10px;
-    box-sizing: border-box;
-    background-color: #8faa9e;
-    padding: 10px;
-}
-.lista1 {
-    list-style-type: none; 
-    margin: 0 10px; 
-    padding: 10px; 
-    list-style-type: none;
-}
-.box1 img {
-    max-width: 100px; 
-    margin-right: 10px; 
-}
-.lista1 li {
-    margin-bottom: 10px;  
-}
-footer {
-    display: flex; 
-    flex-wrap: wrap; 
-    background-color: #8faa9e;
-}
-.box2 {
-    flex: 1;
-    margin: 10px;
-    box-sizing: border-box;
-    background-color:  #8faa9e;
-    padding-top: 90px;
-}
-.box2 p{
-    color:rgb(39, 67, 60);
-}
-.box3 {
-    flex: 1; 
-    margin: 10px; 
-    box-sizing: border-box; 
-    background-color: #8faa9e;
-    padding-top: 20px; 
-    text-align: center; 
-}
-.box3 img {
-    max-width: 50px; 
-    display: block; 
-    margin: 0 auto 10px;
-}
-.box3 p {
-    font-size: 16px; 
-    margin: 0; 
-    color:rgb(39, 67, 60);
+    padding: 0 5px;
 }
 
-.footer-line {
-    border: 1px solid rgb(240, 240, 166);
-    margin: 20px 50px;
-}   
-.contenedor {
-    display: flex;
-    align-items: center; 
+.header__logo-container {
+    max-width: 100%;
+    width: 150px;
 }
-.contenedor img {
-    max-width: 100px;
-    margin-right: 10px; 
+
+h1 {
+    color: antiquewhite;
+    font-family: 'Kaushan Script';
+    font-size: 5vh;
+    text-align: center;
+    font-style: italic;
+}
+
+.box1 {
+    background-color: rgb(243, 243, 196);
+    width: 90%;
+    max-width: 1300px;
+    height: 13vh;
+    margin: 10px auto;
+    border-radius: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.lista1 {
+    list-style-type: none;
+    padding: 2vh;
+    margin: auto;
+    display: flex;
+    text-align: center;
+    color: rgb(58, 59, 59);
+    font-size: 17px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #32502E;
+}
+
+li {
+    margin-right: 4vw;
+    height: 4vh;
+}
+
+.imagen-lista1 {
+    max-width: 100%;
+    height: 30px;
+}
+
+.imagen-lista2 {
+    max-width: 200px;
+    height: auto;
+}
+
+.button__admon,
+.button__pago,
+.button__ventas {
+    background: #FCF3CF;
+    width: 500px;
+    height: 25px;
+    padding: 15px;
+    text-align: center;
+    font-size: 20px;
+    margin: 40px auto 30px;
+    border-radius: 50px;
+    text-decoration: none;
 }
 
 .button__admon a,
 .button__pago a,
 .button__ventas a {
-    text-decoration: none; 
-    color:rgb(39, 67, 60); 
+    text-decoration: none;
+    color: rgb(39, 67, 60);
 }
 
 .button__admon a:hover,
 .button__pago a:hover,
 .button__ventas a:hover {
-  color: #1b2a1b; /* Cambia el color del texto al pasar el cursor sobre los enlaces, puedes cambiar este valor por el color que desees */
+    color: #1b2a1b; /* Cambia el color del texto al pasar el cursor sobre los enlaces, puedes cambiar este valor por el color que desees */
+}
+
+footer {
+    display: flex;
+    flex-wrap: wrap;
+    background-color: #8faa9e;
+}
+
+.box7,
+.box8,
+.box9 {
+    flex: 1;
+    margin: 10px;
+    box-sizing: border-box;
+    background-color: #8faa9e;
+    padding: 10px;
+}
+
+.box7 {
+    display: flex;
+    align-items: center;
+    color: rgb(39, 67, 60);
+}
+
+.lista7 {
+    list-style-type: none;
+    margin: 0 10px;
+    padding: 10px;
+}
+
+.box7 img,
+.box9 img {
+    max-width: 100px;
+    margin-right: 10px;
+}
+
+.lista7 li {
+    margin-bottom: 10px;
+}
+
+.lista7 a {
+    color: #32502E;
+    text-decoration: none;
+}
+
+.contenedor {
+    display: flex;
+    align-items: center;
+}
+
+.contenedor img {
+    max-width: 100px;
+    margin-right: 10px;
+}
+
+.footer-line {
+    border: 1px solid rgb(240, 240, 166);
+    margin: 20px 50px;
+}
+
+.box8 p,
+.box9 p {
+    color: rgb(39, 67, 60);
+}
+
+.box9 {
+    text-align: center;
+    padding-top: 20px;
+}
+
+.box9 img {
+    max-width: 50px;
+    display: block;
+    margin: 0 auto 10px;
+}
+
+.box9 p {
+    font-size: 16px;
+    margin: 0;
 }
