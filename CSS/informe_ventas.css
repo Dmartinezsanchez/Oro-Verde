@@ -49,6 +49,24 @@ h1 {
     font-size: 17px;
 }
 
+#backButton {
+    background-color: #416042; /* Color de fondo verde */
+    border: none; /* Sin borde */
+    color: white; /* Texto blanco */
+    padding: 15px 32px; /* Relleno alrededor del texto */
+    text-align: center; /* Centrado del texto */
+    text-decoration: none; /* Sin subrayado */
+    display: inline-block; /* Mostrar como elemento en línea */
+    font-size: 16px; /* Tamaño de fuente */
+    margin: 4px 2px; /* Márgenes */
+    cursor: pointer; /* Cambiar el cursor a una mano cuando se pase sobre el botón */
+    border-radius: 8px; /* Bordes redondeados */
+}
+
+#backButton:hover {
+    background-color: #45a049; /* Cambiar color al pasar el cursor sobre el botón */
+}
+
 nav ul li a {
     text-decoration: none;
     color: #32502E;
