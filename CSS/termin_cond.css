@@ -76,6 +76,7 @@ li {
     padding-top: 10px;
     padding-bottom: 10px;
     justify-content: center;
+    margin-left: 50vh;
 }
 
 .box18 p {
@@ -209,6 +210,7 @@ footer {
     border-radius: 8px;
     margin-top: 10px;
     box-shadow: 1px 4px 4px rgba(0, 0, 0, 0.25);
+    margin-left: 10vh;
 }
 
 #showMoreBtn:hover,

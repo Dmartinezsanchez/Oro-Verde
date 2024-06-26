@@ -109,10 +109,11 @@ li {
     margin: 0px;
     background-color:   #476851;
     box-shadow: 0 8px 16px rgba(0, 0.3, 0, 0.3);
+    font-family: sans-serif;
 }
 
 .submenu li {
-    width: 200px;
+    width: 250px;
 }
 
 .submenu li a {
@@ -123,7 +124,7 @@ li {
 }
 
 .submenu li a:hover {
-    background-color:  #85b996;
+    background-color:  #4c8760;
 }
 
 .lista2 > li:hover .submenu {

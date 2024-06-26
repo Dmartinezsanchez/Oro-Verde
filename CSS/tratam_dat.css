@@ -126,6 +126,7 @@ p {
     margin: 10px;
     max-height: 200px;
     overflow: hidden;
+    margin-left: 40vh;
 }
 
 .box15 {
@@ -209,6 +210,7 @@ footer {
     border-radius: 8px;
     margin-top: 10px;
     box-shadow: 1px 4px 4px rgba(0, 0, 0, 0.25);
+    margin-left: 42vh;
 }
 
 #showMoreBtn:hover,
