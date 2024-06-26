@@ -85,7 +85,7 @@ li {
 
 .lista2 > li {
     position: relative;
-    margin: 0 15px;
+    margin: 0 20px;
 }
 
 .lista2 > li > a {
@@ -96,19 +96,19 @@ li {
 }
 
 .lista2 > li > a:hover {
-    background-color: #476851;
+    background-color: #3b6949;
 }
 
 .submenu {
     display: none;
     position: absolute;
-    top: 100%;
+    margin-top: 8%;
     left: 0;
     list-style: none;
     padding: 5px;
     margin: 0px;
     background-color:   #476851;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 8px 16px rgba(0, 0.3, 0, 0.3);
 }
 
 .submenu li {
@@ -119,11 +119,11 @@ li {
     padding: 10px;
     display: block;
     text-decoration: none;
-    color: antiquewhite;
+    color: rgb(218, 246, 183);
 }
 
 .submenu li a:hover {
-    background-color:  #6c9c7b;
+    background-color:  #85b996;
 }
 
 .lista2 > li:hover .submenu {
@@ -197,7 +197,7 @@ p {
 .imagen-asesoria {
     max-width: 25%;
     height: auto;
-    margin-left: 10vh;
+    margin-left: 3vh;
     padding: 1vh;
     margin-top: 2vh;
     margin-bottom: 2vh;
@@ -209,6 +209,7 @@ p {
     text-align: center;
     font-size: 20px;
     padding-top: 50px;
+    margin-left: 1vh;
 }
 
 .slider-box4, .slider-box5, .slider-box6 {

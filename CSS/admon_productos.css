@@ -41,6 +41,7 @@ h1 {
     display: flex;
     justify-content: center; 
     align-items: center;
+    margin-right: 1vh;
 }
 
 .lista1 {
@@ -80,6 +81,7 @@ li {
     margin: 4px 2px; /* Márgenes */
     cursor: pointer; /* Cambiar el cursor a una mano cuando se pase sobre el botón */
     border-radius: 8px; /* Bordes redondeados */
+    margin-left: 50px;
 }
 
 #backButton:hover {
@@ -99,6 +101,7 @@ input {
     margin: 6px;
     font-family: 'Julee';
     font-size: 15px;
+    margin-left: 5vh;
 }
 
 .input__seleccion {

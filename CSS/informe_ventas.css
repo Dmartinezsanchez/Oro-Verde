@@ -61,6 +61,7 @@ h1 {
     margin: 4px 2px; /* Márgenes */
     cursor: pointer; /* Cambiar el cursor a una mano cuando se pase sobre el botón */
     border-radius: 8px; /* Bordes redondeados */
+    margin-left: 50px;
 }
 
 #backButton:hover {
