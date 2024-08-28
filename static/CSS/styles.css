@@ -1,7 +1,7 @@
 body {
     margin: 0;
     padding: 0;
-    background-color: #32502E;
+    background-color: #ccc5B7;
     font-family: 'Julee';
 }
 
@@ -22,24 +22,23 @@ body {
 }
 
 .flash.error {
-    background-color: #e74c3c; /* Rojo para errores */
+    background-color: #e74c3c; 
 }
 
 .flash.success {
-    background-color: #2ecc71; /* Verde para éxito */
-}
+    background-color: #2ecc71; 
 
 .flash.info {
-    background-color: #3498db; /* Azul para información */
+    background-color: #3498db; 
 }
 
 .flash.warning {
-    background-color: #f39c12; /* Amarillo para advertencias */
+    background-color: #f39c12; 
 }
 
 
 .header {
-    background-color: #32502E;
+    background-color: #CCC5B7;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -52,7 +51,7 @@ body {
 }
 
 h1 {
-    color: antiquewhite;
+    color: #4a6a3c;
     font-family: 'Kaushan Script';
     font-size: 5vh;
     text-align: center;
@@ -60,16 +59,18 @@ h1 {
 }
 
 .box1 {
-    background-color: rgb(243, 243, 196);
+    background-color: #f8ebe1;
     width: 90%;
     max-width: 1300px;
     height: 13vh;
     margin-top: 10px;
     margin-bottom: 10px;
-    border-radius: 40px;
+    border-radius: 35px;
     display: flex;
     justify-content: center;
     align-items: center;
+    border: 1px solid #1b5e3f; 
+    box-shadow: 0 4px 8px rgba(0, 0.5, 0, 0.4);
 }
 
 .lista1 {
@@ -78,13 +79,13 @@ h1 {
     margin: auto;
     display: flex;
     text-align: center;
-    color: rgb(58, 59, 59);
+    color: #555426;
     font-size: 17px;
 }
 
 nav ul li a {
     text-decoration: none;
-    color: #32502E;
+    color: #555426;
 }
 
 li {
@@ -106,6 +107,7 @@ li {
     justify-content: center;
     align-items: center;
     font-family: 'Kaushan Script';
+    font-size: 20px;
 }
 
 .lista2 {
@@ -123,13 +125,13 @@ li {
 
 .lista2 > li > a {
     text-decoration: none;
-    color: antiquewhite;
+    color: #8e8f48;
     padding: 10px 15px;
     display: block;
 }
 
 .lista2 > li > a:hover {
-    background-color: #3b6949;
+    background-color:#3f7e60;
 }
 
 .submenu {
@@ -140,9 +142,10 @@ li {
     list-style: none;
     padding: 5px;
     margin: 0px;
-    background-color:   #476851;
+    background-color:   #79947f;
     box-shadow: 0 8px 16px rgba(0, 0.3, 0, 0.3);
     font-family: sans-serif;
+    font-size: 16px;
 }
 
 .submenu li {
@@ -157,7 +160,7 @@ li {
 }
 
 .submenu li a:hover {
-    background-color:  #4c8760;
+    background-color: #7da6a5;
 }
 
 .lista2 > li:hover .submenu {
@@ -165,11 +168,13 @@ li {
 }
 
 .imagen-lista2 {
-    max-width: 100px;
-    height: 10vh;
-    margin-left: 4vh;
+    max-width: 350px;  /* Aumenta el ancho máximo */
+    height: 15vh;  /* Aumenta la altura */
+    margin-left: 1vh;
     margin-right: 0;
+    object-fit: cover;  /* Asegura que la imagen mantenga sus proporciones */
 }
+
 
 .imagen-logo {
     max-width: 200px;
@@ -183,12 +188,12 @@ li {
 
 /* Contenedor del chatbox */
 #chat-container {
-    border: 2px solid #09462a; 
+    border: 2px solid #21484b; 
     border-radius: 10px; /* Bordes redondeados */
     padding: 10px;
     max-width: 300px; /* Ancho máximo del chatbox */
     margin-right: auto;
-    background-color: #bceab0; /* Fondo blanco grisáceo */
+    background-color:#dcefe0; 
     box-shadow: 0 4px 8px rgba(0, 0.5, 0, 0.4); /* Sombra suave */
 }
 
@@ -196,18 +201,18 @@ li {
 #chat-container h3 {
     margin-top: 0;
     font-size: 18px;
-    color: #194b2a; /* Color azul */
+    color: #a2bfc2; 
     text-align: center;
 }
 
 /* Área de mensajes */
 #chatbox {
-    border: 1px solid #dee2e6; /* Borde gris claro */
+    border: 1px solid #dee2e6;
     border-radius: 5px;
     padding: 10px;
     height: 300px; /* Altura fija */
     overflow-y: auto; /* Barra de desplazamiento vertical si es necesario */
-    background-color: #c6ead8; /* Fondo blanco */
+    background-color: #b2d1a9;
 }
 
 /* Mensajes dentro del chatbox */
@@ -219,7 +224,7 @@ li {
 #messageInput {
     width: calc(100% - 100px); /* Resta el ancho del botón enviar */
     padding: 8px;
-    border: 1px solid #ced4da; /* Borde gris */
+    border: 1px solid #ced4da; 
     border-radius: 5px;
     box-sizing: border-box; /* Incluye el padding en el ancho total */
     color: #333;
@@ -231,14 +236,15 @@ li {
     padding: 8px;
     border: none;
     border-radius: 5px;
-    background-color: #7dbf7f; /* Fondo azul */
-    color: #d2dcd2; /* Texto blanco */
+    background-color: #77a879; 
+    color: #d2dcd2; 
     cursor: pointer;
     font-size: 16px;
+    font-family: 'Julee';
 }
 
 #sendButton:hover {
-    background-color: #709a8b; /* Fondo azul más oscuro al pasar el ratón */
+    background-color: #709a8b; 
 }
 
 h2 {
@@ -250,7 +256,7 @@ h2 {
 }
 
 h3 {
-    color: bisque;
+    color: #377277;
     margin: 2vh;
     text-align: center;
     justify-content: center;
@@ -303,10 +309,10 @@ p {
     margin: 20px 0;
 }
 
-#productos h3 {
+#productos h2 {
     margin-bottom: 20px;
-    font-size: 24px;
-    color: #d4dac2;
+    font-size: 30px;
+    color: #377277;
 }
 
 .product-container1, .product-container2, .product-container3 {
@@ -328,10 +334,10 @@ p {
     margin: 10px;
     padding: 10px;
     box-sizing: border-box;
-    border: 1px solid #ccc;
+    border: 1px solid #eddca1;
     border-radius: 8px;
     transition: transform 0.3s ease;
-    background-color: #fff;
+    background-color: #f8efe9;
     text-align: center;
 }
 
@@ -349,8 +355,8 @@ p {
 }
 
 .product-box p {
-    font-size: 16px;
-    color: #333;
+    font-size: 18px;
+    color: #587073;
 }
 
 .product-box:hover {
@@ -388,25 +394,25 @@ p {
     margin-top: 40px;
     margin-bottom: 10px;
     border-radius: 8px;
-    font-size: 16px;
-    color: rgb(240, 244, 162);
+    font-size: 18px;
+    color: #828237;
 }
 
 input {
     width: 200px;
     box-sizing: border-box;
     padding: 6px 8px;
-    border: 1px solid #ddf591;
+    border: 1px solid #fffb98;
     box-shadow: 0px 0px 15px rgb(117, 119, 117);
     background-color: transparent;
     border-radius: 4px;
-    color: #ddd;
+    color: #fffb98;
     margin: 6px;
 }
 
 fieldset {
     margin: 20px 0;
-    border: 2px solid rgba(204, 237, 177, 0.4);
+    border: 1px solid #fffb98;
     border-radius: 5px;
 }
 
@@ -416,7 +422,7 @@ legend {
 
 button {
     padding: 10px 20px;
-    background-color: #607e61;
+    background-color: #819f82;
     color: white;
     border: none;
     border-radius: 5px;
@@ -436,7 +442,7 @@ input[type="checkbox"] {
 }
 
 .formulario1 a, .formulario2 a {
-    color: rgb(243, 243, 202);
+    color:#828237;
     text-decoration: none;
 }
 
@@ -472,9 +478,8 @@ input[type="checkbox"] {
 }
 
 
-
 .footer-line {
-    border: 1px solid rgb(240, 240, 166);
+    border: 1px solid #2b422d;
     margin: 20px 50px;
 }
 
