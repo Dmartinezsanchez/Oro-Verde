@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Oro verde es un emprendimiento familiar que nace con la necesidad de llevar salud a los hogares de manera natural y preventiva">
+    <meta name="keywords" content="multivitaminicos, preventiva, salud, belleza, tienda naturista">
+    <meta name="author" content="Esta página es un proyecto de formación del Sena del grupo 9">
+    <meta name="robots" content="index">
+    <meta http-equiv="refresh" content="180">
+    <title>Tienda Naturista Oro Verde</title>
+    <link rel="icon" type="image/png" href="/static/Imagenes/favicon.ico"> 
+    <link rel="stylesheet" href="/static/CSS/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Julee&family=Kaushan+Script&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <script src="/static/JS/script.js"></script>
+
+    <h1>Tienda Naturista Online Oro Verde</h1>
+
+    <!-- Bloque para mensajes flash -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+    {% for category, message in messages %}
+        <div class="flash flash-{{ category }}">{{ message }}</div>
+    {% endfor %}
+    {% endif %}
+{% endwith %}
+
+
+    <header class="header">
+        <div class="header__logo-container">
+            <img src="{{ url_for('static', filename='Imagenes/logo-oro-verde.png') }}" alt="Logo" class="imagen-logo">
+        </div>
+        <div class="box1">
+            <nav>
+                <ul class="lista1">
+                    <li><img src="{{ url_for('static', filename='Imagenes/retirement-home.png') }}" alt="Home" class="imagen-lista1"></li>
+                    <li><a href="#productos">Productos</a></li>
+                    <li><a href="{{ url_for('promociones') }}">Promociones</a></li>
+                    <li><a href="{{ url_for('nosotros') }}">Nosotros</a></li>
+                    <li><a href="#ingreso">Ingreso</a></li>
+                    <li><a href="#registrarse">Registrarse</a></li>
+                    <li><a href="{{ url_for('tratam_dat') }}">Tratamiento de datos</a></li>
+                    <li><a href="{{ url_for('gestion_de_pagos') }}"><img src="{{ url_for('static', filename='Imagenes/bolsa-de-la-compra.png') }}" alt="Compras" class="imagen-lista1"></a></li>
+                    <li><a href="{{ url_for('index') }}">Buscar</a></li>
+                    <li><img src="{{ url_for('static', filename='Imagenes/lupa.png') }}" alt="Buscar" class="imagen-lista1"></li>
+                </ul>
+            </nav>
+        </div>
+    </header>    
+    <div class="box2">
+        <ul class="lista2">
+            <li><a href="#">Salud y Prevención de enfermedades</a>
+                <ul class="submenu">
+                    <li><a href="#">Magnesio y Potasio 2 en 1</a></li>
+                    <li><a href="#">Magnesio y Potasio</a></li>
+                    <li><a href="#">Cloruro de Magnesio</a></li>
+                    <li><a href="#">Batido Verde artesanal</a></li>
+                    <li><a href="#">Colon Cleanser|Té medicinal</a></li>
+                </ul>
+            </li>
+            <li><a href="#">Multivitamínicos</a>
+                <ul class="submenu">
+                    <li><a href="#">Vitafer-L</a></li>
+                </ul>
+            </li>
+            <li><a href="#">Belleza</a>
+                <ul class="submenu">
+                    <li><a href="#">Aceites</a></li>
+                    <li><a href="#">Agua de rosas</a></li>
+                    <li><a href="#">Protector solar</a></li>
+                    <li><a href="#">Ácido Hialurónico</a></li>
+                    <li><a href="#">Aguaje Hinojo</a></li>
+                    <li><a href="#">Aguaje Reduce Medidas</a></li>
+                    <li><a href="#">Aguaje Siempre Bella</a></li>  
+                </ul>
+            </li>
+            <li><img src="/static/Imagenes/hoja-tropical.png" alt="deco" class="imagen-lista2"></li>
+            <li><img src="/static/Imagenes/hoja-tropical-otra.png" alt="deco" class="imagen-lista2"></li>
+        </ul>
+    </div>
+    
+    <div class="box3">
+        <img src="/static/Imagenes/chat-en-vivo.png" alt="Asesoría" class="imagen-asesoria">
+        
+        <!-- Aquí se inserta el chatbox -->
+        <div id="chat-container">
+            <h3>Chat de Asesoría</h3>
+            <div id="chatbox">
+                <div id="messages"></div>
+                <input id="messageInput" type="text" placeholder="Escribe un mensaje...">
+                <button id="sendButton">Enviar</button>
+            </div>
+        </div>
+    </div>    
+
+    <div id="productos" class="producto">
+        <h3>¡Nuestros productos más solicitados!</h3>
+        <div class="product-container1">
+            <div class="product-box">
+                <a href="{{ url_for('producto_detalle', producto_id=1) }}">
+                    <img src="/static/Imagenes/Aceitemanoderes.jpeg" alt="Producto 1">
+                    <p>Aceite de mano de res</p>
+                </a>
+            </div>
+            <div class="product-box">
+                <a href="{{ url_for('producto_detalle', producto_id=2) }}">
+                    <img src="/static/Imagenes/AguadeRosas.jpeg" alt="Producto 2">
+                    <p>Agua de rosas</p>
+                </a>
+            </div>
+            <div class="product-box">
+                <a href="{{ url_for('producto_detalle', producto_id=4) }}">
+                    <img src="/static/Imagenes/Aceitenaranja.jpeg" alt="Producto 4">
+                    <p>Aceite de naranja</p>
+                </a>
+            </div>
+            <div class="product-box">
+                <a href="{{ url_for('producto_detalle', producto_id=6) }}">
+                    <img src="/static/Imagenes/AceiteAlmendras.jpeg" alt="Producto 6">
+                    <p>Aceite de Almendras</p>
+                </a>
+            </div>
+        </div>
+    
+        <div class="product-container2">
+            <div class="product-box">
+                <a href="{{ url_for('producto_detalle', producto_id=7) }}">
+                    <img src="/static/Imagenes/Citratodemagnesioypotasio.jpeg" alt="Producto 7">
+                    <p>Citrato de Magnesio y Potasio</p>
+                </a>
+            </div>
+            <div class="product-box">
+                <a href="{{ url_for('producto_detalle', producto_id=9) }}">
+                    <img src="/static/Imagenes/Vitafer.jpeg" alt="Producto 9">
+                    <p>Vitafer L</p>
+                </a>
+            </div>
+            <div class="product-box">
+                <a href="{{ url_for('producto_detalle', producto_id=11) }}">
+                    <img src="/static/Imagenes/ProtectorSolar.jpeg" alt="Producto 11">
+                    <p>Protector solar</p>
+                </a>
+            </div>
+        </div>
+    
+        <div class="product-container3">
+            <div class="product-box">
+                <a href="{{ url_for('producto_detalle', producto_id=13) }}">
+                    <img src="/static/Imagenes/AceiteCalendula.jpeg" alt="Producto 13">
+                    <p>Aceite de Caléndula</p>
+                </a>
+            </div>
+            <div class="product-box">
+                <a href="{{ url_for('producto_detalle', producto_id=15) }}">
+                    <img src="/static/Imagenes/AcidoHialurónico.jpeg" alt="Producto 15">
+                    <p>Ácido Hialurónico</p>
+                </a>
+            </div>
+            <div class="product-box">
+                <a href="{{ url_for('producto_detalle', producto_id=16) }}">
+                    <img src="/static/Imagenes/AceiteCoco.jpeg" alt="Producto 16">
+                    <p>Aceite de Coco</p>
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="formulario1">
+        <section id="ingreso" class="ingreso">
+            <form action="{{ url_for('ingreso') }}" method="post">
+                <fieldset>
+                    <legend>Ingreso</legend>
+                    <input type="text" name="usuario" placeholder="Usuario" required>
+                    <input type="password" name="contrasena" placeholder="Contraseña" required>
+                    <button type="submit">Acceder</button>
+                </fieldset>
+            </form>
+        </section>
+    </div>    
+    <div class="formulario2">
+        <section id="registrarse" class="Registrarse">
+            <form action="{{ url_for('registrarse') }}" method="post">
+                <fieldset>
+                    <legend>Registrarse</legend>
+                    <input type="text" name="nombre" placeholder="Nombre completo" required>
+                    <input type="email" name="email" placeholder="Email" required>
+                    <input type="password" name="contrasena" placeholder="Crear contraseña" required>
+                    <button type="submit">Registrarse</button>
+                    <label for="miCheckbox"><a href="{{ url_for('termin_cond') }}">Acepto términos y condiciones</a></label>
+                    <input type="checkbox" id="miCheckbox" required>
+                </fieldset>
+            </form>
+        </section>
+    </div>    
+    <div class="contenedor">
+        <img src="/static/Imagenes/hoja-tropical.png" alt="Deco">
+    </div> 
+    <button onclick="topFunction()" id="myBtn" title="Ir arriba">↑</button>
+    <hr class="footer-line">
+    <footer>
+        <div class="box7">
+            <img src="{{ url_for('static', filename='Imagenes/hoja.png') }}" alt="Deco">
+            <ul class="lista7">
+                <li><a href="{{ url_for('termin_cond') }}">Términos y condiciones</a></li>
+                <li>adrianabarajas1970@gmail.com</li>
+                <li>3013817308</li>
+                <li>Carrera 36 A # 46-63 Ciudad Verde</li>
+            </ul>
+        </div>
+        <div class="box8">
+            <p>© 2024 Oro Verde Productos Naturales. Todos los derechos reservados. Powered by Grupo 9.</p>
+        </div>
+        <div class="box9">
+            <img src="{{ url_for('static', filename='Imagenes/hoja-de-monstera.png') }}" alt="Deco">
+            <p>La salud es el pilar de la vida</p>
+        </div>
+    </footer>  
+    <script src="https://cdn.socket.io/4.3.2/socket.io.min.js"></script>
+    <script src="/static/js/chat.js"></script>
+
+</body>
+</html>

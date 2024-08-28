@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Oro verde es un emprendimiento familiar que nace con la necesidad de llevar salud a los hogares de manera natural y preventiva">
+    <meta name="keywords" content="multivitaminicos, preventiva, salud, belleza, tienda naturista">
+    <meta name="author" content="Esta página es un proyecto de formación del Sena del grupo 9">
+    <meta name="robots" content="index">
+    <meta http-equiv="refresh" content="30">
+    <title>Tienda Naturista Oro Verde</title>
+    <link rel="icon" type="image/png" href="/static/Imagenes/favicon.ico"> 
+    <link rel="stylesheet" href="/static/CSS/gestion_de_pagos.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Julee&family=Kaushan+Script&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <h1>Gestión de pagos</h1>
+    <header class="header">
+        <div class="header__logo-container">
+            <a href="{{ url_for('index') }}"><img src="{{ url_for('static', filename='Imagenes/logo-oro-verde.png') }}" alt="Logo" class="imagen-lista2"></a>
+        </div>
+        <div class="box1">
+            <nav>
+                <ul class="lista1">
+                    <li><img src="{{ url_for('static', filename='Imagenes/retirement-home.png') }}" alt="Home" class="imagen-lista1"></li>
+                    <li><a href="{{ url_for('index') }}">Productos</a></li>
+                    <li><a href="{{ url_for('nosotros') }}">Nosotros</a></li>
+                    <li><a href="{{ url_for('tratam_dat') }}">Tratamiento de datos</a></li>
+                    <li><a href="{{ url_for('index') }}">Buscar</a></li>
+                    <li><img src="{{ url_for('static', filename='Imagenes/lupa.png') }}" alt="Buscar" class="imagen-lista1"></li>
+                </ul>
+            </nav>
+        </div>
+    </header>    
+    <a href="{{ url_for('user_admon') }}"><button1 id="backButton1">Atrás</button1></a>
+        <div class="payment-section">
+            <h2>Zona de Pagos</h2>
+            <form action="/procesar-pago" method="post">
+                <div class="form-group">
+                    <label for="cardholder-name">Nombre del Titular</label>
+                    <input type="text" id="cardholder-name" name="cardholder-name" required>
+                </div>
+                <div class="form-group">
+                    <label for="card-number">Número de Tarjeta</label>
+                    <input type="text" id="card-number" name="card-number" required>
+                </div>
+                <div class="form-group">
+                    <label for="expiry-date">Fecha de Vencimiento</label>
+                    <input type="text" id="expiry-date" name="expiry-date" placeholder="MM/AA" required>
+                </div>
+                <div class="form-group">
+                    <label for="cvv">CVV</label>
+                    <input type="text" id="cvv" name="cvv" required>
+                </div>
+                <button type="submit">Pagar</button>
+            </form>
+        </div>
+        <div class="contenedor">
+        <img src="/static/Imagenes/hoja-tropical.png" alt="Deco">
+    </div> 
+    <hr class="footer-line">
+    <footer>
+        <div class="box7">
+            <img src="{{ url_for('static', filename='Imagenes/hoja.png') }}" alt="Deco">
+            <ul class="lista7">
+                <li><a href="{{ url_for('termin_cond') }}">Términos y condiciones</a></li>
+                <li>adrianabarajas1970@gmail.com</li>
+                <li>3013817308</li>
+                <li>Carrera 36 A # 46-63 Ciudad Verde</li>
+            </ul>
+        </div>
+        <div class="box8">
+            <p>© 2024 Oro Verde Productos Naturales. Todos los derechos reservados. Powered by Grupo 9.</p>
+        </div>
+        <div class="box9">
+            <img src="{{ url_for('static', filename='Imagenes/hoja-de-monstera.png') }}" alt="Deco">
+            <p>La salud es el pilar de la vida</p>
+        </div>
+    </footer>
+    
+</body>
+</html>

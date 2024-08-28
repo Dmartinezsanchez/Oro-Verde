@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Oro verde es un emprendimiento familiar que nace con la necesidad de llevar salud a los hogares de manera natural y preventiva">
+    <meta name="keywords" content="multivitaminicos, preventiva, salud, belleza, tienda naturista">
+    <meta name="author" content="Esta página es un proyecto de formación del Sena del grupo 9">
+    <meta name="robots" content="index">
+    <meta http-equiv="refresh" content="120">
+    <title>Tienda Naturista Oro Verde</title>
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='Imagenes/favicon.ico') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='CSS/admon_productos.css') }}">
+</head>
+<body>
+    <div class="container">
+        <!-- Mostrar Mensajes Flash -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <div class="flash-messages">
+                    {% for category, message in messages %}
+                        <div class="flash {{ category }}">{{ message }}</div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+
+        <h1>Administración de Productos</h1>
+        
+        <!-- Header con navegación -->
+        <header class="header">
+            <div class="header__logo-container">
+                <a href="{{ url_for('index') }}">
+                    <img src="{{ url_for('static', filename='Imagenes/logo-oro-verde.png') }}" alt="Logo" class="imagen-lista2">
+                </a>
+            </div>
+            <div class="box1">
+            <nav>
+                <ul class="lista1">
+                    <li><img src="{{ url_for('static', filename='Imagenes/retirement-home.png') }}" alt="Home" class="imagen-lista1"></li>
+                    <li><a href="{{ url_for('index') }}">Productos</a></li>
+                    <li><a href="{{ url_for('promociones') }}">Promociones</a></li>
+                    <li><a href="{{ url_for('nosotros') }}">Nosotros</a></li>
+                    <li><a href="{{ url_for('tratam_dat') }}">Tratamiento de Datos</a></li>
+                    <li><a href="{{ url_for('gestion_de_pagos') }}"><img src="{{ url_for('static', filename='Imagenes/bolsa-de-la-compra.png') }}" alt="Compras" class="imagen-lista1"></a></li>
+                    <li><a href="{{ url_for('index') }}">Buscar</a></li>
+                    <li><img src="{{ url_for('static', filename='Imagenes/lupa.png') }}" alt="Buscar" class="imagen-lista1"></li>
+                </ul>
+            </nav>
+        </div>
+        </header>
+
+        <!-- Botón de regreso -->
+        <a href="{{ url_for('user_admon') }}"><button id="backButton">Atrás</button></a>
+
+        <!-- Formulario para Insertar Producto -->
+        <form action="{{ url_for('admon_productos') }}" method="post">
+            <h2>Insertar Producto</h2>
+            <input type="text" name="nombre_producto" placeholder="Nombre del Producto" required>
+            <input type="number" name="cantidad" placeholder="Cantidad" min="0" required>  <!-- Campo para cantidad -->
+            <input type="text" name="valor" placeholder="Valor" required>
+            <input type="text" name="imagen_url" placeholder="URL de la Imagen" required>  <!-- Nuevo campo para URL de la imagen -->
+            <input type="submit" name="accion" value="Insertar">
+        </form>
+
+        <!-- Formulario para Actualizar Producto -->
+        <form action="{{ url_for('admon_productos') }}" method="post">
+            <h2>Actualizar Producto</h2>
+            <input type="text" name="producto_id" placeholder="ID del Producto" required>
+            <input type="text" name="nuevo_nombre" placeholder="Nuevo Nombre" required>
+            <input type="number" name="nueva_cantidad" placeholder="Nueva Cantidad" required>  <!-- Campo para nueva cantidad -->
+            <input type="text" name="nuevo_valor" placeholder="Nuevo Valor" required>
+            <input type="text" name="nueva_imagen_url" placeholder="Nueva URL de la Imagen" required>  <!-- Nuevo campo para nueva URL de la imagen -->
+            <input type="submit" name="accion" value="Actualizar">
+        </form>
+
+        <!-- Formulario para Borrar Producto -->
+        <form action="{{ url_for('admon_productos') }}" method="post">
+            <h2>Borrar Producto</h2>
+            <input type="text" name="producto_id" placeholder="ID del Producto" required>
+            <input type="submit" name="accion" value="Borrar">
+        </form>
+
+        <!-- Formulario para Buscar Producto -->
+        <form action="{{ url_for('admon_productos') }}" method="post">
+            <h2>Buscar Producto</h2>
+            <input type="text" name="producto_id" placeholder="ID del Producto" required>
+            <input type="submit" name="accion" value="Buscar">
+        </form>
+        
+        <!-- Mostrar Resultado de Búsqueda -->
+        {% if producto %}
+        <h3>Producto encontrado:</h3>
+        <ul>
+            <li>ID: {{ producto[0] }}</li>
+            <li>Nombre: {{ producto[1] }}</li>
+            <li>Cantidad: {{ producto[2] }}</li>
+            <li>Valor: {{ producto[3] }}</li>
+            <li>Imagen: <img src="{{ producto[4] }}" alt="Imagen del Producto"></li>  <!-- Mostrar imagen del producto -->
+        </ul>
+        {% endif %}
+
+        <!-- Imágenes decorativas -->
+        <div class="contenedor">
+            <img src="{{ url_for('static', filename='Imagenes/hoja-tropical.png') }}" alt="Deco">
+        </div> 
+
+        <!-- Footer -->
+        <hr class="footer-line">
+        <footer>
+            <div class="box11">
+                <img src="{{ url_for('static', filename='Imagenes/hoja.png') }}" alt="Deco">
+                <ul class="lista11">
+                    <li><a href="{{ url_for('termin_cond') }}">Términos y Condiciones</a></li>
+                    <li>adrianabarajas1970@gmail.com</li>
+                    <li>3013817308</li>
+                    <li>Carrera 36 A # 46-63 Ciudad Verde</li>
+                </ul>
+            </div>
+            <div class="box12">
+                <p>© 2024 Oro Verde Productos Naturales. Todos los derechos reservados. Powered by Grupo 9.</p>
+            </div>
+            <div class="box13">
+                <img src="{{ url_for('static', filename='Imagenes/hoja-de-monstera.png') }}" alt="Deco">
+                <p>La salud es el pilar de la vida</p>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>
+
+
+
