@@ -71,6 +71,34 @@ def admon_productos():
 
     return render_template('admon_productos.html', producto=producto)
 
+# Nueva ruta para actualizar producto con PUT
+@app.route('/producto/<int:producto_id>', methods=['PUT'])
+def actualizar_producto(producto_id):
+    data = request.json
+    nuevo_nombre = data.get('nuevo_nombre')
+    nuevo_valor = data.get('nuevo_valor')
+    nueva_cantidad = data.get('nueva_cantidad')
+    nueva_imagen_url = data.get('nueva_imagen_url')
+
+    cur = mysql.connection.cursor()
+    cur.execute('UPDATE productos SET nombre_producto = %s, valor = %s, cantidad = %s, imagen_url = %s WHERE id = %s', 
+                (nuevo_nombre, nuevo_valor, nueva_cantidad, nueva_imagen_url, producto_id))
+    mysql.connection.commit()
+    cur.close()
+
+    return {'mensaje': 'Producto actualizado correctamente'}, 200
+
+
+# Nueva ruta para borrar producto con DELETE
+@app.route('/producto/<int:producto_id>', methods=['DELETE'])
+def borrar_producto(producto_id):
+    cur = mysql.connection.cursor()
+    cur.execute('DELETE FROM productos WHERE id = %s', (producto_id,))
+    mysql.connection.commit()
+    cur.close()
+
+    return {'mensaje': 'Producto borrado correctamente'}, 200
+
 # Ruta para ver detalles del producto
 @app.route('/producto/<int:producto_id>')
 def producto_detalle(producto_id):
