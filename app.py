@@ -175,45 +175,64 @@ def registrarse():
     email = request.form.get('email')
     contrasena = request.form.get('contrasena')
 
-    cur = mysql.connection.cursor()
-
-    # Verificar si el usuario ya existe
-    cur.execute("SELECT * FROM usuarios WHERE email = %s", [email])
-    usuario_existente = cur.fetchone()
-
-    if usuario_existente:
-        cur.close()
-        # Devolver JSON si el usuario ya existe
-        return jsonify({'mensaje': 'El usuario ya existe', 'status': 'error'}), 400
-
-    # Si el usuario no existe, proceder a registrarlo
     hashed_password = bcrypt.hashpw(contrasena.encode('utf-8'), bcrypt.gensalt())
+
+    cur = mysql.connection.cursor()
     cur.execute("INSERT INTO usuarios (nombre, email, contrasena) VALUES (%s, %s, %s)", (nombre, email, hashed_password))
     mysql.connection.commit()
     cur.close()
 
-    # Devolver JSON si el registro es exitoso
-    return jsonify({'mensaje': 'Registro exitoso', 'status': 'success'}), 201
+    if request.headers.get('X-Test') == 'true':
+        # Para pruebas en Postman
+        return jsonify({"message": "Registro exitoso! Puedes iniciar sesión."}), 200
+
+    # Para navegadores
+    flash('Registro exitoso! Puedes iniciar sesión.', 'success')
+    return redirect(url_for('index'))
+
+
 
 # Ruta para ingresar
+
 @app.route('/ingreso', methods=['POST'])
 def ingreso():
-    usuario = request.form.get('usuario')
-    contrasena = request.form.get('contrasena')
+    # Obtener datos dependiendo del tipo de solicitud
+    if request.is_json:
+        data = request.get_json()
+        usuario = data.get('usuario')
+        contrasena = data.get('contrasena')
+    else:
+        usuario = request.form.get('usuario')
+        contrasena = request.form.get('contrasena')
+
+    # Verificar que se recibieron las credenciales
+    if not usuario or not contrasena:
+        if request.is_json:
+            return jsonify({'mensaje': 'Faltan credenciales', 'status': 'error'}), 400
+        else:
+            flash('Faltan credenciales', 'error')
+            return redirect(url_for('index'))
 
     cur = mysql.connection.cursor()
     cur.execute("SELECT contrasena FROM usuarios WHERE nombre = %s", [usuario])
     result = cur.fetchone()
     cur.close()
 
-    if result and bcrypt.checkpw(contrasena.encode('utf-8'), result[0].encode('utf-8')):
-        # Si la autenticación es exitosa, redirigir a user_admon
-        return redirect(url_for('user_admon'))
-    else:
-        # Si las credenciales son incorrectas, devolver JSON
-        return jsonify({'mensaje': 'Credenciales incorrectas', 'status': 'error'}), 401
+    # Verificar credenciales
+    if not result or not bcrypt.checkpw(contrasena.encode('utf-8'), result[0].encode('utf-8')):
+        if request.is_json:
+            return jsonify({'mensaje': 'Credenciales incorrectas', 'status': 'error'}), 401
+        else:
+            flash('Credenciales incorrectas', 'error')
+            return redirect(url_for('index'))
 
-    
+    # Credenciales correctas
+    if request.is_json:
+        return jsonify({'mensaje': 'Ingreso exitoso', 'status': 'success'}), 200
+    else:
+        return redirect(url_for('user_admon'))
+
+
 # Ruta para obtener los detalles de un usuario con GET
 
 @app.route('/usuario/<int:usuario_id>', methods=['GET'])
