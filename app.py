@@ -190,8 +190,6 @@ def registrarse():
     flash('Registro exitoso! Puedes iniciar sesión.', 'success')
     return redirect(url_for('index'))
 
-
-
 # Ruta para ingresar
 
 @app.route('/ingreso', methods=['POST'])
