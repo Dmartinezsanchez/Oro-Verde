@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for, flash
+from flask import Flask, render_template, request, redirect, url_for, flash, jsonify
 from flask_mysqldb import MySQL
 import bcrypt
 from flask_socketio import SocketIO, send
@@ -14,6 +14,11 @@ app.config['MYSQL_DB'] = 'tienda_naturista'
 
 mysql = MySQL(app)
 socketio = SocketIO(app)
+
+# Ruta de verificación
+@app.route('/ping', methods=['GET'])
+def ping():
+    return jsonify({'message': 'Servidor en funcionamiento'}), 200
 
 # Ruta principal
 @app.route('/')
@@ -33,7 +38,6 @@ def admon_productos():
             valor = request.form.get('valor')
             cantidad = request.form.get('cantidad')  # Obtener cantidad del formulario
             imagen_url = request.form.get('imagen_url')  # Obtener la URL de la imagen
-            print(f"Datos recibidos - Nombre: {nombre_producto}, Valor: {valor}, Cantidad: {cantidad}, Imagen URL: {imagen_url}")  # Depuración
             cur.execute('INSERT INTO productos (nombre_producto, valor, cantidad, imagen_url) VALUES (%s, %s, %s, %s)', 
                         (nombre_producto, valor, cantidad, imagen_url))
             mysql.connection.commit()
@@ -71,7 +75,24 @@ def admon_productos():
 
     return render_template('admon_productos.html', producto=producto)
 
-# Nueva ruta para actualizar producto con PUT
+# Ruta para crear un nuevo producto con POST
+@app.route('/producto', methods=['POST'])
+def crear_producto():
+    data = request.json
+    nombre_producto = data.get('nombre_producto')
+    valor = data.get('valor')
+    cantidad = data.get('cantidad')
+    imagen_url = data.get('imagen_url')
+
+    cur = mysql.connection.cursor()
+    cur.execute('INSERT INTO productos (nombre_producto, valor, cantidad, imagen_url) VALUES (%s, %s, %s, %s)', 
+                (nombre_producto, valor, cantidad, imagen_url))
+    mysql.connection.commit()
+    cur.close()
+
+    return jsonify({'mensaje': 'Producto creado correctamente'}), 201
+
+# Ruta para actualizar un producto existente con PUT
 @app.route('/producto/<int:producto_id>', methods=['PUT'])
 def actualizar_producto(producto_id):
     data = request.json
@@ -86,10 +107,9 @@ def actualizar_producto(producto_id):
     mysql.connection.commit()
     cur.close()
 
-    return {'mensaje': 'Producto actualizado correctamente'}, 200
+    return jsonify({'mensaje': 'Producto actualizado correctamente'}), 200
 
-
-# Nueva ruta para borrar producto con DELETE
+# Ruta para borrar un producto con DELETE
 @app.route('/producto/<int:producto_id>', methods=['DELETE'])
 def borrar_producto(producto_id):
     cur = mysql.connection.cursor()
@@ -97,10 +117,10 @@ def borrar_producto(producto_id):
     mysql.connection.commit()
     cur.close()
 
-    return {'mensaje': 'Producto borrado correctamente'}, 200
+    return jsonify({'mensaje': 'Producto borrado correctamente'}), 200
 
 # Ruta para ver detalles del producto
-@app.route('/producto/<int:producto_id>')
+@app.route('/producto/<int:producto_id>', methods=['GET'])
 def producto_detalle(producto_id):
     cur = mysql.connection.cursor()
     cur.execute('SELECT * FROM productos WHERE id = %s', (producto_id,))
@@ -113,12 +133,11 @@ def producto_detalle(producto_id):
             'nombre': producto[1],
             'cantidad': producto[2],
             'valor': producto[3],
-            'imagen_url': producto[4] if producto[4] else 'Imagenes/default.jpeg',# Manejo de valores nulos
+            'imagen_url': producto[4] if producto[4] else 'Imagenes/default.jpeg', # Manejo de valores nulos
         }
-        return render_template('productos.html', producto=producto_data)
+        return jsonify(producto_data), 200
     else:
-        flash('Producto no encontrado.', 'danger')
-        return redirect(url_for('index'))
+        return jsonify({'mensaje': 'Producto no encontrado'}), 404
 
 # Otras rutas
 @app.route('/gestion_de_pagos')
@@ -156,15 +175,25 @@ def registrarse():
     email = request.form.get('email')
     contrasena = request.form.get('contrasena')
 
-    hashed_password = bcrypt.hashpw(contrasena.encode('utf-8'), bcrypt.gensalt())
-
     cur = mysql.connection.cursor()
+
+    # Verificar si el usuario ya existe
+    cur.execute("SELECT * FROM usuarios WHERE email = %s", [email])
+    usuario_existente = cur.fetchone()
+
+    if usuario_existente:
+        cur.close()
+        # Devolver JSON si el usuario ya existe
+        return jsonify({'mensaje': 'El usuario ya existe', 'status': 'error'}), 400
+
+    # Si el usuario no existe, proceder a registrarlo
+    hashed_password = bcrypt.hashpw(contrasena.encode('utf-8'), bcrypt.gensalt())
     cur.execute("INSERT INTO usuarios (nombre, email, contrasena) VALUES (%s, %s, %s)", (nombre, email, hashed_password))
     mysql.connection.commit()
     cur.close()
 
-    flash('Registro exitoso! Puedes iniciar sesión.', 'success')
-    return redirect(url_for('index'))
+    # Devolver JSON si el registro es exitoso
+    return jsonify({'mensaje': 'Registro exitoso', 'status': 'success'}), 201
 
 # Ruta para ingresar
 @app.route('/ingreso', methods=['POST'])
@@ -178,10 +207,102 @@ def ingreso():
     cur.close()
 
     if result and bcrypt.checkpw(contrasena.encode('utf-8'), result[0].encode('utf-8')):
+        # Si la autenticación es exitosa, redirigir a user_admon
         return redirect(url_for('user_admon'))
     else:
-        flash('Credenciales incorrectas. Inténtalo de nuevo.', 'error')
-        return redirect(url_for('index'))
+        # Si las credenciales son incorrectas, devolver JSON
+        return jsonify({'mensaje': 'Credenciales incorrectas', 'status': 'error'}), 401
+
+    
+# Ruta para obtener los detalles de un usuario con GET
+
+@app.route('/usuario/<int:usuario_id>', methods=['GET'])
+def obtener_usuario(usuario_id):
+    print(f"Obteniendo usuario con ID: {usuario_id}")  # Para depurar
+    try:
+        cur = mysql.connection.cursor()
+        cur.execute("SELECT id, nombre, email FROM usuarios WHERE id = %s", (usuario_id,))
+        usuario = cur.fetchone()
+        cur.close()
+    
+        print(f"Usuario encontrado: {usuario}")  # Para depurar
+
+        if usuario:
+            usuario_data = {
+                'id': usuario[0],
+                'nombre': usuario[1],
+                'email': usuario[2]
+            }
+            return jsonify(usuario_data), 200
+        else:
+            return jsonify({'mensaje': 'Usuario no encontrado', 'status': 'error'}), 404
+
+    except Exception as e:
+        print(f"Error al obtener usuario: {e}")
+        return jsonify({'mensaje': 'Error en el servidor', 'status': 'error'}),    
+
+
+# Ruta para actualizar un usuario existente con PUT
+@app.route('/usuario/<int:usuario_id>', methods=['PUT'])
+def actualizar_usuario(usuario_id):
+    print(f"PUT request received for usuario_id: {usuario_id}")  # Agrega esto para depuración
+
+    # Verificar que los datos se reciban en formato JSON
+    if not request.is_json:
+        return jsonify({'mensaje': 'Formato de solicitud no válido', 'status': 'error'}), 400
+
+    data = request.json
+    nuevo_nombre = data.get('nombre')
+    nuevo_email = data.get('email')
+
+    # Verificar que los datos requeridos están presentes
+    if not nuevo_nombre or not nuevo_email:
+        return jsonify({'mensaje': 'Nombre y correo electrónico son requeridos', 'status': 'error'}), 400
+
+    try:
+        cur = mysql.connection.cursor()
+
+        # Verificar si el usuario existe
+        cur.execute("SELECT id FROM usuarios WHERE id = %s", (usuario_id,))
+        usuario_existente = cur.fetchone()
+
+        if not usuario_existente:
+            cur.close()
+            return jsonify({'mensaje': 'Usuario no encontrado', 'status': 'error'}), 404
+
+        # Actualizar el usuario
+        cur.execute("UPDATE usuarios SET nombre = %s, email = %s WHERE id = %s", 
+                    (nuevo_nombre, nuevo_email, usuario_id))
+        mysql.connection.commit()
+        cur.close()
+
+        return jsonify({'mensaje': 'Usuario actualizado correctamente', 'status': 'success'}), 200
+
+    except Exception as e:
+        print(f"Error al actualizar usuario: {e}")
+        return jsonify({'mensaje': 'Error en el servidor', 'status': 'error'}), 500
+
+
+# Ruta para eliminar un usuario existente con DELETE
+@app.route('/usuario/<int:usuario_id>', methods=['DELETE'])
+def borrar_usuario(usuario_id):
+    cur = mysql.connection.cursor()
+
+    # Verificar si el usuario existe
+    cur.execute("SELECT id FROM usuarios WHERE id = %s", (usuario_id,))
+    usuario_existente = cur.fetchone()
+
+    if not usuario_existente:
+        cur.close()
+        return jsonify({'mensaje': 'Usuario no encontrado', 'status': 'error'}), 404
+
+    # Borrar el usuario
+    cur.execute("DELETE FROM usuarios WHERE id = %s", (usuario_id,))
+    mysql.connection.commit()
+    cur.close()
+
+    return jsonify({'mensaje': 'Usuario eliminado correctamente', 'status': 'success'}), 200
+
 
 # Manejador de mensajes enviados desde el chatbox
 @socketio.on('message')
@@ -198,19 +319,15 @@ def handle_message(msg):
         respuesta = "Si deseas tener una asesoría personalizada puedes escribir vía WhatsApp al siguiente número 3013817308 y allí ampliaremos la información que requieras."
     elif "adios" in msg.lower():
         respuesta = "¡Hasta luego! No dudes en volver si tienes más preguntas."
-    elif "horarios" in msg.lower():  
-        respuesta = "Nuestro horario de atención es de 9 AM a 6 PM de lunes a viernes."
-    elif "asesoria" in msg.lower():  
-        respuesta = "Si deseas una asesoria puedes dejarme tu número telefónico y nos comunicaremos a la mayor brevedad, o si lo prefieres puedes escribir a nuestra linea de whatsaap 3013817308."      
+    elif "horarios" in msg.lower():
+        respuesta = "Nuestro horario de atención es de lunes a viernes, de 9:00 AM a 6:00 PM."
     else:
-        respuesta = "No estoy seguro de cómo responder a eso. ¿Podrías ser más específico?, puedes utilizar las siguientes palabras clave: productos, horarios y asesorias"
+        respuesta = "No entendí tu mensaje. ¿Podrías reformularlo?"
 
-    # Envía la respuesta automática
-    send(respuesta, broadcast=True)
+    send(respuesta)
 
 if __name__ == '__main__':
     socketio.run(app, debug=True)
-
 
 
 
