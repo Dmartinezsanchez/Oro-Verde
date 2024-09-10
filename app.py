@@ -38,8 +38,9 @@ def admon_productos():
             valor = request.form.get('valor')
             cantidad = request.form.get('cantidad')  # Obtener cantidad del formulario
             imagen_url = request.form.get('imagen_url')  # Obtener la URL de la imagen
-            cur.execute('INSERT INTO productos (nombre_producto, valor, cantidad, imagen_url) VALUES (%s, %s, %s, %s)', 
-                        (nombre_producto, valor, cantidad, imagen_url))
+            descripcion = request.form.get('descripcion')  # Obtener descripción del formulario
+            cur.execute('INSERT INTO productos (nombre_producto, valor, cantidad, imagen_url, descripcion) VALUES (%s, %s, %s, %s, %s)', 
+                        (nombre_producto, valor, cantidad, imagen_url, descripcion))
             mysql.connection.commit()
             flash('Producto insertado correctamente!', 'success')
         
@@ -49,8 +50,9 @@ def admon_productos():
             nuevo_valor = request.form.get('nuevo_valor')
             nueva_cantidad = request.form.get('nueva_cantidad')  # Obtener nueva cantidad del formulario
             nueva_imagen_url = request.form.get('nueva_imagen_url')  # Obtener nueva URL de imagen
-            cur.execute('UPDATE productos SET nombre_producto = %s, valor = %s, cantidad = %s, imagen_url = %s WHERE id = %s', 
-                        (nuevo_nombre, nuevo_valor, nueva_cantidad, nueva_imagen_url, producto_id))
+            nueva_descripcion = request.form.get('nueva_descripcion')  # Obtener nueva descripción
+            cur.execute('UPDATE productos SET nombre_producto = %s, valor = %s, cantidad = %s, imagen_url = %s, descripcion = %s WHERE id = %s', 
+                        (nuevo_nombre, nuevo_valor, nueva_cantidad, nueva_imagen_url, nueva_descripcion, producto_id))
             mysql.connection.commit()
             flash('Producto actualizado correctamente!', 'success')
     
@@ -66,7 +68,7 @@ def admon_productos():
             producto = cur.fetchone()  # Obtener el primer resultado
 
             if producto: 
-                flash(f'Producto encontrado: ID: {producto[0]}, Nombre: {producto[1]}, Cantidad: {producto[2]}, Valor: {producto[3]}, Imagen URL: {producto[4]}', 'success')
+                flash(f'Producto encontrado: ID: {producto[0]}, Nombre: {producto[1]}, Cantidad: {producto[2]}, Valor: {producto[3]}, Imagen URL: {producto[4]}, Descripción: {producto[5]}', 'success')
             else:
                 flash('Producto no encontrado.', 'danger')
 
@@ -74,6 +76,7 @@ def admon_productos():
         return redirect(url_for('admon_productos'))
 
     return render_template('admon_productos.html', producto=producto)
+
 
 # Ruta para crear un nuevo producto con POST
 @app.route('/producto', methods=['POST'])
@@ -83,14 +86,16 @@ def crear_producto():
     valor = data.get('valor')
     cantidad = data.get('cantidad')
     imagen_url = data.get('imagen_url')
+    descripcion = data.get('descripcion')  # Obtener la descripción del JSON
 
     cur = mysql.connection.cursor()
-    cur.execute('INSERT INTO productos (nombre_producto, valor, cantidad, imagen_url) VALUES (%s, %s, %s, %s)', 
-                (nombre_producto, valor, cantidad, imagen_url))
+    cur.execute('INSERT INTO productos (nombre_producto, valor, cantidad, imagen_url, descripcion) VALUES (%s, %s, %s, %s, %s)', 
+                (nombre_producto, valor, cantidad, imagen_url, descripcion))
     mysql.connection.commit()
     cur.close()
 
     return jsonify({'mensaje': 'Producto creado correctamente'}), 201
+
 
 # Ruta para actualizar un producto existente con PUT
 @app.route('/producto/<int:producto_id>', methods=['PUT'])
@@ -100,14 +105,16 @@ def actualizar_producto(producto_id):
     nuevo_valor = data.get('nuevo_valor')
     nueva_cantidad = data.get('nueva_cantidad')
     nueva_imagen_url = data.get('nueva_imagen_url')
+    nueva_descripcion = data.get('nueva_descripcion')  # Obtener la nueva descripción del JSON
 
     cur = mysql.connection.cursor()
-    cur.execute('UPDATE productos SET nombre_producto = %s, valor = %s, cantidad = %s, imagen_url = %s WHERE id = %s', 
-                (nuevo_nombre, nuevo_valor, nueva_cantidad, nueva_imagen_url, producto_id))
+    cur.execute('UPDATE productos SET nombre_producto = %s, valor = %s, cantidad = %s, imagen_url = %s, descripcion = %s WHERE id = %s', 
+                (nuevo_nombre, nuevo_valor, nueva_cantidad, nueva_imagen_url, nueva_descripcion, producto_id))
     mysql.connection.commit()
     cur.close()
 
     return jsonify({'mensaje': 'Producto actualizado correctamente'}), 200
+
 
 # Ruta para borrar un producto con DELETE
 @app.route('/producto/<int:producto_id>', methods=['DELETE'])
@@ -133,20 +140,18 @@ def producto_detalle(producto_id):
             'nombre': producto[1],
             'cantidad': producto[2],
             'valor': producto[3],
-            'imagen_url': producto[4] if producto[4] else 'Imagenes/default.jpeg', # Manejo de valores nulos
+            'descripcion': producto[5],  # Asegúrate de que la descripción esté en el índice correcto
+            'imagen_url': producto[4] if producto[4] else 'Imagenes/default.jpeg',
         }
-        return jsonify(producto_data), 200
+        return render_template('productos.html', producto=producto_data)
     else:
         return jsonify({'mensaje': 'Producto no encontrado'}), 404
+
 
 # Otras rutas
 @app.route('/gestion_de_pagos')
 def gestion_de_pagos():
     return render_template('gestion_de_pagos.html')
-
-@app.route('/informe_ventas')
-def informe_ventas():
-    return render_template('informe_ventas.html')
 
 @app.route('/nosotros')
 def nosotros():

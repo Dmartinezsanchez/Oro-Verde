@@ -46,10 +46,12 @@
 
     <div class="productos">
         <!-- Detalles del producto -->
-        <img src="{{ url_for('static', filename=producto.imagen_url if producto.imagen_url else 'Imagenes/default.jpeg') }}" alt="{{ producto.nombre }}" class="producto-imagen">
+        <img src="{{ url_for('static', filename=producto.imagen_url) }}" alt="{{ producto.nombre }}" class="producto-imagen">
         <p>Cantidad en existencia: {{ producto.cantidad }}</p>
         <p>Precio: $ {{ producto.valor }}</p>
+        <p><strong>Descripción:</strong> {{ producto.descripcion }}</p> <!-- Mostrar descripción del producto -->
     </div>
+    
 
     <div class="contenedor">
         <img src="/static/Imagenes/hoja-tropical.png" alt="Deco">
