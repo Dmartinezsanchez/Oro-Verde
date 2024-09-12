@@ -8,7 +8,7 @@
     <meta name="author" content="Esta página es un proyecto de formación del Sena del grupo 9">
     <meta name="robots" content="index">
     <meta http-equiv="refresh" content="120">
-    <title>{{ producto.nombre }} - Tienda Naturista Oro Verde</title>
+    <title>{% if producto %}{{ producto.nombre }} - Tienda Naturista Oro Verde{% else %}Producto no encontrado{% endif %}</title>
     <link rel="icon" type="image/png" href="/static/Imagenes/favicon.ico"> 
     <link rel="stylesheet" href="/static/CSS/productos.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -31,28 +31,38 @@
                     <li><img src="{{ url_for('static', filename='Imagenes/retirement-home.png') }}" alt="Home" class="imagen-lista1"></li>
                     <li><a href="{{ url_for('promociones') }}">Promociones</a></li>
                     <li><a href="{{ url_for('nosotros') }}">Nosotros</a></li>
-                    <li><a href="{{ url_for('index') }}"">Ingreso</a></li>
+                    <li><a href="{{ url_for('index') }}">Ingreso</a></li>
                     <li><a href="{{ url_for('index') }}">Registrarse</a></li>
                     <li><a href="{{ url_for('tratam_dat') }}">Tratamiento de datos</a></li>
                     <li><a href="{{ url_for('gestion_de_pagos') }}"><img src="{{ url_for('static', filename='Imagenes/bolsa-de-la-compra.png') }}" alt="Compras" class="imagen-lista1"></a></li>
-                    <li><a href="{{ url_for('index') }}">Buscar</a></li>
-                    <li><img src="{{ url_for('static', filename='Imagenes/lupa.png') }}" alt="Buscar" class="imagen-lista1"></li>
+                    <li>
+                        <form action="{{ url_for('buscar_productos') }}" method="GET" class="search-form">
+                            <input type="text" name="query" placeholder="Buscar productos..." class="search-input">
+                            <button type="submit" class="search-button">
+                                <img src="{{ url_for('static', filename='Imagenes/lupa.png') }}" alt="Buscar" class="imagen-lista1">
+                            </button>
+                        </form>
+                    </li>    
                 </ul>
             </nav>
         </div>
     </header>
 
+    {% if producto %}
+    <!-- Mostrar detalles del producto si existe -->
     <h1>{{ producto.nombre }}</h1>
-
     <div class="productos">
-        <!-- Detalles del producto -->
         <img src="{{ url_for('static', filename=producto.imagen_url) }}" alt="{{ producto.nombre }}" class="producto-imagen">
         <p>Cantidad en existencia: {{ producto.cantidad }}</p>
         <p>Precio: $ {{ producto.valor }}</p>
-        <p><strong>Descripción:</strong> {{ producto.descripcion }}</p> <!-- Mostrar descripción del producto -->
+        <p><strong>Descripción:</strong> {{ producto.descripcion }}</p>
     </div>
+    {% else %}
+    <!-- Mostrar mensaje si no se encuentra el producto -->
+    <h1>Producto no encontrado</h1>
+    <p>No hemos encontrado ningún producto que coincida con tu búsqueda.</p>
+    {% endif %}
     
-
     <div class="contenedor">
         <img src="/static/Imagenes/hoja-tropical.png" alt="Deco">
     </div> 
@@ -78,6 +88,7 @@
     </footer>  
 </body>
 </html>
+
 
 
     

@@ -47,8 +47,14 @@
                     <li><a href="#registrarse">Registrarse</a></li>
                     <li><a href="{{ url_for('tratam_dat') }}">Tratamiento de datos</a></li>
                     <li><a href="{{ url_for('gestion_de_pagos') }}"><img src="{{ url_for('static', filename='Imagenes/bolsa-de-la-compra.png') }}" alt="Compras" class="imagen-lista1"></a></li>
-                    <li><a href="{{ url_for('index') }}">Buscar</a></li>
-                    <li><img src="{{ url_for('static', filename='Imagenes/lupa.png') }}" alt="Buscar" class="imagen-lista1"></li>
+                    <li>
+                        <form action="{{ url_for('buscar_productos') }}" method="GET" class="search-form">
+                            <input type="text" name="query" placeholder="Buscar productos..." class="search-input">
+                            <button type="submit" class="search-button">
+                                <img src="{{ url_for('static', filename='Imagenes/lupa.png') }}" alt="Buscar" class="imagen-lista1">
+                            </button>
+                        </form>
+                    </li>    
                 </ul>
             </nav>
         </div>

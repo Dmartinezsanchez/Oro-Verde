@@ -146,6 +146,33 @@ def producto_detalle(producto_id):
         return render_template('productos.html', producto=producto_data)
     else:
         return jsonify({'mensaje': 'Producto no encontrado'}), 404
+    
+
+# Ruta para buscar productos por palabras clave
+@app.route('/buscar_productos', methods=['GET'])
+def buscar_productos():
+    query = request.args.get('query')
+    if query:
+        cur = mysql.connection.cursor()
+        cur.execute('SELECT * FROM productos WHERE nombre_producto LIKE %s', ('%' + query + '%',))
+        producto = cur.fetchone()
+        cur.close()
+
+        if producto:
+            return redirect(url_for('producto_detalle', producto_id=producto[0]))
+        else:
+            return render_template('productos.html', mensaje="Producto no encontrado")
+    return redirect(url_for('index'))
+
+
+# Ruta para mostrar todos los productos
+@app.route('/productos')
+def mostrar_productos():
+    cur = mysql.connection.cursor()
+    cur.execute('SELECT * FROM productos')
+    productos = cur.fetchall()
+    cur.close()
+    return render_template('productos.html', productos=productos)    
 
 
 # Otras rutas
