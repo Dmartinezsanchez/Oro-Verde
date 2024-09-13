@@ -1,8 +1,166 @@
+/* Estilo general */
 body {
+    font-family: 'Poppins', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #ccc5B7;
-    font-family: 'Julee';
+    background-color: #F7F7F5;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #E6F0E6; /* Verde pastel suave */
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.header__logo-container {
+    display: flex; /* Utiliza Flexbox */
+    flex-direction: column; /* Alinea los elementos en una columna (imagen encima del texto) */
+    justify-content: center; /* Centra verticalmente el contenido */
+    align-items: center; /* Centra horizontalmente el contenido */
+    text-align: center; /* Centra el texto dentro del contenedor */
+    height: 40vh;
+}
+
+.imagen-logo {
+    width: 200px; /* Ancho de la imagen */
+    height: 200px; /* Alto de la imagen */
+    border-radius: 50%; /* Hace que la imagen sea completamente redonda */
+    object-fit: cover; /* Ajusta la imagen para que se mantenga centrada */
+    filter: brightness(180%) contrast(40%); /* Aumenta el brillo un 20% y reduce un poco el contraste */
+    box-shadow: 5px 5px 12px rgb(0, 0, 0);
+    margin-right: 15px; /* Espacio entre el logo y el título */
+    margin-top: 20px;
+}
+
+nav ul.lista1 {
+    list-style-type: none;
+    display: flex;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul.lista1 li {
+    margin: 0 20px;
+}
+
+nav ul.lista1 li a {
+    text-decoration: none;
+    color: #4A6056; /* Verde oscuro suave */
+    font-weight: 500;
+    transition: color 0.3s ease;
+    font-size: 16px;
+}
+
+nav ul.lista1 li a:hover {
+    color: #8AB78B; /* Verde más claro en hover */
+}
+
+/* Estilo para las imágenes en la lista */
+
+.imagen-lista1:hover {
+    filter: brightness(1);
+}
+
+.imagen-lista1 {
+    height: 50px;
+    width: 50px;
+    cursor: pointer;
+    filter: brightness(0.7); /* Estilo suave a las imágenes */
+    transition: filter 0.3s ease;
+}
+
+
+/* Estilo para dispositivos móviles */
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        padding: 10px;
+    }
+
+    nav ul.lista1 {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    nav ul.lista1 li {
+        margin: 10px 0;
+    }
+}
+
+/* Botones personalizados */
+nav ul.lista1 li a {
+    padding: 8px 12px;
+    border-radius: 25px;
+    background-color: #FDFDFB; /* Blanco hueso */
+    border: 2px solid #D4E4D1; /* Verde pastel suave */
+}
+
+nav ul.lista1 li a:hover {
+    background-color: #E6F0E6; /* Verde pastel */
+    border-color: #8AB78B;
+    color: #4A6056;
+}
+
+
+
+/* Estilo del formulario de búsqueda */
+.search-form {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.search-input {
+    padding: 8px;
+    border: 2px solid #D4E4D1; /* Verde pastel */
+    border-radius: 20px;
+    background-color: #FDFDFB; /* Blanco hueso */
+    color: #4A6056; /* Verde oscuro */
+    outline: none;
+    font-size: 14px;
+    width: 0;
+    transition: width 0.4s ease; /* Animación para ampliar el campo */
+    width: 150px;
+}
+
+.search-input:focus {
+    width: 150px; /* Ampliar campo de texto cuando se hace clic */
+    border-color: #8AB78B; /* Verde más claro */
+}
+
+.search-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    margin-left: 15px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.search-button img {
+    height: 30px;
+    width: 30px;
+    transition: filter 0.3s ease;
+}
+
+.search-button img:hover {
+    filter: brightness(1);
+}
+
+/* Alineación en pantallas pequeñas */
+@media (max-width: 768px) {
+    .search-form {
+        margin-top: 10px;
+    }
+
+    .search-input:focus {
+        width: 100%; /* Ampliar más en dispositivos pequeños */
+    }
 }
 
 .flash-messages {
@@ -27,6 +185,7 @@ body {
 
 .flash.success {
     background-color: #2ecc71; 
+}    
 
 .flash.info {
     background-color: #3498db; 
@@ -36,67 +195,13 @@ body {
     background-color: #f39c12; 
 }
 
-}
-
-.header {
-    background-color: #CCC5B7;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 5px;
-}
-
-.header__logo-container {
-    max-width: 100%;
-    width: 150px;
-}
 
 h1 {
-    color: #4a6a3c;
+    color: rgb(146, 203, 158);
     font-family: 'Kaushan Script';
     font-size: 5vh;
     text-align: center;
     font-style: italic;
-}
-
-.box1 {
-    background-color: #f8ebe1;
-    width: 90%;
-    max-width: 1300px;
-    height: 13vh;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    border-radius: 35px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 1px solid #1b5e3f; 
-    box-shadow: 0 4px 8px rgba(0, 0.5, 0, 0.4);
-}
-
-.lista1 {
-    list-style-type: none;
-    padding: 2vh;
-    margin: auto;
-    display: flex;
-    text-align: center;
-    color: #555426;
-    font-size: 17px;
-}
-
-nav ul li a {
-    text-decoration: none;
-    color: #555426;
-}
-
-li {
-    margin-right: 3vw;
-    height: 4vh;
-}
-
-.imagen-lista1 {
-    max-width: 100%;
-    height: 30px;
 }
 
 
@@ -108,8 +213,8 @@ li {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-family: 'Kaushan Script';
-    font-size: 20px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 18px;
 }
 
 .lista2 {
@@ -127,13 +232,14 @@ li {
 
 .lista2 > li > a {
     text-decoration: none;
-    color: #8e8f48;
+    color: rgb(88, 110, 61);
     padding: 10px 15px;
     display: block;
+    font-size: 20px;
 }
 
 .lista2 > li > a:hover {
-    background-color:#3f7e60;
+    background-color: #a8e1b9;
 }
 
 .submenu {
@@ -144,10 +250,10 @@ li {
     list-style: none;
     padding: 5px;
     margin: 0px;
-    background-color:   #79947f;
+    background-color: #476851;
     box-shadow: 0 8px 16px rgba(0, 0.3, 0, 0.3);
     font-family: sans-serif;
-    font-size: 16px;
+    font-size: 14px;
 }
 
 .submenu li {
@@ -162,7 +268,7 @@ li {
 }
 
 .submenu li a:hover {
-    background-color: #7da6a5;
+    background-color: #73937d;
 }
 
 .lista2 > li:hover .submenu {
@@ -170,51 +276,50 @@ li {
 }
 
 .imagen-lista2 {
-    max-width: 350px;  /* Aumenta el ancho máximo */
-    height: 15vh;  /* Aumenta la altura */
-    margin-left: 1vh;
+    max-width: 100vh;
+    height: 20vh;
+    margin-left: 6vh;
     margin-right: 0;
-    object-fit: cover;  /* Asegura que la imagen mantenga sus proporciones */
-}
-
-
-.imagen-logo {
-    max-width: 200px;
-    height: auto;
 }
 
 .box3 {
-    width: 100%;
-    height: 100%;
-}
+    display: flex; /* Utiliza flexbox */
+    flex-direction: column; /* Coloca los elementos uno debajo del otro */
+    justify-content: center; /* Centra verticalmente */
+    align-items: center; /* Centra horizontalmente */
+    height: 100vh; /* Altura completa de la pantalla */
+    margin: 0;
+    padding-top: 10px;
+    }
 
 /* Contenedor del chatbox */
 #chat-container {
-    border: 2px solid #21484b; 
+    border: 2px solid #5b8a74; 
     border-radius: 10px; /* Bordes redondeados */
     padding: 10px;
     max-width: 300px; /* Ancho máximo del chatbox */
-    margin-right: auto;
-    background-color:#dcefe0; 
+    max-height: 300px;
+    background-color: #98ccb9fa; 
     box-shadow: 0 4px 8px rgba(0, 0.5, 0, 0.4); /* Sombra suave */
 }
+
 
 /* Título del chatbox */
 #chat-container h3 {
     margin-top: 0;
     font-size: 18px;
-    color: #a2bfc2; 
+    color: #194b2a; 
     text-align: center;
 }
 
 /* Área de mensajes */
 #chatbox {
-    border: 1px solid #dee2e6;
+    border: 1px solid #3f5f5c;
     border-radius: 5px;
     padding: 10px;
-    height: 300px; /* Altura fija */
+    height: 200px; /* Altura fija */
     overflow-y: auto; /* Barra de desplazamiento vertical si es necesario */
-    background-color: #b2d1a9;
+    background-color: #c6ead8;
 }
 
 /* Mensajes dentro del chatbox */
@@ -226,7 +331,7 @@ li {
 #messageInput {
     width: calc(100% - 100px); /* Resta el ancho del botón enviar */
     padding: 8px;
-    border: 1px solid #ced4da; 
+    border: 1px solid #426659; 
     border-radius: 5px;
     box-sizing: border-box; /* Incluye el padding en el ancho total */
     color: #333;
@@ -238,15 +343,15 @@ li {
     padding: 8px;
     border: none;
     border-radius: 5px;
-    background-color: #77a879; 
+    background-color: #159f7c; 
     color: #d2dcd2; 
     cursor: pointer;
     font-size: 16px;
-    font-family: 'Julee';
+
 }
 
 #sendButton:hover {
-    background-color: #709a8b; 
+    background-color: #3e685a; 
 }
 
 h2 {
@@ -302,17 +407,17 @@ p {
     padding: 1vh;
     margin-top: 2vh;
     margin-bottom: 2vh;
-    display: inline-block;
     vertical-align: middle;
+    display: flex;
 }
 
 #productos {
     text-align: center;
-    margin: 20px 0;
+    margin: 50px 0;
 }
 
 #productos h2 {
-    margin-bottom: 20px;
+    margin-bottom: 40px;
     font-size: 30px;
     color: #377277;
 }
@@ -376,7 +481,6 @@ p {
     }
 }
 
-
 .contenedor {
     display: flex;
     align-items: center;
@@ -414,8 +518,11 @@ input {
 
 fieldset {
     margin: 20px 0;
-    border: 1px solid #fffb98;
+    border: 1px solid #897836;
     border-radius: 5px;
+    box-shadow: 0px 0px 5px rgb(214, 214, 214);
+    font-family: 'Julee';
+    font-size: 20px;
 }
 
 legend {
@@ -497,7 +604,9 @@ footer {
     box-sizing: border-box;
     background-color: #8faa9e;
     padding: 10px;
+    font-family: 'Julee';
 }
+
 
 .box7 {
     display: flex;

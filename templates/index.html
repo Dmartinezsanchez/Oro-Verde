@@ -20,7 +20,10 @@
 <body>
     <script src="/static/JS/script.js"></script>
 
-    <h1>Tienda Naturista Online Oro Verde</h1>
+    <div class="header__logo-container">
+        <img src="{{ url_for('static', filename='Imagenes/logo-oro-verde.png') }}" alt="Logo" class="imagen-logo">
+        <h1>Tienda Naturista Online Oro Verde</h1>
+    </div>
 
     <!-- Bloque para mensajes flash -->
     {% with messages = get_flashed_messages(with_categories=true) %}
@@ -31,34 +34,31 @@
     {% endif %}
 {% endwith %}
 
-
-    <header class="header">
-        <div class="header__logo-container">
-            <img src="{{ url_for('static', filename='Imagenes/logo-oro-verde.png') }}" alt="Logo" class="imagen-logo">
-        </div>
-        <div class="box1">
-            <nav>
-                <ul class="lista1">
-                    <li><img src="{{ url_for('static', filename='Imagenes/retirement-home.png') }}" alt="Home" class="imagen-lista1"></li>
-                    <li><a href="#productos">Productos</a></li>
-                    <li><a href="{{ url_for('promociones') }}">Promociones</a></li>
-                    <li><a href="{{ url_for('nosotros') }}">Nosotros</a></li>
-                    <li><a href="#ingreso">Ingreso</a></li>
-                    <li><a href="#registrarse">Registrarse</a></li>
-                    <li><a href="{{ url_for('tratam_dat') }}">Tratamiento de datos</a></li>
-                    <li><a href="{{ url_for('gestion_de_pagos') }}"><img src="{{ url_for('static', filename='Imagenes/bolsa-de-la-compra.png') }}" alt="Compras" class="imagen-lista1"></a></li>
-                    <li>
-                        <form action="{{ url_for('buscar_productos') }}" method="GET" class="search-form">
-                            <input type="text" name="query" placeholder="Buscar productos..." class="search-input">
-                            <button type="submit" class="search-button">
-                                <img src="{{ url_for('static', filename='Imagenes/lupa.png') }}" alt="Buscar" class="imagen-lista1">
-                            </button>
-                        </form>
-                    </li>    
-                </ul>
-            </nav>
-        </div>
-    </header>    
+<header class="header">
+    <div class="box1">
+        <nav>
+            <ul class="lista1">
+                <li><img src="{{ url_for('static', filename='Imagenes/home.png') }}" alt="Home" class="imagen-lista1"></li>
+                <li><a href="#productos">Productos</a></li>
+                <li><a href="{{ url_for('promociones') }}">Promociones</a></li>
+                <li><a href="{{ url_for('nosotros') }}">Nosotros</a></li>
+                <li><a href="#ingreso">Ingreso</a></li>
+                <li><a href="#registrarse">Registrarse</a></li>
+                <li><a href="{{ url_for('tratam_dat') }}">Tratamiento de datos</a></li>
+                <li><a href="{{ url_for('gestion_de_pagos') }}"><img src="{{ url_for('static', filename='Imagenes/bolsa-de-la-compra.png') }}" alt="Compras" class="imagen-lista1"></a></li>
+                <li>
+                    <form action="{{ url_for('buscar_productos') }}" method="GET" class="search-form">
+                        <input type="text" name="query" placeholder="Buscar productos..." class="search-input">
+                        <button type="submit" class="search-button">
+                            <img src="{{ url_for('static', filename='Imagenes/lupa.png') }}" alt="Buscar" class="imagen-lista1">
+                        </button>
+                    </form>
+                    
+                </li>    
+            </ul>
+        </nav>
+    </div>
+</header>   
     <div class="box2">
         <ul class="lista2">
             <li><a href="#">Salud y Prevención de enfermedades</a>
@@ -95,19 +95,6 @@
         </ul>
     </div>
     
-    <div class="box3">
-        <img src="/static/Imagenes/chat-en-vivo.png" alt="Asesoría" class="imagen-asesoria">
-        
-        <!-- Aquí se inserta el chatbox -->
-        <div id="chat-container">
-            <h3>Chat de Asesoría</h3>
-            <div id="chatbox">
-                <div id="messages"></div>
-                <input id="messageInput" type="text" placeholder="Escribe un mensaje...">
-                <button id="sendButton">Enviar</button>
-            </div>
-        </div>
-    </div>    
 
     <div id="productos" class="producto">
         <h2>¡Nuestros productos más solicitados!</h2>
@@ -208,9 +195,23 @@
             </form>
         </section>
     </div>    
+    
+    <div class="box3">
+        <img src="/static/Imagenes/chat-en-vivo.png" alt="Asesoría" class="imagen-asesoria">
+        
+        <!-- Aquí se inserta el chatbox -->
+        <div id="chat-container">
+            <h3>Chat de Asesoría</h3>
+            <div id="chatbox">
+                <div id="messages"></div>
+                <input id="messageInput" type="text" placeholder="Escribe un mensaje...">
+                <button id="sendButton">Enviar</button>
+            </div>
+        </div>
+    </div>   
     <div class="contenedor">
         <img src="/static/Imagenes/hoja-tropical.png" alt="Deco">
-    </div> 
+    </div>  
     <button onclick="topFunction()" id="myBtn" title="Ir arriba">↑</button>
     <hr class="footer-line">
     <footer>

@@ -1,45 +1,38 @@
+/* Estilo general */
 body {
+    font-family: 'Poppins', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #32502E;
-    font-family: 'Julee';
+    background-color: #F7F7F5;
 }
 
-.header {
-    background-color: #32502E;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 5px;
+.header__logo-container {
+    display: flex; /* Utiliza Flexbox */
+    flex-direction: column; /* Alinea los elementos en una columna (imagen encima del texto) */
+    justify-content: center; /* Centra verticalmente el contenido */
+    align-items: center; /* Centra horizontalmente el contenido */
+    text-align: center; /* Centra el texto dentro del contenedor */
+    height: 40vh;
 }
 
-/* Ajuste del tamaño del logo */
 .imagen-logo {
-    max-width: 200px; /* Ancho máximo del logo */
-    height: auto; /* Mantiene la proporción de la imagen */
-    display: block; /* Asegura que la imagen se comporte como un bloque */
-}
-
-
-h1 {
-    color: antiquewhite;
-    font-family: 'Kaushan Script';
-    font-size: 5vh;
-    text-align: center;
-    font-style: italic;
+    width: 200px; /* Ancho de la imagen */
+    height: 200px; /* Alto de la imagen */
+    border-radius: 50%; /* Hace que la imagen sea completamente redonda */
+    object-fit: cover; /* Ajusta la imagen para que se mantenga centrada */
+    filter: brightness(180%) contrast(40%); /* Aumenta el brillo un 20% y reduce un poco el contraste */
+    box-shadow: 5px 5px 12px rgb(0, 0, 0);
+    margin-right: 15px; /* Espacio entre el logo y el título */
+    margin-top: 20px;
 }
 
 .box1 {
-    background-color: rgb(243, 243, 196);
-    width: 90%;
-    max-width: 1300px;
-    height: 13vh;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    border-radius: 40px;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
+    padding: 10px 20px;
+    background-color: #E6F0E6; /* Verde pastel suave */
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .lista1 {
@@ -52,28 +45,149 @@ h1 {
     font-size: 17px;
 }
 
-nav ul li a {
-    text-decoration: none;
-    color: #32502E;
+/* Estilo para las imágenes en la lista */
+
+.imagen-lista1:hover {
+    filter: brightness(1);
 }
 
-li {
-    margin-right: 4vw;
-    height: 4vh;
+.imagen-lista1 {
+    height: 50px;
+    width: 50px;
+    cursor: pointer;
+    filter: brightness(0.7); /* Estilo suave a las imágenes */
+    transition: filter 0.3s ease;
+}
+
+
+nav ul.lista1 {
+    list-style-type: none;
+    display: flex;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul.lista1 li {
+    margin: 0 20px;
+}
+
+nav ul.lista1 li a {
+    text-decoration: none;
+    color: #4A6056; /* Verde oscuro suave */
+    font-weight: 500;
+    transition: color 0.3s ease;
+    font-size: 16px;
+}
+
+nav ul.lista1 li a:hover {
+    color: #8AB78B; /* Verde más claro en hover */
+}
+
+
+/* Estilo para dispositivos móviles */
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        padding: 10px;
+    }
+
+    nav ul.lista1 {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    nav ul.lista1 li {
+        margin: 10px 0;
+    }
+}
+
+/* Botones personalizados */
+nav ul.lista1 li a {
+    padding: 8px 12px;
+    border-radius: 25px;
+    background-color: #FDFDFB; /* Blanco hueso */
+    border: 2px solid #D4E4D1; /* Verde pastel suave */
+}
+
+nav ul.lista1 li a:hover {
+    background-color: #E6F0E6; /* Verde pastel */
+    border-color: #8AB78B;
+    color: #4A6056;
+}
+
+/* Estilo del formulario de búsqueda */
+.search-form {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.search-input {
+    padding: 8px;
+    border: 2px solid #D4E4D1; /* Verde pastel */
+    border-radius: 20px;
+    background-color: #FDFDFB; /* Blanco hueso */
+    color: #4A6056; /* Verde oscuro */
+    outline: none;
+    font-size: 14px;
+    width: 0;
+    transition: width 0.4s ease; /* Animación para ampliar el campo */
+    width: 150px;
+}
+
+.search-input:focus {
+    width: 150px; /* Ampliar campo de texto cuando se hace clic */
+    border-color: #8AB78B; /* Verde más claro */
+}
+
+.search-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    margin-left: 15px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.search-button img {
+    height: 30px;
+    width: 30px;
+    transition: filter 0.3s ease;
+}
+
+.search-button img:hover {
+    filter: brightness(1);
+}
+
+/* Alineación en pantallas pequeñas */
+@media (max-width: 768px) {
+    .search-form {
+        margin-top: 10px;
+    }
+
+    .search-input:focus {
+        width: 100%; /* Ampliar más en dispositivos pequeños */
+    }
+}
+
+h1 {
+    color: rgb(38, 93, 28);
+    font-family: 'Julee';
+    font-size: 5vh;
+    text-align: center;
+    font-style: italic;
 }
 
 p {
     color: antiquewhite;
-    font-family: 'Kaushan Script';
+    font-family: 'Julee';
     font-size: 3vh;
     text-align: center;
     font-style: italic; 
 }
 
-.imagen-lista1 {
-    max-width: 100%;
-    height: 30px;
-}
 
 /* Estilo para el contenedor del producto */
 .productos {
@@ -110,10 +224,10 @@ p {
 /* Estilo para el texto del producto */
 .productos p {
     font-size: 1.2em;
-    color: #f2f4e8;
+    color: #4c907a;
     text-align: center;
+    font-family: 'Poppins';
 }
-
 
 .contenedor {
     display: flex;
@@ -149,6 +263,7 @@ footer {
     display: flex;
     align-items: center;
     color: rgb(39, 67, 60);
+    font-family: 'Julee';
 }
 
 .lista7 {
@@ -173,6 +288,7 @@ footer {
 
 .box8 p {
     color: rgb(39, 67, 60);
+    font-size: 16px;
 }
 
 .box9 {

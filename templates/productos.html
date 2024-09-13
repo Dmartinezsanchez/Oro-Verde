@@ -18,17 +18,15 @@
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
 </head>
 <body>
-<h1>Productos</h1>
-    <header class="header">
-        <div class="header__logo-container">
-            <a href="{{ url_for('index') }}">
-                <img src="{{ url_for('static', filename='Imagenes/logo-oro-verde.png') }}" alt="Logo" class="imagen-logo">
-            </a>
-        </div>
+    <div class="header__logo-container">
+        <a href="{{ url_for('index') }}">
+        <img src="{{ url_for('static', filename='Imagenes/logo-oro-verde.png') }}" alt="Logo" class="imagen-logo"></a>
+        <h1>Productos</h1>
+    </div>
         <div class="box1">
             <nav>
                 <ul class="lista1">
-                    <li><img src="{{ url_for('static', filename='Imagenes/retirement-home.png') }}" alt="Home" class="imagen-lista1"></li>
+                    <li><a href="{{ url_for('index') }}"><img src="{{ url_for('static', filename='Imagenes/home.png') }}" alt="Home" class="imagen-lista1"></a></li>
                     <li><a href="{{ url_for('promociones') }}">Promociones</a></li>
                     <li><a href="{{ url_for('nosotros') }}">Nosotros</a></li>
                     <li><a href="{{ url_for('index') }}">Ingreso</a></li>
