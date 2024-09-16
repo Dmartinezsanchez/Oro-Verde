@@ -32,7 +32,7 @@
         <div class="flash flash-{{ category }}">{{ message }}</div>
     {% endfor %}
     {% endif %}
-{% endwith %}
+    {% endwith %}
 
 <header class="header">
     <div class="box1">
@@ -46,6 +46,8 @@
                 <li><a href="#registrarse">Registrarse</a></li>
                 <li><a href="{{ url_for('tratam_dat') }}">Tratamiento de datos</a></li>
                 <li><a href="{{ url_for('gestion_de_pagos') }}"><img src="{{ url_for('static', filename='Imagenes/bolsa-de-la-compra.png') }}" alt="Compras" class="imagen-lista1"></a></li>
+
+                <!-- Formulario de búsqueda de productos -->
                 <li>
                     <form action="{{ url_for('buscar_productos') }}" method="GET" class="search-form">
                         <input type="text" name="query" placeholder="Buscar productos..." class="search-input">
@@ -95,7 +97,6 @@
         </ul>
     </div>
     
-
     <div id="productos" class="producto">
         <h2>¡Nuestros productos más solicitados!</h2>
         <div class="product-container1">
@@ -188,6 +189,11 @@
                     <input type="text" name="nombre" placeholder="Nombre completo" required>
                     <input type="email" name="email" placeholder="Email" required>
                     <input type="password" name="contrasena" placeholder="Crear contraseña" required>
+                    <label for="rol">Rol:</label>
+                    <select id="rol" name="rol">
+                        <option value="cliente">Cliente</option>
+                        <option value="admin">Administrador</option>
+                    </select>
                     <button type="submit">Registrarse</button>
                     <label for="miCheckbox"><a href="{{ url_for('termin_cond') }}">Acepto términos y condiciones</a></label>
                     <input type="checkbox" id="miCheckbox" required>

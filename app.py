@@ -1,10 +1,16 @@
-from flask import Flask, render_template, request, redirect, url_for, flash, jsonify
+from flask import Flask, render_template, request, redirect, url_for, flash, jsonify,session
 from flask_mysqldb import MySQL
 import bcrypt
 from flask_socketio import SocketIO, send
+from config import Config
+import MySQLdb.cursors
 
 app = Flask(__name__)
+app.config.from_object(Config)
 app.secret_key = 'supersecretkey'  # Necesario para usar flash messages
+mysql = MySQL(app)
+socketio = SocketIO(app)
+
 
 # Configuración de la conexión a MySQL
 app.config['MYSQL_HOST'] = 'localhost'
@@ -12,8 +18,6 @@ app.config['MYSQL_USER'] = 'root'
 app.config['MYSQL_PASSWORD'] = '1234'
 app.config['MYSQL_DB'] = 'tienda_naturista'
 
-mysql = MySQL(app)
-socketio = SocketIO(app)
 
 # Ruta de verificación
 @app.route('/ping', methods=['GET'])
@@ -201,32 +205,38 @@ def user_admon():
     return render_template('user_admon.html')
 
 # Ruta para registrarse
+
+# Ruta para registrarse
 @app.route('/registrarse', methods=['POST'])
 def registrarse():
     nombre = request.form.get('nombre')
     email = request.form.get('email')
     contrasena = request.form.get('contrasena')
+    rol = request.form.get('rol', 'cliente')  # Asignar un rol por defecto si no se proporciona
+
+    # Verificar si el rol es admin y si el usuario actual tiene permisos para asignar ese rol
+    if rol == 'admin':
+        if not user_is_admin():  # Verifica si el usuario actual es admin
+            flash('No tienes permiso para registrar un usuario como administrador.', 'error')
+            return redirect(url_for('index'))
 
     hashed_password = bcrypt.hashpw(contrasena.encode('utf-8'), bcrypt.gensalt())
 
     cur = mysql.connection.cursor()
-    cur.execute("INSERT INTO usuarios (nombre, email, contrasena) VALUES (%s, %s, %s)", (nombre, email, hashed_password))
+    cur.execute("INSERT INTO usuarios (nombre, email, contrasena, rol) VALUES (%s, %s, %s, %s)", (nombre, email, hashed_password, rol))
     mysql.connection.commit()
     cur.close()
 
     if request.headers.get('X-Test') == 'true':
-        # Para pruebas en Postman
         return jsonify({"message": "Registro exitoso! Puedes iniciar sesión."}), 200
 
-    # Para navegadores
     flash('Registro exitoso! Puedes iniciar sesión.', 'success')
     return redirect(url_for('index'))
 
-# Ruta para ingresar
 
+# Ruta para ingresar
 @app.route('/ingreso', methods=['POST'])
 def ingreso():
-    # Obtener datos dependiendo del tipo de solicitud
     if request.is_json:
         data = request.get_json()
         usuario = data.get('usuario')
@@ -235,7 +245,6 @@ def ingreso():
         usuario = request.form.get('usuario')
         contrasena = request.form.get('contrasena')
 
-    # Verificar que se recibieron las credenciales
     if not usuario or not contrasena:
         if request.is_json:
             return jsonify({'mensaje': 'Faltan credenciales', 'status': 'error'}), 400
@@ -244,12 +253,11 @@ def ingreso():
             return redirect(url_for('index'))
 
     cur = mysql.connection.cursor()
-    cur.execute("SELECT contrasena FROM usuarios WHERE nombre = %s", [usuario])
+    cur.execute("SELECT id, contrasena, rol FROM usuarios WHERE nombre = %s", [usuario])
     result = cur.fetchone()
     cur.close()
 
-    # Verificar credenciales
-    if not result or not bcrypt.checkpw(contrasena.encode('utf-8'), result[0].encode('utf-8')):
+    if not result or not bcrypt.checkpw(contrasena.encode('utf-8'), result[1].encode('utf-8')):
         if request.is_json:
             return jsonify({'mensaje': 'Credenciales incorrectas', 'status': 'error'}), 401
         else:
@@ -257,11 +265,34 @@ def ingreso():
             return redirect(url_for('index'))
 
     # Credenciales correctas
+    user_id = result[0]  # Obtener el ID del usuario
+    rol = result[2]      # Obtener el rol del usuario
+
+    # Guardar el user_id en la sesión
+    session['user_id'] = user_id
+
     if request.is_json:
         return jsonify({'mensaje': 'Ingreso exitoso', 'status': 'success'}), 200
     else:
-        return redirect(url_for('user_admon'))
+        if rol == 'admin':
+            return redirect(url_for('user_admon'))
+        else:
+            return redirect(url_for('index'))
 
+def user_is_admin():
+    # Aquí necesitas alguna forma de identificar al usuario actual.
+    # Esto puede depender de cómo gestionas la sesión de usuario.
+    
+    if 'user_id' in session:
+        user_id = session['user_id']
+        cur = mysql.connection.cursor()
+        cur.execute("SELECT rol FROM usuarios WHERE id = %s", [user_id])
+        user = cur.fetchone()
+        cur.close()
+        
+        if user and user[0] == 'admin':
+            return True
+    return False
 
 # Ruta para obtener los detalles de un usuario con GET
 
@@ -377,9 +408,3 @@ def handle_message(msg):
 
 if __name__ == '__main__':
     socketio.run(app, debug=True)
-
-
-
-
-
-
