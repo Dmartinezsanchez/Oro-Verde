@@ -189,11 +189,14 @@
                     <input type="text" name="nombre" placeholder="Nombre completo" required>
                     <input type="email" name="email" placeholder="Email" required>
                     <input type="password" name="contrasena" placeholder="Crear contraseña" required>
-                    <label for="rol">Rol:</label>
-                    <select id="rol" name="rol">
-                        <option value="cliente">Cliente</option>
-                        <option value="admin">Administrador</option>
-                    </select>
+                    <label for="rol">Rol</label>
+                    <div class="select-wrapper">
+                        <select id="rol" name="rol">
+                            <option value="cliente">Cliente</option>
+                            <option value="admin">Administrador</option>
+                        </select>
+                    </div>
+                    
                     <button type="submit">Registrarse</button>
                     <label for="miCheckbox"><a href="{{ url_for('termin_cond') }}">Acepto términos y condiciones</a></label>
                     <input type="checkbox" id="miCheckbox" required>

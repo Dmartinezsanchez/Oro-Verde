@@ -24,15 +24,13 @@
                 </div>
             {% endif %}
         {% endwith %}
-
-        <h1>Administración de Productos</h1>
         
         <!-- Header con navegación -->
         <header class="header">
             <div class="header__logo-container">
                 <a href="{{ url_for('index') }}">
-                    <img src="{{ url_for('static', filename='Imagenes/logo-oro-verde.png') }}" alt="Logo" class="imagen-lista2">
-                </a>
+                <img src="{{ url_for('static', filename='Imagenes/logo-oro-verde.png') }}" alt="Logo" class="imagen-logo"></a>
+                <h1>Administración de productos</h1>
             </div>
             <div class="box1">
             <nav>

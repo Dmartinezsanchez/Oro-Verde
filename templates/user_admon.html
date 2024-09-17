@@ -18,11 +18,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <h1>User.Admon</h1>
-    <header class="header">
-        <div class="header__logo-container">
-            <a href="{{ url_for('index') }}"><img src="{{ url_for('static', filename='Imagenes/logo-oro-verde.png') }}" alt="Logo" class="imagen-lista2"></a>
-        </div>
+    <div class="header__logo-container">
+        <a href="{{ url_for('index') }}">
+        <img src="{{ url_for('static', filename='Imagenes/logo-oro-verde.png') }}" alt="Logo" class="imagen-logo"></a>
+        <h1>User.Admon</h1>
+    </div>
         <div class="box1">
             <nav>
                 <ul class="lista1">
