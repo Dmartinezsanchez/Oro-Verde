@@ -239,7 +239,6 @@ p {
     margin-right: 10px;
 }
 
-
 footer-line {
     border: 1px solid rgb(240, 240, 166);
     margin: 20px 50px;
@@ -257,13 +256,13 @@ footer {
     box-sizing: border-box;
     background-color: #8faa9e;
     padding: 10px;
+    font-family: 'Julee';
 }
 
 .box7 {
     display: flex;
     align-items: center;
     color: rgb(39, 67, 60);
-    font-family: 'Julee';
 }
 
 .lista7 {

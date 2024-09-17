@@ -39,7 +39,8 @@ def ping():
     Esta función responde con un mensaje que indica que el servidor está en funcionamiento.
 
     Returns:
-        Response: Un objeto de respuesta JSON con un mensaje de estado y un código de estado HTTP 200.
+        Response: Un objeto de respuesta JSON con un mensaje de estado 
+        y un código de estado HTTP 200.
     """
     return jsonify({'message': 'Servidor en funcionamiento'}), 200
 
@@ -54,7 +55,8 @@ def index():
     la plantilla `index.html`.
 
     Returns:
-        Response: Un objeto de respuesta que contiene el contenido renderizado de la plantilla `index.html`.
+        Response: Un objeto de respuesta que contiene 
+        el contenido renderizado de la plantilla `index.html`.
     """
     return render_template('index.html')
 
@@ -73,7 +75,8 @@ def admon_productos():
     En caso de una acción de búsqueda, el producto encontrado se muestra en un mensaje flash.
 
     Returns:
-        Response: Redirige a la página de administración de productos después de procesar la solicitud.
+        Response: Redirige a la página de administración de productos 
+        después de procesar la solicitud.
     """
     producto = None  # Inicializar la variable producto como None para evitar errores
     if request.method == 'POST':
@@ -86,8 +89,12 @@ def admon_productos():
             cantidad = request.form.get('cantidad')  # Obtener cantidad del formulario
             imagen_url = request.form.get('imagen_url')  # Obtener la URL de la imagen
             descripcion = request.form.get('descripcion')  # Obtener descripción del formulario
-            cur.execute('INSERT INTO productos (nombre_producto, valor, cantidad, imagen_url, descripcion) VALUES (%s, %s, %s, %s, %s)', 
-                        (nombre_producto, valor, cantidad, imagen_url, descripcion))
+            cur.execute(
+                'INSERT INTO productos (nombre_producto, valor, cantidad, imagen_url, descripcion) '
+                'VALUES (%s, %s, %s, %s, %s)', 
+                (nombre_producto, valor, cantidad, imagen_url, descripcion)
+)
+
             mysql.connection.commit()
             flash('Producto insertado correctamente!', 'success')
         
@@ -95,11 +102,17 @@ def admon_productos():
             producto_id = request.form.get('producto_id')
             nuevo_nombre = request.form.get('nuevo_nombre')
             nuevo_valor = request.form.get('nuevo_valor')
-            nueva_cantidad = request.form.get('nueva_cantidad')  # Obtener nueva cantidad del formulario
+            # Obtener nueva cantidad del formulario
+            nueva_cantidad = request.form.get('nueva_cantidad')
+
             nueva_imagen_url = request.form.get('nueva_imagen_url')  # Obtener nueva URL de imagen
             nueva_descripcion = request.form.get('nueva_descripcion')  # Obtener nueva descripción
-            cur.execute('UPDATE productos SET nombre_producto = %s, valor = %s, cantidad = %s, imagen_url = %s, descripcion = %s WHERE id = %s', 
-                        (nuevo_nombre, nuevo_valor, nueva_cantidad, nueva_imagen_url, nueva_descripcion, producto_id))
+            cur.execute(
+                'UPDATE productos SET nombre_producto = %s, valor = %s, cantidad = %s, '
+                'imagen_url = %s, descripcion = %s WHERE id = %s',
+                (nuevo_nombre, nuevo_valor, nueva_cantidad, nueva_imagen_url, nueva_descripcion, producto_id)
+)
+
             mysql.connection.commit()
             flash('Producto actualizado correctamente!', 'success')
     
@@ -115,7 +128,12 @@ def admon_productos():
             producto = cur.fetchone()  # Obtener el primer resultado
 
             if producto: 
-                flash(f'Producto encontrado: ID: {producto[0]}, Nombre: {producto[1]}, Cantidad: {producto[2]}, Valor: {producto[3]}, Imagen URL: {producto[4]}, Descripción: {producto[5]}', 'success')
+                flash(
+                    f'Producto encontrado: ID: {producto[0]}, Nombre: {producto[1]}, Cantidad: {producto[2]}, '
+                    f'Valor: {producto[3]}, Imagen URL: {producto[4]}, Descripción: {producto[5]}', 
+                    'success'
+)
+
             else:
                 flash('Producto no encontrado.', 'danger')
 
