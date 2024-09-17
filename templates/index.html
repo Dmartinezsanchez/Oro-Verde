@@ -19,6 +19,9 @@
 </head>
 <body>
     <script src="/static/JS/script.js"></script>
+    <script src="https://cdn.socket.io/4.3.2/socket.io.min.js"></script>
+    <script src="/static/js/chat.js"></script>
+
 
     <div class="header__logo-container">
         <img src="{{ url_for('static', filename='Imagenes/logo-oro-verde.png') }}" alt="Logo" class="imagen-logo">
@@ -28,9 +31,13 @@
     <!-- Bloque para mensajes flash -->
     {% with messages = get_flashed_messages(with_categories=true) %}
     {% if messages %}
+    <ul class="flash-messages">
     {% for category, message in messages %}
         <div class="flash flash-{{ category }}">{{ message }}</div>
+        <li class="{{ category }}">{{ message }}</li>
+
     {% endfor %}
+    </ul>
     {% endif %}
     {% endwith %}
 
@@ -55,12 +62,12 @@
                             <img src="{{ url_for('static', filename='Imagenes/lupa.png') }}" alt="Buscar" class="imagen-lista1">
                         </button>
                     </form>
-                    
                 </li>    
             </ul>
         </nav>
     </div>
-</header>   
+</header> 
+    
     <div class="box2">
         <ul class="lista2">
             <li><a href="#">Salud y Prevención de enfermedades</a>
@@ -189,19 +196,12 @@
                     <input type="text" name="nombre" placeholder="Nombre completo" required>
                     <input type="email" name="email" placeholder="Email" required>
                     <input type="password" name="contrasena" placeholder="Crear contraseña" required>
-                    <label for="rol">Rol</label>
-                    <div class="select-wrapper">
-                        <select id="rol" name="rol">
-                            <option value="cliente">Cliente</option>
-                            <option value="admin">Administrador</option>
-                        </select>
-                    </div>
-                    
+                    <!-- Rol está definido como cliente por defecto y no es visible para el usuario -->
                     <button type="submit">Registrarse</button>
                     <label for="miCheckbox"><a href="{{ url_for('termin_cond') }}">Acepto términos y condiciones</a></label>
                     <input type="checkbox" id="miCheckbox" required>
                 </fieldset>
-            </form>
+            </form>            
         </section>
     </div>    
     
@@ -217,7 +217,8 @@
                 <button id="sendButton">Enviar</button>
             </div>
         </div>
-    </div>   
+    </div>
+        
     <div class="contenedor">
         <img src="/static/Imagenes/hoja-tropical.png" alt="Deco">
     </div>  
@@ -233,6 +234,7 @@
                 <li>Carrera 36 A # 46-63 Ciudad Verde</li>
             </ul>
         </div>
+
         <div class="box8">
             <p>© 2024 Oro Verde Productos Naturales. Todos los derechos reservados. Powered by Grupo 9.</p>
         </div>
@@ -240,9 +242,8 @@
             <img src="{{ url_for('static', filename='Imagenes/hoja-de-monstera.png') }}" alt="Deco">
             <p>La salud es el pilar de la vida</p>
         </div>
+
     </footer>  
-    <script src="https://cdn.socket.io/4.3.2/socket.io.min.js"></script>
-    <script src="/static/js/chat.js"></script>
 
 </body>
 </html>
