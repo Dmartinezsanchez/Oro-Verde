@@ -542,53 +542,6 @@ label {
     margin-left: 2px;
 }
 
-select {
-    padding: 10px;
-    font-size: 16px;
-    font-weight: 500;
-    border-radius: 8px; /* Bordes redondeados */
-    border: 2px solid #D4E4D1; /* Color del borde (verde pastel suave) */
-    background-color: #FDFDFB; /* Fondo (blanco hueso) */
-    color: #595d5b; /* Texto (verde oscuro suave) */
-    width: 100%; /* Ocupa el ancho disponible */
-    appearance: none; /* Oculta la flecha predeterminada del navegador */
-    -webkit-appearance: none; /* Oculta la flecha en Safari/Chrome */
-    -moz-appearance: none; /* Oculta la flecha en Firefox */
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
-    cursor: pointer;
-}
-
-select:hover {
-    border-color: #8AB78B; /* Verde más claro en hover */
-}
-
-select:focus {
-    outline: none;
-    border-color: #eddebc; /* Resalta el borde al hacer foco */
-    box-shadow: 0 0 8px rgba(85, 101, 85, 0.5); /* Agrega un efecto de sombra */
-}
-
-option {
-    background-color: #FDFDFB; /* Color de fondo para las opciones */
-    color: #2e3329; /* Color del texto para las opciones */
-}
-
-/* Flecha personalizada para el select */
-.select-wrapper {
-    position: relative;
-    width: 100%;
-}
-
-.select-wrapper::after {
-    content: '\25BC'; /* Símbolo de flecha hacia abajo */
-    position: absolute;
-    top: 50%;
-    right: 10px;
-    transform: translateY(-50%);
-    pointer-events: none;
-    color: #4A6056; /* Color de la flecha */
-}
-
 
 input[type="checkbox"] {
     width: 20px;

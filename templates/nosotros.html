@@ -19,11 +19,11 @@
 </head>
 <body>
     <script src="/static/JS/nosotros.js"></script>
-    <h1>Nosotros</h1>
-    <header class="header">
-        <div class="header__logo-container">
-            <a href="{{ url_for('index') }}"><img src="{{ url_for('static', filename='Imagenes/logo-oro-verde.png') }}" alt="Logo" class="imagen-lista2"></a>
-        </div>
+    <div class="header__logo-container">
+        <a href="{{ url_for('index') }}">
+        <img src="{{ url_for('static', filename='Imagenes/logo-oro-verde.png') }}" alt="Logo" class="imagen-logo"></a>
+        <h1>Nosotros</h1>
+    </div>
         <div class="box1">
             <ul class="lista1">
                 <li><a href="{{ url_for('index') }}"><img src="{{ url_for('static', filename='Imagenes/home.png') }}" alt="Home" class="imagen-lista1"></a></li>

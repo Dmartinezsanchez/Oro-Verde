@@ -1,0 +1,11 @@
+{
+    "json.schemas": [],
+    "python.linting.pylintEnabled": true,         // Habilita Pylint
+    "python.linting.enabled": true,               // Habilita el linting
+    "editor.rulers": [100],                       // Línea visual a 100 caracteres
+    "python.formatting.provider": "black",        // Usa Black como formateador
+    "editor.formatOnSave": true,                  // Formato automático al guardar
+    "python.linting.pylintArgs": [
+        "--max-line-length=100"                   // Longitud máxima de línea a 100 caracteres
+    ]
+}
