@@ -1,21 +1,37 @@
 body {
+    font-family: 'Poppins', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #32502E;
-    font-family: 'Julee';
+    background-color: #F7F7F5;
 }
 
 .header {
-    background-color: #32502E;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 5px;
+    padding: 10px 20px;
+    background-color: #E6F0E6; /* Verde pastel suave */
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .header__logo-container {
-    max-width: 100%;
-    width: 150px;
+    display: flex; /* Utiliza Flexbox */
+    flex-direction: column; /* Alinea los elementos en una columna (imagen encima del texto) */
+    justify-content: center; /* Centra verticalmente el contenido */
+    align-items: center; /* Centra horizontalmente el contenido */
+    text-align: center; /* Centra el texto dentro del contenedor */
+    height: 40vh;
+}
+
+.imagen-logo {
+    width: 200px; /* Ancho de la imagen */
+    height: 200px; /* Alto de la imagen */
+    border-radius: 50%; /* Hace que la imagen sea completamente redonda */
+    object-fit: cover; /* Ajusta la imagen para que se mantenga centrada */
+    filter: brightness(180%) contrast(40%); /* Aumenta el brillo un 20% y reduce un poco el contraste */
+    box-shadow: 5px 5px 12px rgb(0, 0, 0);
+    margin-right: 15px; /* Espacio entre el logo y el título */
+    margin-top: 20px;
 }
 
 h1 {
@@ -59,10 +75,6 @@ li {
     height: 4vh;
 }
 
-.imagen-lista2 {
-    max-width: 200px;
-    height: auto;
-}
 
 .imagen-lista1 {
     max-width: 100%;
