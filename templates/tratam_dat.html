@@ -28,13 +28,14 @@
         <div class="box1">
             <nav>
                 <ul class="lista1">
-                    <li><a href="{{ url_for('index') }}"><img src="{{ url_for('static', filename='Imagenes/home.png') }}" alt="Home" class="imagen-lista1"></a></li>
-                    <li><a href="{{ url_for('index') }}">Productos</a></li>
-                    <li><a href="{{ url_for('promociones') }}">Promociones</a></li>
-                    <li><a href="{{ url_for('nosotros') }}">Nosotros</a></li>
-                    <li><a href="{{ url_for('index') }}">Ingreso</a></li>
-                    <li><a href="{{ url_for('index') }}">Registrarse</a></li>
-                    <li><a href="{{ url_for('gestion_de_pagos') }}"><img src="{{ url_for('static', filename='Imagenes/bolsa-de-la-compra.png') }}" alt="Compras" class="imagen-lista1"></a></li>
+                    <li><img src="{{ url_for('static', filename='Imagenes/home.png') }}" alt="Home" class="imagen-lista1"></li>
+                <li><a href="#productos">Productos</a></li>
+                <li><a href="{{ url_for('promociones') }}">Promociones</a></li>
+                <li><a href="{{ url_for('nosotros') }}">Nosotros</a></li>
+                <li><a href="#ingreso">Ingreso</a></li>
+                <li><a href="#registrarse">Registrarse</a></li>
+                <li><a href="{{ url_for('tratam_dat') }}">Tratamiento de datos</a></li>
+                <li><a href="{{ url_for('gestion_de_pagos') }}"><img src="{{ url_for('static', filename='Imagenes/bolsa-de-la-compra.png') }}" alt="Compras" class="imagen-lista1"></a></li>
                 </ul>
             </nav>
         </div>

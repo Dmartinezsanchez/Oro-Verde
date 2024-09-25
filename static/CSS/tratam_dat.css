@@ -1,17 +1,9 @@
+/* Estilo general */
 body {
     font-family: 'Poppins', sans-serif;
     margin: 0;
-    padding: 0;
-    background-color: #F7F7F5;
-}
-
-.header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
-    background-color: #E6F0E6; /* Verde pastel suave */
-    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    height: 100%;
+    background-color: #ffffff;
 }
 
 .header__logo-container {
@@ -35,7 +27,7 @@ body {
 }
 
 h1 {
-    color: antiquewhite;
+    color: rgb(146, 203, 158);
     font-family: 'Kaushan Script';
     font-size: 5vh;
     text-align: center;
@@ -43,26 +35,27 @@ h1 {
 }
 
 .box1 {
-    background-color: rgb(243, 243, 196);
-    width: 90%;
-    max-width: 1300px;
-    height: 13vh;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    border-radius: 40px;
     display: flex;
-    justify-content: center;
+    justify-content: center; /* Centra los elementos en el contenedor */
     align-items: center;
+    padding: 10px 20px;
+    background-color: rgb(146, 203, 158); /* Verde pastel suave */
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .lista1 {
     list-style-type: none;
-    padding: 2vh;
-    margin: auto;
-    display: flex;
-    text-align: center;
+    padding: 0; /* Elimina el padding predeterminado */
+    margin: 0; /* Elimina el margin predeterminado */
+    display: flex; /* Alinea los elementos en una fila */
+    justify-content: center; /* Centra los elementos dentro de la lista */
     color: rgb(58, 59, 59);
     font-size: 17px;
+}
+
+
+.lista1 li {
+    margin: 0 10px; /* Espacio entre los elementos de la lista */
 }
 
 .lista1 a {

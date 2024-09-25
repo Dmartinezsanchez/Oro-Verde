@@ -2,7 +2,7 @@ body {
     font-family: 'Poppins', sans-serif;
     margin: 0;
     height: 100%;
-    background-color: #F7F7F5;
+    background-color: #ffffff;
 }
 
 .header__logo-container {
@@ -30,7 +30,7 @@ body {
     justify-content: center; /* Centra los elementos en el contenedor */
     align-items: center;
     padding: 10px 20px;
-    background-color: #E6F0E6; /* Verde pastel suave */
+    background-color: rgb(146, 203, 158); /* Verde pastel suave */
     box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
 }
 
@@ -120,7 +120,7 @@ nav ul.lista1 li a:hover {
 }
 
 h1 {
-    color: antiquewhite;
+    color: rgb(146, 203, 158);
     font-family: 'Kaushan Script';
     font-size: 5vh;
     text-align: center;
