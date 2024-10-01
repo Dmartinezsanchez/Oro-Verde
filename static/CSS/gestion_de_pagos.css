@@ -64,6 +64,7 @@ li {
     height: 30px;
 }
 
+<<<<<<< HEAD:static/CSS/gestion_de_pagos.css
 
 .payment-section {
     background-color: #cbe0cb;
@@ -135,6 +136,8 @@ button:hover {
 }
 
 
+=======
+>>>>>>> d392ef7494f39577d4b377c7c3146f012275d816:CSS/gestion_de_pagos.css
 .imagen-lista2 {
     max-width: 200px;
     height: auto;

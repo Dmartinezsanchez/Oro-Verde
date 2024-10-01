@@ -1,3 +1,4 @@
+<<<<<<< HEAD:static/CSS/user_admon.css
 /* Estilo general */
 body {
     font-family: 'Poppins', sans-serif;
@@ -183,11 +184,37 @@ nav ul.lista1 li a:hover {
 h1 {
     color: rgb(38, 93, 28);
     font-family: 'Julee';
+=======
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #32502E;
+    font-family: 'Julee';
+}
+
+.header {
+    background-color: #32502E;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 5px;
+}
+
+.header__logo-container {
+    max-width: 100%;
+    width: 150px;
+}
+
+h1 {
+    color: antiquewhite;
+    font-family: 'Kaushan Script';
+>>>>>>> d392ef7494f39577d4b377c7c3146f012275d816:CSS/user_admon.css
     font-size: 5vh;
     text-align: center;
     font-style: italic;
 }
 
+<<<<<<< HEAD:static/CSS/user_admon.css
 p {
     color: antiquewhite;
     font-family: 'Julee';
@@ -197,6 +224,53 @@ p {
 }
 .button__admon,
 .button__pago {
+=======
+.box1 {
+    background-color: rgb(243, 243, 196);
+    width: 90%;
+    max-width: 1300px;
+    height: 13vh;
+    margin: 10px auto;
+    border-radius: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.lista1 {
+    list-style-type: none;
+    padding: 2vh;
+    margin: auto;
+    display: flex;
+    text-align: center;
+    color: rgb(58, 59, 59);
+    font-size: 17px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #32502E;
+}
+
+li {
+    margin-right: 4vw;
+    height: 4vh;
+}
+
+.imagen-lista1 {
+    max-width: 100%;
+    height: 30px;
+}
+
+.imagen-lista2 {
+    max-width: 200px;
+    height: auto;
+}
+
+.button__admon,
+.button__pago,
+.button__ventas {
+>>>>>>> d392ef7494f39577d4b377c7c3146f012275d816:CSS/user_admon.css
     background: #FCF3CF;
     width: 500px;
     height: 25px;
@@ -206,17 +280,30 @@ p {
     margin: 40px auto 30px;
     border-radius: 50px;
     text-decoration: none;
+<<<<<<< HEAD:static/CSS/user_admon.css
     box-shadow: 5px 5px 12px rgb(54, 53, 53);
 }
 
 .button__admon a,
 .button__pago a {
+=======
+}
+
+.button__admon a,
+.button__pago a,
+.button__ventas a {
+>>>>>>> d392ef7494f39577d4b377c7c3146f012275d816:CSS/user_admon.css
     text-decoration: none;
     color: rgb(39, 67, 60);
 }
 
 .button__admon a:hover,
+<<<<<<< HEAD:static/CSS/user_admon.css
 .button__pago a:hover {
+=======
+.button__pago a:hover,
+.button__ventas a:hover {
+>>>>>>> d392ef7494f39577d4b377c7c3146f012275d816:CSS/user_admon.css
     color: #1b2a1b; /* Cambia el color del texto al pasar el cursor sobre los enlaces, puedes cambiar este valor por el color que desees */
 }
 
@@ -240,7 +327,10 @@ footer {
     display: flex;
     align-items: center;
     color: rgb(39, 67, 60);
+<<<<<<< HEAD:static/CSS/user_admon.css
     font-family: 'Julee';
+=======
+>>>>>>> d392ef7494f39577d4b377c7c3146f012275d816:CSS/user_admon.css
 }
 
 .lista7 {
@@ -275,7 +365,11 @@ footer {
 }
 
 .footer-line {
+<<<<<<< HEAD:static/CSS/user_admon.css
     border: 1px solid rgb(93, 116, 94);
+=======
+    border: 1px solid rgb(240, 240, 166);
+>>>>>>> d392ef7494f39577d4b377c7c3146f012275d816:CSS/user_admon.css
     margin: 20px 50px;
 }
 
