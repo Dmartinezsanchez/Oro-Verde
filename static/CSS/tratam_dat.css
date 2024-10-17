@@ -122,12 +122,14 @@ font-style: italic;
 }
 
 .box14 p {
+    margin: 0 auto;
+    text-align: center;
+    max-width: 800px;
+}
+
+.box14 {
     color: #163e15;
-    margin: 2vh;
-    justify-content: center;
-    padding: 10px;
-    padding-bottom: 10px;
-    padding-top: 10px;
+    font-family: "sans-serif" ;
 }
 
 .contenedor {
@@ -160,11 +162,6 @@ footer {
     font-family: "Kaushan Script";
     font-size: 20px;
     background-color: rgb(146, 203, 158);
-}
-
-.box14 {
-    color: #163e15;
-    font-family: "sans-serif" ;
 }
 
 /*pie de página*/
@@ -234,10 +231,15 @@ footer {
 }
 
 button {
-    cursor: pointer;
-    padding: 8px 12px;
+    padding: 10px 20px;
     border-radius: 25px;
     background-color: rgb(146, 203, 158);
     border: 2px solid #D4E4D1; /* Verde pastel suave */
+    text-align: center;
+    display: inline-block;
+    margin: 50px 800px;
+    cursor: pointer;
+    
 }
+
 
