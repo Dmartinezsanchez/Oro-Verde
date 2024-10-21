@@ -48,7 +48,7 @@
 
     {% if producto %}
     <!-- Mostrar detalles del producto si existe -->
-    <h1>{{ producto.nombre }}</h1>
+    <h2>{{ producto.nombre }}</h2>
     <div class="productos">
         <img src="{{ url_for('static', filename=producto.imagen_url) }}" alt="{{ producto.nombre }}" class="producto-imagen">
         <p>Cantidad en existencia: {{ producto.cantidad }}</p>
@@ -57,7 +57,7 @@
     </div>
     {% else %}
     <!-- Mostrar mensaje si no se encuentra el producto -->
-    <h1>Producto no encontrado</h1>
+    <h2>Producto no encontrado</h2>
     <p>No hemos encontrado ningún producto que coincida con tu búsqueda.</p>
     {% endif %}
     
