@@ -16,6 +16,8 @@ from flask_mysqldb import MySQL
 import bcrypt
 from flask_socketio import SocketIO, send
 from config import Config
+from functools import wraps
+from flask_login import login_required
 
 
 app = Flask(__name__)
@@ -29,6 +31,27 @@ app.config['MYSQL_HOST'] = 'localhost'
 app.config['MYSQL_USER'] = 'root'
 app.config['MYSQL_PASSWORD'] = '1234'
 app.config['MYSQL_DB'] = 'tienda_naturista'
+
+# Ruta del login
+def login_required(f):
+    @wraps(f)
+    def decorated_function(*args, **kwargs):
+        if 'user_id' not in session:
+            flash('Debes estar registrado e iniciar sesión para acceder a esta sección.', 'error')
+            return redirect(url_for('index'))
+        return f(*args, **kwargs)
+    return decorated_function
+
+# Ruta para cerrar sesion
+@app.route('/cerrar_sesion')
+def cerrar_sesion():
+    """
+    Cierra la sesión del usuario y redirige a la página de inicio.
+    """
+    session.pop('user_id', None)  # Elimina el user_id de la sesión
+    flash('Has cerrado sesión exitosamente.', 'success')  # Mensaje de éxito
+    return redirect(url_for('index'))  # Redirige al inicio
+
 
 # Ruta de verificación
 @app.route('/ping', methods=['GET'])
@@ -297,18 +320,19 @@ def mostrar_productos():
     return render_template('productos.html', productos=productos)
 
 # Otras rutas
+
+
 @app.route('/gestion_de_pagos')
+@login_required
 def gestion_de_pagos():
     """
-    Renderiza la página de gestión de pagos.
-
-    Esta función renderiza la plantilla `gestion_de_pagos.html`, que muestra la interfaz
-    para la gestión de pagos.
-
-    Returns:
-        Response: La plantilla `gestion_de_pagos.html`.
+    Muestra la página de gestión de pagos con el código QR de Nequi.
+    Solo accesible para usuarios autenticados.
     """
-    return render_template('gestion_de_pagos.html')
+    # Aquí puedes pasar la URL o la ruta del QR si lo tienes almacenado
+    qr_url = url_for('static', filename='Imagenes/Qr.jpeg')  # Asegúrate de colocar tu QR en static/images/
+    return render_template('gestion_de_pagos.html', qr_url=qr_url)
+
 
 @app.route('/nosotros')
 def nosotros():

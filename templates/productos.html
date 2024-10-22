@@ -44,7 +44,6 @@
                 </ul>
             </nav>
         </div>
-    </header>
 
     {% if producto %}
     <!-- Mostrar detalles del producto si existe -->
@@ -54,7 +53,7 @@
         <p>Cantidad en existencia: {{ producto.cantidad }}</p>
         <p>Precio: $ {{ producto.valor }}</p>
         <p><strong>Descripción:</strong> {{ producto.descripcion }}</p>
-    </div>
+</div>
     {% else %}
     <!-- Mostrar mensaje si no se encuentra el producto -->
     <h1>Producto no encontrado</h1>

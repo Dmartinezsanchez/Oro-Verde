@@ -64,74 +64,59 @@ li {
     height: 30px;
 }
 
-
-.payment-section {
-    background-color: #cbe0cb;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    width: 300px;
+/* Estilo para el contenedor del QR */
+.qr-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     margin-top: 20px;
-    margin-bottom: 20px;
-    margin-left: 90vh;
-    box-shadow: 0 4px 8px rgba(0, 0.2, 0, 0.3);
+    text-align: center; /* Asegura que el texto esté centrado */
 }
 
-h2 {
+/* Estilo para el párrafo con instrucciones */
+.instructions {
+    background-color: rgba(255, 255, 255, 0.8); /* Fondo blanco semi-transparente */
+    color: #32502E; /* Color de texto que combine con el resto */
+    font-family: 'Josefin Sans', sans-serif; /* Fuente elegante */
+    font-size: 1.5em; /* Tamaño de fuente más grande */
+    padding: 15px; /* Espaciado interno */
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Sombra para dar profundidad */
+    margin-bottom: 15px; /* Espacio entre el párrafo y la lista de pasos */
+    line-height: 1.5; /* Mejora la legibilidad */
+}
+
+/* Estilo para la lista de pasos */
+.steps {
+    list-style-type: none; /* Eliminar viñetas */
+    padding: 0; /* Eliminar padding por defecto */
+    margin: 0; /* Eliminar margin por defecto */
+    color: #32502E; /* Color del texto de los pasos */
+    font-family: 'Josefin Sans', sans-serif; /* Fuente para los pasos */
+    font-size: 1.2em; /* Tamaño de fuente */
+}
+
+/* Estilo para cada elemento de la lista */
+.steps li {
+    margin-bottom: 10px; /* Espacio entre los pasos */
+    background-color: rgba(243, 243, 196, 0.8); /* Fondo para los pasos */
+    padding: 10px; /* Espaciado interno */
+    border-radius: 5px; /* Bordes redondeados */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+}
+
+/* Estilo adicional para el código QR */
+img[src="{{ qr_url }}"] {
+    max-width: 100%;
+    height: auto; /* Mantiene la relación de aspecto */
+    border: 5px solid #f3f3f3; /* Borde del código QR */
+    border-radius: 10px; /* Bordes redondeados del código QR */
+}
+
+h2{
     text-align: center;
-    color: #426f4d;
-}
-
-.form-group {
-    margin-bottom: 15px;
-}
-
-.form-group label {
-    display: block;
-    color: #3d4f42;
-    margin-bottom: 5px;
-}
-
-.form-group input {
-    width: calc(100% - 10px);
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-sizing: border-box;
-}
-
-button {
-    width: 100%;
-    padding: 10px;
-    background-color: #2b5735;
-    color: antiquewhite;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-}
-
-button:hover {
-    background-color: #218838;
-}
-
-#backButton1 {
-    background-color: #416042; /* Color de fondo verde */
-    border: none; /* Sin borde */
-    color: white; /* Texto blanco */
-    padding: 15px 32px; /* Relleno alrededor del texto */
-    text-align: center; /* Centrado del texto */
-    text-decoration: none; /* Sin subrayado */
-    display: inline-block; /* Mostrar como elemento en línea */
-    font-size: 16px; /* Tamaño de fuente */
-    margin: 4px 2px; /* Márgenes */
-    cursor: pointer; /* Cambiar el cursor a una mano cuando se pase sobre el botón */
-    border-radius: 8px; /* Bordes redondeados */
-    margin-left: 50px;
-}
-
-#backButton1:hover {
-    background-color: #45a049; /* Cambiar color al pasar el cursor sobre el botón */
+    color: #afdebb;
 }
 
 

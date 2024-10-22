@@ -8,7 +8,7 @@
     <meta name="author" content="Esta página es un proyecto de formación del Sena del grupo 9">
     <meta name="robots" content="index">
     <meta http-equiv="refresh" content="30">
-    <title>Tienda Naturista Oro Verde</title>
+    <title>Gestión de Pagos - Tienda Naturista Oro Verde</title>
     <link rel="icon" type="image/png" href="/static/Imagenes/favicon.ico"> 
     <link rel="stylesheet" href="/static/CSS/gestion_de_pagos.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -18,7 +18,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <h1>Gestión de pagos</h1>
     <header class="header">
         <div class="header__logo-container">
             <a href="{{ url_for('index') }}"><img src="{{ url_for('static', filename='Imagenes/logo-oro-verde.png') }}" alt="Logo" class="imagen-lista2"></a>
@@ -34,32 +33,26 @@
             </nav>
         </div>
     </header>    
-    <a href="{{ url_for('user_admon') }}"></a>
-        <div class="payment-section">
-            <h2>Zona de Pagos</h2>
-            <form action="/procesar-pago" method="post">
-                <div class="form-group">
-                    <label for="cardholder-name">Nombre del Titular</label>
-                    <input type="text" id="cardholder-name" name="cardholder-name" required>
-                </div>
-                <div class="form-group">
-                    <label for="card-number">Número de Tarjeta</label>
-                    <input type="text" id="card-number" name="card-number" required>
-                </div>
-                <div class="form-group">
-                    <label for="expiry-date">Fecha de Vencimiento</label>
-                    <input type="text" id="expiry-date" name="expiry-date" placeholder="MM/AA" required>
-                </div>
-                <div class="form-group">
-                    <label for="cvv">CVV</label>
-                    <input type="text" id="cvv" name="cvv" required>
-                </div>
-                <button type="submit">Pagar</button>
-            </form>
-        </div>
-        <div class="contenedor">
+
+    <h1>Gestión de Pagos</h1>
+
+    <h2>Realiza tu Pago con Nequi</h2>
+    
+    <div class="qr-container"> <!-- Contenedor para el QR -->
+        <p class="instructions">Pasos para hacer tu compra:</p>
+        <ul class="steps">
+            <li>1. Toma nota de tu pedido.</li>
+            <li>2. Comunicate via WhatsApp o llamando al 3013817308 para generar tu pedido.</li>
+            <li>3. Escanea el siguiente código QR con tu aplicación Nequi para completar el pago, ¡y listo, así de fácil obtendrás tus productos!</li>
+        </ul>
+        <img src="{{ qr_url }}" alt="Código QR de Nequi" width="300">
+    </div>
+    
+    
+    <div class="contenedor">
         <img src="/static/Imagenes/hoja-tropical.png" alt="Deco">
     </div> 
+
     <hr class="footer-line">
     <footer>
         <div class="box7">
@@ -79,6 +72,6 @@
             <p>La salud es el pilar de la vida</p>
         </div>
     </footer>
-    
 </body>
 </html>
+
