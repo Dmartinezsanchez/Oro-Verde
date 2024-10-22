@@ -1,8 +1,8 @@
 body {
+    font-family: 'Poppins', sans-serif;
     margin: 0;
-    padding: 0;
-    background-color: #32502E;
-    font-family: 'Julee';
+    height: 100%;
+    background-color: #ffffff;
 }
 
 .header {
@@ -63,8 +63,6 @@ li {
     max-width: 100%;
     height: 30px;
 }
-
-<<<<<<< HEAD:static/CSS/gestion_de_pagos.css
 
 .payment-section {
     background-color: #cbe0cb;
@@ -136,8 +134,6 @@ button:hover {
 }
 
 
-=======
->>>>>>> d392ef7494f39577d4b377c7c3146f012275d816:CSS/gestion_de_pagos.css
 .imagen-lista2 {
     max-width: 200px;
     height: auto;
@@ -153,69 +149,88 @@ button:hover {
     margin-right: 10px;
 }
 
-
 .footer-line {
-    border: 1px solid rgb(240, 240, 166);
+    border: 1px solid #2b422d;
     margin: 20px 50px;
 }
 
 footer {
     display: flex;
     flex-wrap: wrap;
-    background-color: #8faa9e;
+    background-color: rgb(146, 203, 158);
 }
 
+/*pie de página*/
 .box7, .box8, .box9 {
     flex: 1;
     margin: 10px;
     box-sizing: border-box;
     background-color: #8faa9e;
     padding: 10px;
+    font-family: "Kaushan Script";
+    font-size: 20px;
+    background-color: rgb(146, 203, 158);
 }
 
+/*pie de página*/
 .box7 {
     display: flex;
     align-items: center;
-    color: rgb(39, 67, 60);
+    color: #163e15;
+    background-color: rgb(146, 203, 158);
 }
 
 .lista7 {
     list-style-type: none;
     margin: 0 10px;
     padding: 10px;
+    background-color: rgb(146, 203, 158);
 }
 
 .box7 img {
-    max-width: 100px;
+    max-width: 150px;
     margin-right: 10px;
+    background-color: rgb(146, 203, 158);
 }
 
 .lista7 li {
     margin-bottom: 10px;
+    background-color: rgb(146, 203, 158);
 }
 
 .lista7 a {
-    color: #32502E;
+    color: #163e15;
     text-decoration: none;
+    background-color: rgb(146, 203, 158);
 }
-
+/*pie de página*/
 .box8 p {
-    color: rgb(39, 67, 60);
+    color: #163e15;
+    background-color: rgb(146, 203, 158);
 }
 
+/*pie de página*/
 .box9 {
     text-align: center;
     padding-top: 20px;
+    background-color: rgb(146, 203, 158);
 }
 
 .box9 img {
-    max-width: 50px;
+    max-width: 100px;
     display: block;
     margin: 0 auto 10px;
+    background-color: rgb(146, 203, 158);
 }
 
-.box9 p {
-    font-size: 16px;
-    margin: 0;
-    color: rgb(39, 67, 60);
+button {
+    padding: 10px 20px;
+    border-radius: 25px;
+    background-color: rgb(146, 203, 158);
+    border: 2px solid #D4E4D1; /* Verde pastel suave */
+    text-align: center;
+    display: inline-block;
+    margin: 50px 800px;
+    cursor: pointer;
+    
 }
