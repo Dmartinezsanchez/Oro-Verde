@@ -102,25 +102,15 @@ h1 {
 }
 
 h2 {
-    color: bisque;
+    color: rgb(30, 19, 7);
     margin: 2vh 0;
     padding-left: 5vh;
     padding-bottom: 1vw;
     display: inline-block;
 }
 
-h5 {
-    color: bisque;
-    margin: 2vh;
-    text-align: center;
-    justify-content: center;
-    padding: 20px;
-    padding-bottom: 100px;
-    padding-top: 5vw;
-}
-
 p {
-    color: rgb(227, 225, 161);
+    color: rgb(13, 54, 34);
     margin: 2vh;
     justify-content: center;
     padding: 10px;
