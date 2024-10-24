@@ -32,10 +32,7 @@
                     <li><a href="{{ url_for('index') }}">Productos</a></li>
                     <li><a href="{{ url_for('promociones') }}">Promociones</a></li>
                     <li><a href="{{ url_for('nosotros') }}">Nosotros</a></li>
-                    <li><a href="{{ url_for('index') }}">Ingreso</a></li>
-                    <li><a href="{{ url_for('index') }}">Registrarse</a></li>
                     <li><a href="{{ url_for('tratam_dat') }}">Tratamiento de datos</a></li>
-                    <li><a href="{{ url_for('gestion_de_pagos') }}"><img src="{{ url_for('static', filename='Imagenes/bolsa-de-la-compra.png') }}" alt="Compras" class="imagen-lista1"></a></li>
                 </ul>
             </nav>
         </div>
@@ -58,25 +55,25 @@
             <p>Términos y Condiciones de Uso
                 Por favor, lee detenidamente los siguientes términos y condiciones de uso ("Términos") antes de utilizar nuestro sitio web.
             </p>
-            <h6 id="acceptance_of_the terms">Aceptación de los Términos</h6>
+            <h5 id="acceptance_of_the terms">Aceptación de los Términos</h5>
             <p>Al acceder y utilizar este sitio web, aceptas estar legalmente vinculado por estos Términos y nuestra Política de Privacidad. Si no estás de acuerdo con alguno de estos términos, por favor, no utilices este sitio.</p>
-            <h6 id="proper_use">Uso Adecuado</h6>
+            <h5 id="proper_use">Uso Adecuado</h5>
             <p>Este sitio web está destinado únicamente para uso personal y no comercial. No debes utilizar este sitio de ninguna manera que pueda causar daño a la página web o interferir con el uso de otros usuarios.</p>
-            <h6 id="products_and_content">Productos y Contenido</h6>
+            <h5 id="products_and_content">Productos y Contenido</h5>
             <p>Los productos naturales ofrecidos en este sitio web están sujetos a disponibilidad y podrían variar en apariencia y características. Nos esforzamos por proporcionar descripciones precisas de los productos, pero no garantizamos la exactitud, integridad o actualidad de dicha información.</p>
-            <h6 id="prices_and_payments">Precios y Pagos</h6>
+            <h5 id="prices_and_payments">Precios y Pagos</h5>
             <p>Los precios de los productos están sujetos a cambios sin previo aviso. Nos reservamos el derecho de corregir errores en los precios en cualquier momento. Los pagos se procesarán de forma segura a través de métodos de pago confiables.</p>
-            <h6 id="shipping_returns">Envíos y Devoluciones</h6>
+            <h5 id="shipping_returns">Envíos y Devoluciones</h5>
             <p>Nos comprometemos a enviar los productos en el menor tiempo posible y en condiciones óptimas. Sin embargo, no nos hacemos responsables de retrasos causados por terceros, como empresas de mensajería. Consulta nuestra política de devoluciones para obtener información sobre cómo devolver productos y solicitar reembolsos.</p>
-            <h6 id="intellectual_property">Propiedad Intelectual</h6>
+            <h5 id="intellectual_property">Propiedad Intelectual</h5>
             <p>Todos los contenidos de este sitio web, incluyendo textos, imágenes, logotipos, gráficos, sonidos y videos, están protegidos por derechos de autor y otros derechos de propiedad intelectual. No está permitido utilizar, reproducir o distribuir dicho contenido sin nuestro consentimiento previo por escrito.</p>
-            <h6 id="links_to_third parties">Enlaces a Terceros</h6>
+            <h5 id="links_to_third parties">Enlaces a Terceros</h5>
             <p>Este sitio web puede contener enlaces a sitios de terceros. Estos enlaces son proporcionados únicamente para tu conveniencia y no implican nuestro respaldo de los sitios vinculados. No nos hacemos responsables del contenido o prácticas de privacidad de dichos sitios.</p>
-            <h6 id="term_modifications">Modificaciones de los Términos</h6>
+            <h5 id="term_modifications">Modificaciones de los Términos</h5>
             <p>Nos reservamos el derecho de modificar estos Términos en cualquier momento sin previo aviso. Se te notificará de cualquier cambio mediante una publicación en esta página. Es tu responsabilidad revisar periódicamente estos Términos para estar al tanto de las actualizaciones.</p>
-            <h6 id="applicable_Law">Ley Aplicable</h6>
+            <h5 id="applicable_Law">Ley Aplicable</h5>
             <p>Estos Términos se regirán e interpretarán de acuerdo con las leyes de Colombia, sin tener en cuenta sus disposiciones sobre conflictos de leyes.</p>
-            <h6 id="contact">Contacto</h6>
+            <h5 id="contact">Contacto</h5>
             <p>Si tienes alguna pregunta o inquietud sobre estos Términos, por favor contáctanos a adrianabarajas1970@gmail.com.
                 Al utilizar este sitio web, aceptas estos Términos en su totalidad. Si no estás de acuerdo con estos términos, por favor, no utilices nuestro sitio.
             </p>
@@ -84,15 +81,20 @@
         <button id="showMoreBtn">Mostrar Más</button>
         <button id="showLessBtn" style="display: none;">Mostrar Menos</button>
     </div>
+
     <div class="contenedor">
         <img src="/static/Imagenes/hoja-tropical.png" alt="Deco">
     </div> 
+
     <button onclick="topFunction()" id="myBtn" title="Ir arriba">↑</button>
+
     <hr class="footer-line">
+
     <footer>
         <div class="box19">
             <img src="{{ url_for('static', filename='Imagenes/hoja.png') }}" alt="Deco">
             <ul class="lista19">
+                <li><a href="{{ url_for('termin_cond') }}">Términos y condiciones</a></li>
                 <li>adrianabarajas1970@gmail.com</li>
                 <li>3013817308</li>
                 <li>Carrera 36 A # 46-63 Ciudad Verde</li>
@@ -105,6 +107,7 @@
             <img src="{{ url_for('static', filename='Imagenes/hoja-de-monstera.png') }}" alt="Deco">
             <p>La salud es el pilar de la vida</p>
         </div>
-    </footer> 
+    </footer>
 </body>
 </html>
+

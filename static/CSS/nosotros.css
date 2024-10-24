@@ -101,14 +101,6 @@ h1 {
     font-style: italic;
 }
 
-h2 {
-    color: rgb(30, 19, 7);
-    margin: 2vh 0;
-    padding-left: 5vh;
-    padding-bottom: 1vw;
-    display: inline-block;
-}
-
 p {
     color: rgb(13, 54, 34);
     margin: 2vh;
@@ -149,12 +141,12 @@ li {
 }
 
 .box10 p {
-    color: bisque;
+    color: rgb(54, 34, 9);
     padding: 10px;
     margin: 10px;
-    max-height: 200px;
+    max-height: 450px;
     overflow: hidden;
-    margin-left: 40vh;
+    margin-left: 50vh;
 }
 
 .contenedor {

@@ -20,7 +20,9 @@
 <body>
     <header class="header">
         <div class="header__logo-container">
-            <a href="{{ url_for('index') }}"><img src="{{ url_for('static', filename='Imagenes/logo-oro-verde.png') }}" alt="Logo" class="imagen-lista2"></a>
+            <a href="{{ url_for('index') }}">
+            <img src="{{ url_for('static', filename='Imagenes/logo-oro-verde.png') }}" alt="Logo" class="imagen-logo"></a>
+            <h1>Gestión de Pagos</h1>
         </div>
         <div class="box1">
             <nav>
@@ -33,8 +35,6 @@
             </nav>
         </div>
     </header>    
-
-    <h1>Gestión de Pagos</h1>
 
     <h2>Realiza tu Pago con Nequi</h2>
     
@@ -52,8 +52,9 @@
     <div class="contenedor">
         <img src="/static/Imagenes/hoja-tropical.png" alt="Deco">
     </div> 
-
+    
     <hr class="footer-line">
+
     <footer>
         <div class="box7">
             <img src="{{ url_for('static', filename='Imagenes/hoja.png') }}" alt="Deco">

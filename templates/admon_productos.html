@@ -26,13 +26,13 @@
         {% endwith %}
         
         <!-- Header con navegación -->
-        <header class="header">
+    <header class="header">
             <div class="header__logo-container">
                 <a href="{{ url_for('index') }}">
                 <img src="{{ url_for('static', filename='Imagenes/logo-oro-verde.png') }}" alt="Logo" class="imagen-logo"></a>
                 <h1>Administración de productos</h1>
             </div>
-            <div class="box1">
+        <div class="box1">
             <nav>
                 <ul class="lista1">
                     <li><a href="{{ url_for('index') }}"><img src="{{ url_for('static', filename='Imagenes/home.png') }}" alt="Home" class="imagen-lista1"></a></li>
@@ -44,7 +44,7 @@
                 </ul>
             </nav>
         </div>
-        </header>
+    </header>
 
         <!-- Botón de regreso -->
         <a href="{{ url_for('user_admon') }}"><button id="backButton">Atrás</button></a>
