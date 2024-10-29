@@ -168,27 +168,25 @@ def admon_productos():
 def insertar_producto():
     """
     Crea un nuevo producto en la base de datos.
-
-    Obtiene los detalles del producto del JSON en la solicitud POST y los inserta
-    en la base de datos.
-
-    Returns:
-        Response: Un objeto JSON con un mensaje de éxito y un código de estado HTTP 201.
     """
     data = request.json
-    nombre_producto = data.get('nombre_producto')
-    valor = data.get('valor')
-    cantidad = data.get('cantidad')
-    imagen_url = data.get('imagen_url')
-    descripcion = data.get('descripcion')  # Obtener la descripción del JSON
+    required_fields = ['nombre_producto', 'valor', 'cantidad', 'imagen_url', 'descripcion']
+    
+    # Verificar que se reciban todos los campos necesarios
+    for field in required_fields:
+        if field not in data:
+            return jsonify({'error': f'Campo {field} es requerido.'}), 400
 
-    cur = mysql.connection.cursor()
-    cur.execute('INSERT INTO productos (nombre_producto, valor, cantidad, imagen_url, descripcion) VALUES (%s, %s, %s, %s, %s)', 
-                (nombre_producto, valor, cantidad, imagen_url, descripcion))
-    mysql.connection.commit()
-    cur.close()
+    try:
+        cur = mysql.connection.cursor()
+        cur.execute('INSERT INTO productos (nombre_producto, valor, cantidad, imagen_url, descripcion) VALUES (%s, %s, %s, %s, %s)', 
+                    (data['nombre_producto'], data['valor'], data['cantidad'], data['imagen_url'], data['descripcion']))
+        mysql.connection.commit()
+        cur.close()
+        return jsonify({'mensaje': 'Producto creado correctamente'}), 201
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500  # Mensaje de error genérico para el cliente
 
-    return jsonify({'mensaje': 'Producto creado correctamente'}), 201
 
 @app.route('/producto/<int:producto_id>', methods=['PUT'])
 def actualizar_producto(producto_id):
@@ -320,7 +318,6 @@ def mostrar_productos():
 
 # Otras rutas
 
-
 @app.route('/gestion_de_pagos')
 @login_required
 def gestion_de_pagos():
@@ -402,34 +399,23 @@ def user_admon():
 
 @app.route('/registrarse', methods=['POST'])
 def registrarse():
-    """
-    Registra un nuevo usuario en el sistema.
-
-    Esta función maneja la solicitud POST para registrar un nuevo usuario. Obtiene los datos
-    del formulario (nombre, email y contraseña), asigna el rol por defecto como 'cliente',
-    encripta la contraseña utilizando bcrypt, y almacena la información del usuario en la base de datos.
-
-    Después de completar el registro, muestra un mensaje de éxito y redirige al usuario a la página de inicio.
-
-    Returns:
-        Response: Redirige a la página principal (`index`) con un mensaje de éxito en un flash.
-    """
     nombre = request.form.get('nombre')
     email = request.form.get('email')
     contrasena = request.form.get('contrasena')
 
-    # Asignar el rol por defecto como cliente
     rol = 'cliente'
-
     hashed_password = bcrypt.hashpw(contrasena.encode('utf-8'), bcrypt.gensalt())
 
     cur = mysql.connection.cursor()
     cur.execute("INSERT INTO usuarios (nombre, email, contrasena, rol) VALUES (%s, %s, %s, %s)", 
                 (nombre, email, hashed_password, rol))
     mysql.connection.commit()
+    user_id = cur.lastrowid  # Obtiene el ID del nuevo usuario
     cur.close()
 
-    flash('Registro exitoso! Puedes iniciar sesión.', 'success')
+    session['user_id'] = user_id  # Iniciar sesión automáticamente después del registro
+
+    flash('Registro exitoso! ya has iniciado sesión.', 'success')
     return redirect(url_for('index'))
 
 # Ruta para ingresar

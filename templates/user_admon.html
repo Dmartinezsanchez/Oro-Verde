@@ -9,13 +9,10 @@
     <meta name="robots" content="index">
     <meta http-equiv="refresh" content="30">
     <title>Tienda Naturista Oro Verde</title>
-
     <link rel="icon" type="image/png" href="{{ url_for('static', filename='Imagenes/favicon.ico') }}"> 
     <link rel="stylesheet" href="{{ url_for('static', filename='CSS/user_admon.css') }}">
-
     <link rel="icon" type="image/png" href="../Imagenes/favicon.ico"> 
     <link rel="stylesheet" href="../CSS/user_admon.css">
-
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap" rel="stylesheet">
@@ -29,33 +26,15 @@
         <img src="{{ url_for('static', filename='Imagenes/logo-oro-verde.png') }}" alt="Logo" class="imagen-logo"></a>
         <h1>User.Admon</h1>
     </div>
-
     <header class="header">
         <div class="box1">
             <nav>
                 <ul class="lista1">
                     <a href="{{ url_for('index') }}"><img src="{{ url_for('static', filename='Imagenes/home.png') }}" alt="Home" class="imagen-lista1"></a>
-                    <li><a href="{{ url_for('index') }}">Productos</a></li>
-                    <li><a href="{{ url_for('promociones') }}">Promociones</a></li>
-                    <li><a href="{{ url_for('nosotros') }}">Nosotros</a></li>
-                    <li><a href="{{ url_for('tratam_dat') }}">Tratamiento de datos</a></li>
-
-    <h1>User.Admon</h1>
-    <header class="header">
-        <div class="header__logo-container">
-            <a href="index.html"><img src="../imagenes/logo-oro-verde.png" alt="Logo" class="imagen-lista2"></a>
-        </div>
-        <div class="box1">
-            <nav>
-                <ul class="lista1">
-                    <li><img src="../imagenes/retirement-home.png" alt="Home" class="imagen-lista1"></li>
                     <li><a href="#productos">Productos</a></li>
                     <li><a href="../html/promociones.html">Promociones</a></li>
                     <li><a href="../html/nosotros.html">Nosotros</a></li>
                     <li><a href="../html/tratam_dat.html">Tratamiento de datos</a></li>
-                    <li><a href="#buscar">Buscar</a></li>
-                    <li><img src="../imagenes/lupa.png" alt="Buscar" class="imagen-lista1"></li>
-
                 </ul>
             </nav>
         </div>
@@ -66,16 +45,11 @@
     <div class="button__admon">
         <a href="{{ url_for('admon_productos') }}">Administración de productos</a>
     </div>
+
     <div class="button__pago">
-
         <a href="{{ url_for('gestion_de_pagos') }}">Gestión de pago</a>
-
-        <a href="gestion_de_pagos.html">Gestión de pago</a>
     </div>
-    <div class="button__ventas">
-        <a href="informe_ventas.html">Informe de ventas</a>            
 
-    </div>
 
     <div class="contenedor">
         <img src="/static/Imagenes/hoja-tropical.png" alt="Deco">

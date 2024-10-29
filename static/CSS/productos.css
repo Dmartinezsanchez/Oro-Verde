@@ -150,7 +150,7 @@ nav ul.lista1 li a:hover {
 }
 
 
-h1 {
+h1, h2 {
     color: rgb(38, 93, 28);
     font-family: 'Julee';
     font-size: 5vh;

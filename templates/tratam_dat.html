@@ -31,7 +31,7 @@
         <nav>
             <ul class="lista1">
                 <a href="{{ url_for('index') }}"><img src="{{ url_for('static', filename='Imagenes/home.png') }}" alt="Home" class="imagen-lista1"></a>
-                <li><a href="#productos">Productos</a></li>
+                <li><a href="{{ url_for('index') }}">Productos</a></li>
                 <li><a href="{{ url_for('promociones') }}">Promociones</a></li>
                 <li><a href="{{ url_for('nosotros') }}">Nosotros</a></li>
                 <li><a href="#ingreso">Ingreso</a></li>
