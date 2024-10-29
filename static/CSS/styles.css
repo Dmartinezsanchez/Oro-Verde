@@ -558,7 +558,7 @@ input[type="checkbox"] {
     transition: opacity 1s ease-out;
 }
 
-
+/*pie de página*/
 .footer-line {
     border: 1px solid #2b422d;
     margin: 20px 50px;
@@ -570,6 +570,7 @@ footer {
     background-color: rgb(146, 203, 158);
 }
 
+/*pie de página*/
 .box7, .box8, .box9 {
     flex: 1;
     margin: 10px;
@@ -582,7 +583,7 @@ footer {
     color: #163e15;
 }
 
-
+/*pie de página*/
 .box7 {
     display: flex;
     align-items: center;
@@ -613,12 +614,13 @@ footer {
     text-decoration: none;
     background-color: rgb(146, 203, 158);
 }
-
+/*pie de página*/
 .box8 p {
     color: #163e15;
     background-color: rgb(146, 203, 158);
 }
 
+/*pie de página*/
 .box9 {
     text-align: center;
     padding-top: 20px;
