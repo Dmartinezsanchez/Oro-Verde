@@ -4,9 +4,9 @@ body {
 
 .header {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-    padding: 10px 20px;
+    padding: 10px;
     background-color: rgb(146, 203, 158); /* Verde pastel suave */
     box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
 }
@@ -31,16 +31,7 @@ body {
     margin-top: 20px;
 }
 
-.box1 {
-    display: flex;
-    justify-content: center; /* Centra los elementos en el contenedor */
-    align-items: center;
-    padding: 10px 20px;
-    background-color: rgb(146, 203, 158);
-    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-.lista1 {
+nav ul.lista1 {
     list-style-type: none;
     display: flex;
     align-items: center;
@@ -48,8 +39,50 @@ body {
     padding: 0;
 }
 
-.lista1 li {
-    margin: 0 20px;
+nav ul.lista1 li {
+    margin: 0 40px;
+}
+
+/* Botones personalizados */
+nav ul.lista1 li a {
+    padding: 8px 12px;
+    border-radius: 25px;
+    background-color: #FDFDFB; /* Blanco hueso */
+    border: 2px solid #D4E4D1; /* Verde pastel suave */
+}
+
+nav ul.lista1 li a:hover {
+    background-color: #E6F0E6; /* Verde pastel */
+    border-color: #8AB78B;
+    color: #4A6056;
+}
+
+/*letra de los botones*/
+nav ul.lista1 li a {
+    text-decoration: none;
+    color: #163e15; /* Verde oscuro */
+    font-weight: 500;
+    transition: color 0.3s ease;
+    font-size: 16px;
+}
+
+/*color al poner el mouse sobre el boton*/
+nav ul.lista1 li a:hover {
+    color: #8AB78B; /* Verde más claro en hover */
+}
+
+/* Estilo para las imágenes en la lista */
+
+.imagen-lista1:hover {
+    filter: brightness(1);
+}
+
+.imagen-lista1 {
+    height: 50px;
+    width: 50px;
+    cursor: pointer;
+    filter: brightness(0.7); /* Estilo suave a las imágenes */
+    transition: filter 0.3s ease;
 }
 
 /* Estilo para dispositivos móviles */
@@ -69,84 +102,19 @@ body {
     }
 }
 
-/* Botones personalizados */
-.lista1 li a {
-    padding: 8px 12px;
-    border-radius: 25px;
-    background-color: #FDFDFB; /* Blanco hueso */
-    border: 2px solid #D4E4D1; /* Verde pastel suave */
-}
-
-.lista1 li a:hover {
-    background-color: #E6F0E6; /* Verde pastel */
-    border-color: #8AB78B;
-    color: #4A6056;
-}
-
-/*letra de los botones*/
-.lista1 li a {
-    text-decoration: none;
-    color: #163e15; /* Verde oscuro */
-    font-weight: 500;
-    transition: color 0.3s ease;
-    font-size: 16px;
-}
-
 /*titulo pagina*/
+
 h1 {
-    color: rgb(146, 203, 158);
-    font-family: 'Kaushan Script';
-    font-size: 6vh;
+    color: rgb(38, 93, 28);
+    font-family: 'Julee';
+    font-size: 5vh;
     text-align: center;
     font-style: italic;
-}
-
-p {
-    color: rgb(13, 54, 34);
-    margin: 2vh;
-    justify-content: center;
-    padding: 10px;
-    padding-bottom: 10px;
-    padding-top: 10px;
 }
 
 .imagen-lista2 {
     max-width: 200px;
     height: auto;
-}
-
-
-.lista1 a {
-    text-decoration: none;
-    color: #32502E;
-}
-
-li {
-    margin-right: 4vw;
-    height: 4vh;
-}
-
-.imagen-lista1 {
-    max-width: 100%;
-    height: 30px;
-}
-
-.box10 {
-    width: 50%;
-    margin: 5px;
-    box-sizing: border-box;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    justify-content: center;
-}
-
-.box10 p {
-    color: rgb(54, 34, 9);
-    padding: 10px;
-    margin: 10px;
-    max-height: 450px;
-    overflow: hidden;
-    margin-left: 50vh;
 }
 
 .contenedor {
@@ -160,97 +128,100 @@ li {
 }
 
 .footer-line {
-    border: 1px solid rgb(240, 240, 166);
+    border: 1px solid #2b422d;
     margin: 20px 50px;
 }
 
 footer {
     display: flex;
     flex-wrap: wrap;
-    background-color: #8faa9e;
+    background-color: rgb(146, 203, 158);
 }
 
-.box11 {
-    display: flex;
-    align-items: center;
-    color: rgb(39, 67, 60);
+.box7, .box8, .box9 {
     flex: 1;
     margin: 10px;
     box-sizing: border-box;
     background-color: #8faa9e;
     padding: 10px;
+    font-family: "Kaushan Script";
+    font-size: 20px;
+    background-color: rgb(146, 203, 158);
 }
 
-.lista11 {
+.box7 {
+    display: flex;
+    align-items: center;
+    color: #163e15;
+    background-color: rgb(146, 203, 158);
+}
+
+.lista7 {
     list-style-type: none;
     margin: 0 10px;
     padding: 10px;
-    list-style-type: none;
+    background-color: rgb(146, 203, 158);
 }
 
-.box11 img {
-    max-width: 100px;
+.box7 img {
+    max-width: 150px;
     margin-right: 10px;
+    background-color: rgb(146, 203, 158);
 }
 
-.lista11 li {
+.lista7 li {
     margin-bottom: 10px;
+    background-color: rgb(146, 203, 158);
 }
 
-.lista11 a {
-    color: #32502E;
+.lista7 a {
+    color: #163e15;
     text-decoration: none;
+    background-color: rgb(146, 203, 158);
 }
 
-.box12 {
-    flex: 1;
-    margin: 10px;
-    box-sizing: border-box;
-    background-color: #8faa9e;
-    padding-top: 90px;
+.box8 p {
+    color: #163e15;
+    background-color: rgb(146, 203, 158);
 }
 
-.box12 p {
-    color: rgb(39, 67, 60);
-}
-
-.box13 {
-    flex: 1;
-    margin: 10px;
-    box-sizing: border-box;
-    background-color: #8faa9e;
-    padding-top: 20px;
+.box9 {
     text-align: center;
+    padding-top: 20px;
+    background-color: rgb(146, 203, 158);
 }
 
-.box13 img {
-    max-width: 50px;
+.box9 img {
+    max-width: 100px;
     display: block;
     margin: 0 auto 10px;
+    background-color: rgb(146, 203, 158);
 }
 
-.box13 p {
-    font-size: 16px;
-    margin: 0;
-    color: rgb(39, 67, 60);
+p {
+    color: rgb(13, 54, 34);
+    margin: 2vh;
+    justify-content: center;
+    padding: 10px;
+    padding-bottom: 10px;
+    padding-top: 10px;
 }
 
 #showMoreBtn,
 #showLessBtn {
-    background-color: #326c33;
-    color: rgb(209, 209, 162);
-    padding: 10px 20px;
-    border: none;
-    cursor: pointer;
-    border-radius: 8px;
-    margin-top: 10px;
-    box-shadow: 1px 4px 4px rgba(0, 0, 0, 0.25);
-    margin-left: 50vh;
+    padding: 8px 20px;
+    border-radius: 25px;
+    background-color: rgb(146, 203, 158);
+    border: 2px solid #D4E4D1; /* Verde pastel suave */
+    padding-top: 10px;
+    margin-left: 300px;
+    color: #4A6056;
 }
+
 
 #showMoreBtn:hover,
 #showLessBtn:hover {
-    background-color: #406d42;
+    background-color: #89be8c;
 }
 
 .box13 ul li {

@@ -19,16 +19,17 @@
 </head>
 <body>
     <script src="/static/JS/terms_conditions.js"></script>
-    <header class="header">
+
         <div class="header__logo-container">
             <a href="{{ url_for('index') }}">
             <img src="{{ url_for('static', filename='Imagenes/logo-oro-verde.png') }}" alt="Logo" class="imagen-logo"></a>
             <h1>Términos y condiciones</h1>
         </div>
+    <header class="header">    
         <div class="box1">
             <nav>
                 <ul class="lista1">
-                    <li><a href="{{ url_for('index') }}"><img src="{{ url_for('static', filename='Imagenes/home.png') }}" alt="Home" class="imagen-lista1"></a></li>
+                    <a href="{{ url_for('index') }}"><img src="{{ url_for('static', filename='Imagenes/home.png') }}" alt="Home" class="imagen-lista1"></a>
                     <li><a href="{{ url_for('index') }}">Productos</a></li>
                     <li><a href="{{ url_for('promociones') }}">Promociones</a></li>
                     <li><a href="{{ url_for('nosotros') }}">Nosotros</a></li>
@@ -36,8 +37,9 @@
                 </ul>
             </nav>
         </div>
-    </header>    
-    <div class="box18">
+    </header>  
+
+    <div class="box2">
         <ul>
             <li><a href="#acceptance_of_the terms"> Ir a Aceptación de los Términos</a></li>
             <li><a href="#proper_use">Ir a uso adecuado</a></li>
@@ -77,33 +79,35 @@
             <p>Si tienes alguna pregunta o inquietud sobre estos Términos, por favor contáctanos a adrianabarajas1970@gmail.com.
                 Al utilizar este sitio web, aceptas estos Términos en su totalidad. Si no estás de acuerdo con estos términos, por favor, no utilices nuestro sitio.
             </p>
-        </div>
+            <p>Acepto Términos y condiciones</p>
+            <input type="checkbox" id="miCheckbox" required>
+    </div>
         <button id="showMoreBtn">Mostrar Más</button>
         <button id="showLessBtn" style="display: none;">Mostrar Menos</button>
     </div>
 
+    <button onclick="topFunction()" id="myBtn" title="Ir arriba">↑</button>
+
     <div class="contenedor">
         <img src="/static/Imagenes/hoja-tropical.png" alt="Deco">
     </div> 
-
-    <button onclick="topFunction()" id="myBtn" title="Ir arriba">↑</button>
-
     <hr class="footer-line">
-
     <footer>
-        <div class="box19">
+        <div class="box7">
             <img src="{{ url_for('static', filename='Imagenes/hoja.png') }}" alt="Deco">
-            <ul class="lista19">
+            <ul class="lista7">
                 <li><a href="{{ url_for('termin_cond') }}">Términos y condiciones</a></li>
                 <li>adrianabarajas1970@gmail.com</li>
                 <li>3013817308</li>
                 <li>Carrera 36 A # 46-63 Ciudad Verde</li>
             </ul>
         </div>
-        <div class="box20">
+
+        <div class="box8">
             <p>© 2024 Oro Verde Productos Naturales. Todos los derechos reservados. Powered by Grupo 9.</p>
         </div>
-        <div class="box21">
+
+        <div class="box9">
             <img src="{{ url_for('static', filename='Imagenes/hoja-de-monstera.png') }}" alt="Deco">
             <p>La salud es el pilar de la vida</p>
         </div>

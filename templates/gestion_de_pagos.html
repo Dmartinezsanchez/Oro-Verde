@@ -18,16 +18,17 @@
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header class="header">
         <div class="header__logo-container">
             <a href="{{ url_for('index') }}">
             <img src="{{ url_for('static', filename='Imagenes/logo-oro-verde.png') }}" alt="Logo" class="imagen-logo"></a>
             <h1>Gestión de Pagos</h1>
         </div>
+
+    <header class="header">
         <div class="box1">
             <nav>
                 <ul class="lista1">
-                    <li><a href="{{ url_for('index') }}"><img src="{{ url_for('static', filename='Imagenes/home.png') }}" alt="Home" class="imagen-lista1"></a></li>
+                    <a href="{{ url_for('index') }}"><img src="{{ url_for('static', filename='Imagenes/home.png') }}" alt="Home" class="imagen-lista1"></a>
                     <li><a href="{{ url_for('index') }}">Productos</a></li>
                     <li><a href="{{ url_for('nosotros') }}">Nosotros</a></li>
                     <li><a href="{{ url_for('tratam_dat') }}">Tratamiento de datos</a></li>
@@ -48,13 +49,10 @@
         <img src="{{ qr_url }}" alt="Código QR de Nequi" width="300">
     </div>
     
-    
     <div class="contenedor">
         <img src="/static/Imagenes/hoja-tropical.png" alt="Deco">
     </div> 
-    
     <hr class="footer-line">
-
     <footer>
         <div class="box7">
             <img src="{{ url_for('static', filename='Imagenes/hoja.png') }}" alt="Deco">
@@ -65,9 +63,11 @@
                 <li>Carrera 36 A # 46-63 Ciudad Verde</li>
             </ul>
         </div>
+
         <div class="box8">
             <p>© 2024 Oro Verde Productos Naturales. Todos los derechos reservados. Powered by Grupo 9.</p>
         </div>
+
         <div class="box9">
             <img src="{{ url_for('static', filename='Imagenes/hoja-de-monstera.png') }}" alt="Deco">
             <p>La salud es el pilar de la vida</p>
@@ -75,4 +75,3 @@
     </footer>
 </body>
 </html>
-

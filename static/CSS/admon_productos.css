@@ -1,9 +1,122 @@
 /* Estilo general */
 body {
     font-family: 'Poppins', sans-serif;
+    background-color: #ffffff;
+}
+
+.header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    background-color: rgb(146, 203, 158); /* Verde pastel suave */
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.header__logo-container {
+    display: flex; /* Utiliza Flexbox */
+    flex-direction: column; /* Alinea los elementos en una columna (imagen encima del texto) */
+    justify-content: center; /* Centra verticalmente el contenido */
+    align-items: center; /* Centra horizontalmente el contenido */
+    text-align: center; /* Centra el texto dentro del contenedor */
+    height: 40vh;
+}
+
+.imagen-logo {
+    width: 200px; /* Ancho de la imagen */
+    height: 200px; /* Alto de la imagen */
+    border-radius: 50%; /* Hace que la imagen sea completamente redonda */
+    object-fit: cover; /* Ajusta la imagen para que se mantenga centrada */
+    filter: brightness(180%) contrast(40%); /* Aumenta el brillo un 20% y reduce un poco el contraste */
+    box-shadow: 5px 5px 12px rgb(0, 0, 0);
+    margin-right: 15px; /* Espacio entre el logo y el título */
+    margin-top: 20px;
+}
+
+nav ul.lista1 {
+    list-style-type: none;
+    display: flex;
+    align-items: center;
     margin: 0;
     padding: 0;
-    background-color: #F7F7F5;
+}
+
+nav ul.lista1 li {
+    margin: 0 40px;
+}
+
+/* Botones personalizados */
+nav ul.lista1 li a {
+    padding: 8px 12px;
+    border-radius: 25px;
+    background-color: #FDFDFB; /* Blanco hueso */
+    border: 2px solid #D4E4D1; /* Verde pastel suave */
+}
+
+nav ul.lista1 li a:hover {
+    background-color: #E6F0E6; /* Verde pastel */
+    border-color: #8AB78B;
+    color: #4A6056;
+}
+
+/*letra de los botones*/
+nav ul.lista1 li a {
+    text-decoration: none;
+    color: #163e15; /* Verde oscuro */
+    font-weight: 500;
+    transition: color 0.3s ease;
+    font-size: 16px;
+}
+
+/*color al poner el mouse sobre el boton*/
+nav ul.lista1 li a:hover {
+    color: #8AB78B; /* Verde más claro en hover */
+}
+
+/* Estilo para las imágenes en la lista */
+
+.imagen-lista1:hover {
+    filter: brightness(1);
+}
+
+.imagen-lista1 {
+    height: 50px;
+    width: 50px;
+    cursor: pointer;
+    filter: brightness(0.7); /* Estilo suave a las imágenes */
+    transition: filter 0.3s ease;
+}
+
+/* Estilo para dispositivos móviles */
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        padding: 10px;
+    }
+
+    nav ul.lista1 {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    nav ul.lista1 li {
+        margin: 10px 0;
+    }
+}
+
+h1 {
+    color: rgb(38, 93, 28);
+    font-family: 'Julee';
+    font-size: 5vh;
+    text-align: center;
+    font-style: italic;
+}
+
+p {
+    font-family: 'Julee';
+    font-size: 3vh;
+    text-align: center;
+    font-style: italic; 
 }
 
 /* Estilo para el contenedor de mensajes flash */
@@ -50,130 +163,6 @@ body {
     background-color: #d1ecf1;
     color: #0c5460;
     border: 1px solid #bee5eb;
-}
-
-
-.header__logo-container {
-    display: flex; /* Utiliza Flexbox */
-    flex-direction: column; /* Alinea los elementos en una columna (imagen encima del texto) */
-    justify-content: center; /* Centra verticalmente el contenido */
-    align-items: center; /* Centra horizontalmente el contenido */
-    text-align: center; /* Centra el texto dentro del contenedor */
-    height: 40vh;
-}
-
-.imagen-logo {
-    width: 200px; /* Ancho de la imagen */
-    height: 200px; /* Alto de la imagen */
-    border-radius: 50%; /* Hace que la imagen sea completamente redonda */
-    object-fit: cover; /* Ajusta la imagen para que se mantenga centrada */
-    filter: brightness(180%) contrast(40%); /* Aumenta el brillo un 20% y reduce un poco el contraste */
-    box-shadow: 5px 5px 12px rgb(0, 0, 0);
-    margin-right: 15px; /* Espacio entre el logo y el título */
-    margin-top: 20px;
-}
-
-.box1 {
-    display: flex;
-    justify-content: center; /* Centra todo el contenido */
-    align-items: center;
-    padding: 10px 20px;
-    background-color: #E6F0E6; /* Verde pastel suave */
-    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-.lista1 {
-    list-style-type: none;
-    padding: 2vh;
-    margin: 0; /* Ajusta el margen para centrar */
-    display: flex;
-    justify-content: space-evenly; /* Distribuye equitativamente los botones */
-    width: 100%; /* Ocupa todo el ancho disponible */
-    color: rgb(58, 59, 59);
-    font-size: 17px;
-}
-/* Estilo para las imágenes en la lista */
-
-.imagen-lista1:hover {
-    filter: brightness(1);
-}
-
-.imagen-lista1 {
-    height: 50px;
-    width: 50px;
-    cursor: pointer;
-    filter: brightness(0.7); /* Estilo suave a las imágenes */
-    transition: filter 0.3s ease;
-}
-
-
-nav ul.lista1 {
-    list-style-type: none;
-    display: flex;
-    align-items: center;
-    margin: 0;
-    padding: 0;
-}
-
-nav ul.lista1 li {
-    margin: 0 20px;
-}
-
-nav ul.lista1 li a {
-    text-decoration: none;
-    color: #4A6056; /* Verde oscuro suave */
-    font-weight: 500;
-    transition: color 0.3s ease;
-    font-size: 16px;
-}
-
-nav ul.lista1 li a:hover {
-    color: #8AB78B; /* Verde más claro en hover */
-}
-
-/* Estilo para dispositivos móviles */
-@media (max-width: 768px) {
-    nav ul.lista1 {
-        flex-direction: column; /* Para que los botones se apilen en móviles */
-        align-items: center;
-    }
-
-    nav ul.lista1 li {
-        margin: 10px 0;
-    }
-}
-
-/* Botones personalizados */
-nav ul.lista1 li a {
-    padding: 8px 12px;
-    border-radius: 25px;
-    background-color: #FDFDFB; /* Blanco hueso */
-    border: 2px solid #D4E4D1; /* Verde pastel suave */
-}
-
-nav ul.lista1 li a:hover {
-    background-color: #E6F0E6; /* Verde pastel */
-    border-color: #8AB78B;
-    color: #4A6056;
-}
-
-/* Alineación en pantallas pequeñas */
-@media (max-width: 768px) {
-    .search-form {
-        margin-top: 10px;
-    }
-
-    .search-input:focus {
-        width: 100%; /* Ampliar más en dispositivos pequeños */
-    }
-}
-
-h1 {
-    color: rgb(38, 93, 28);
-    font-family: 'Julee';
-    font-size: 5vh;
-    text-align: center;
-    font-style: italic;
 }
 
 #backButton {
@@ -238,94 +227,90 @@ input[type="submit"]:hover {
     background-color: #45a049;
 }
 
+
 .contenedor {
     display: flex;
-    align-items: center; 
-    justify-content: center;
-    margin: 20px 0;
+    align-items: center;
 }
 
 .contenedor img {
     max-width: 100px;
-    margin-right: 10px; 
+    margin-right: 10px;
 }
 
-.box11 {
-    display: flex; 
-    align-items: center; 
-    color: rgb(39, 67, 60);
-    flex: 1; 
-    margin: 10px;
-    box-sizing: border-box;
-    background-color: #8faa9e;
-    padding: 10px;
-    font-family: 'Julee';
-}
-
-.lista11 {
-    list-style-type: none; 
-    margin: 0 10px; 
-    padding: 10px;
-}
-
-.box11 img {
-    max-width: 100px; 
-    margin-right: 10px; 
-}
-
-.lista11 li {
-    margin-bottom: 10px;  
-}
-
-.lista11 a {
-    color: #32502E; 
-    text-decoration: none; 
+.footer-line {
+    border: 1px solid #2b422d;
+    margin: 20px 50px;
 }
 
 footer {
-    display: flex; 
-    flex-wrap: wrap; 
-    background-color: #8faa9e;
+    display: flex;
+    flex-wrap: wrap;
+    background-color: rgb(146, 203, 158);
 }
 
-.box12 {
+.box7, .box8, .box9 {
     flex: 1;
     margin: 10px;
     box-sizing: border-box;
     background-color: #8faa9e;
-    padding-top: 90px;
-    font-family: 'Julee';
+    padding: 10px;
+    font-family: "Kaushan Script";
+    font-size: 20px;
+    background-color: rgb(146, 203, 158);
+    color: #163e15;
 }
 
-.box12 p {
-    color: rgb(39, 67, 60);
+
+.box7 {
+    display: flex;
+    align-items: center;
+    color: #163e15;
+    background-color: rgb(146, 203, 158);
 }
 
-.box13 {
-    flex: 1; 
-    margin: 10px; 
-    box-sizing: border-box; 
-    background-color: #8faa9e;
-    padding-top: 20px; 
-    text-align: center; 
-    font-family: 'Julee';
+.lista7 {
+    list-style-type: none;
+    margin: 0 10px;
+    padding: 10px;
+    background-color: rgb(146, 203, 158);
 }
 
-.box13 img {
-    max-width: 50px; 
-    display: block; 
+.box7 img {
+    max-width: 150px;
+    margin-right: 10px;
+    background-color: rgb(146, 203, 158);
+}
+
+.lista7 li {
+    margin-bottom: 10px;
+    background-color: rgb(146, 203, 158);
+}
+
+.lista7 a {
+    color: #163e15;
+    text-decoration: none;
+    background-color: rgb(146, 203, 158);
+}
+
+.box8 p {
+    color: #163e15;
+    background-color: rgb(146, 203, 158);
+}
+
+.box9 {
+    text-align: center;
+    padding-top: 20px;
+    background-color: rgb(146, 203, 158);
+}
+
+.box9 img {
+    max-width: 100px;
+    display: block;
     margin: 0 auto 10px;
+    background-color: rgb(146, 203, 158);
 }
 
-.box13 p {
-    font-size: 16px; 
-    margin: 0; 
-    color: rgb(39, 67, 60);
-}
 
-.footer-line {
-    border: 1px solid rgb(56, 94, 57);
-    margin: 20px 50px;
 
-}
 

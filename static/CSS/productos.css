@@ -1,9 +1,16 @@
 /* Estilo general */
 body {
     font-family: 'Poppins', sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #F7F7F5;
+    background-color: #ffffff;
+}
+
+.header {
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    padding: 10px;
+    background-color: rgb(146, 203, 158); /* Verde pastel suave */
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .header__logo-container {
@@ -26,23 +33,44 @@ body {
     margin-top: 20px;
 }
 
-.box1 {
+nav ul.lista1 {
+    list-style-type: none;
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    padding: 10px 20px;
-    background-color: #E6F0E6; /* Verde pastel suave */
-    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    margin: 0;
+    padding: 0;
 }
 
-.lista1 {
-    list-style-type: none;
-    padding: 2vh;
-    margin: auto;
-    display: flex;
-    text-align: center;
-    color: rgb(58, 59, 59);
-    font-size: 17px;
+nav ul.lista1 li {
+    margin: 0 40px;
+}
+
+/* Botones personalizados */
+nav ul.lista1 li a {
+    padding: 8px 12px;
+    border-radius: 25px;
+    background-color: #FDFDFB; /* Blanco hueso */
+    border: 2px solid #D4E4D1; /* Verde pastel suave */
+}
+
+nav ul.lista1 li a:hover {
+    background-color: #E6F0E6; /* Verde pastel */
+    border-color: #8AB78B;
+    color: #4A6056;
+}
+
+/*letra de los botones*/
+nav ul.lista1 li a {
+    text-decoration: none;
+    color: #163e15; /* Verde oscuro */
+    font-weight: 500;
+    transition: color 0.3s ease;
+    font-size: 16px;
+}
+
+/*color al poner el mouse sobre el boton*/
+nav ul.lista1 li a:hover {
+    color: #8AB78B; /* Verde más claro en hover */
 }
 
 /* Estilo para las imágenes en la lista */
@@ -59,32 +87,6 @@ body {
     transition: filter 0.3s ease;
 }
 
-
-nav ul.lista1 {
-    list-style-type: none;
-    display: flex;
-    align-items: center;
-    margin: 0;
-    padding: 0;
-}
-
-nav ul.lista1 li {
-    margin: 0 20px;
-}
-
-nav ul.lista1 li a {
-    text-decoration: none;
-    color: #4A6056; /* Verde oscuro suave */
-    font-weight: 500;
-    transition: color 0.3s ease;
-    font-size: 16px;
-}
-
-nav ul.lista1 li a:hover {
-    color: #8AB78B; /* Verde más claro en hover */
-}
-
-
 /* Estilo para dispositivos móviles */
 @media (max-width: 768px) {
     .header {
@@ -100,20 +102,6 @@ nav ul.lista1 li a:hover {
     nav ul.lista1 li {
         margin: 10px 0;
     }
-}
-
-/* Botones personalizados */
-nav ul.lista1 li a {
-    padding: 8px 12px;
-    border-radius: 25px;
-    background-color: #FDFDFB; /* Blanco hueso */
-    border: 2px solid #D4E4D1; /* Verde pastel suave */
-}
-
-nav ul.lista1 li a:hover {
-    background-color: #E6F0E6; /* Verde pastel */
-    border-color: #8AB78B;
-    color: #4A6056;
 }
 
 /* Estilo del formulario de búsqueda */
@@ -161,16 +149,6 @@ nav ul.lista1 li a:hover {
     filter: brightness(1);
 }
 
-/* Alineación en pantallas pequeñas */
-@media (max-width: 768px) {
-    .search-form {
-        margin-top: 10px;
-    }
-
-    .search-input:focus {
-        width: 100%; /* Ampliar más en dispositivos pequeños */
-    }
-}
 
 h1 {
     color: rgb(38, 93, 28);
@@ -181,13 +159,11 @@ h1 {
 }
 
 p {
-    color: antiquewhite;
     font-family: 'Julee';
     font-size: 3vh;
     text-align: center;
     font-style: italic; 
 }
-
 
 /* Estilo para el contenedor del producto */
 .productos {
@@ -239,15 +215,15 @@ p {
     margin-right: 10px;
 }
 
-footer-line {
-    border: 1px solid rgb(240, 240, 166);
+.footer-line {
+    border: 1px solid #2b422d;
     margin: 20px 50px;
 }
 
 footer {
     display: flex;
     flex-wrap: wrap;
-    background-color: #8faa9e;
+    background-color: rgb(146, 203, 158);
 }
 
 .box7, .box8, .box9 {
@@ -256,53 +232,58 @@ footer {
     box-sizing: border-box;
     background-color: #8faa9e;
     padding: 10px;
-    font-family: 'Julee';
+    font-family: "Kaushan Script";
+    font-size: 20px;
+    background-color: rgb(146, 203, 158);
+    color: #163e15;
 }
+
 
 .box7 {
     display: flex;
     align-items: center;
-    color: rgb(39, 67, 60);
+    color: #163e15;
+    background-color: rgb(146, 203, 158);
 }
 
 .lista7 {
     list-style-type: none;
     margin: 0 10px;
     padding: 10px;
+    background-color: rgb(146, 203, 158);
 }
 
 .box7 img {
-    max-width: 100px;
+    max-width: 150px;
     margin-right: 10px;
+    background-color: rgb(146, 203, 158);
 }
 
 .lista7 li {
     margin-bottom: 10px;
+    background-color: rgb(146, 203, 158);
 }
 
 .lista7 a {
-    color: #32502E;
+    color: #163e15;
     text-decoration: none;
+    background-color: rgb(146, 203, 158);
 }
 
 .box8 p {
-    color: rgb(39, 67, 60);
-    font-size: 16px;
+    color: #163e15;
+    background-color: rgb(146, 203, 158);
 }
 
 .box9 {
     text-align: center;
     padding-top: 20px;
+    background-color: rgb(146, 203, 158);
 }
 
 .box9 img {
-    max-width: 50px;
+    max-width: 100px;
     display: block;
     margin: 0 auto 10px;
-}
-
-.box9 p {
-    font-size: 16px;
-    margin: 0;
-    color: rgb(39, 67, 60);
+    background-color: rgb(146, 203, 158);
 }

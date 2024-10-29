@@ -19,26 +19,33 @@
 </head>
 <body>
     <script src="/static/JS/nosotros.js"></script>
+
     <div class="header__logo-container">
         <a href="{{ url_for('index') }}">
         <img src="{{ url_for('static', filename='Imagenes/logo-oro-verde.png') }}" alt="Logo" class="imagen-logo"></a>
+
         <h1>Nosotros</h1>
     </div>
-        <div class="box1">
+
+<header class="header">
+    <div class="box1">
+        <nav>
             <ul class="lista1">
-                <li><a href="{{ url_for('index') }}"><img src="{{ url_for('static', filename='Imagenes/home.png') }}" alt="Home" class="imagen-lista1"></a></li>
+                <a href="{{ url_for('index') }}"><img src="{{ url_for('static', filename='Imagenes/home.png') }}" alt="Home" class="imagen-lista1"></a></li>
                 <li><a href="{{ url_for('index') }}">Productos</a></li>
                 <li><a href="{{ url_for('promociones') }}">Promociones</a></li>
                 <li><a href="{{ url_for('index') }}">Ingreso</a></li>
                 <li><a href="{{ url_for('index') }}">Registrarse</a></li>
                 <li><a href="{{ url_for('tratam_dat') }}">Tratamiento de datos</a></li>
-                <li><a href="{{ url_for('gestion_de_pagos') }}"><img src="{{ url_for('static', filename='Imagenes/bolsa-de-la-compra.png') }}" alt="Compras" class="imagen-lista1"></a></li>
+                <a href="{{ url_for('gestion_de_pagos') }}"><img src="{{ url_for('static', filename='Imagenes/bolsa-de-la-compra.png') }}" alt="Compras" class="imagen-lista1"></a></li>
             </ul>
-        </div>
-    </header>    
-    <div class="box10">
+        </nav>
+    </div>
+</header>    
+
+    <div class="box2">
         <div id="terms_section" class="terms-section" style="display: none;">
-            <p id="datos10">
+            <p id="datos2">
                 Oro Verde Tienda Naturista nace de la necesidad de ofrecer alternativas naturales y saludables para el cuidado familiar. Lo que comenzó como una necesidad personal, se convirtió en un proyecto familiar dedicado a llevar bienestar a más hogares, promoviendo el cuidado preventivo de la salud y ofreciendo soluciones complementarias para enfermedades existentes.
 
                 En Oro Verde, nuestro compromiso es con el bienestar de todos, desde los más pequeños hasta los mayores. Contamos con un amplio catálogo de productos que se adaptan a las necesidades de toda la familia. Nos enfocamos en ofrecer productos de alta calidad, avalados por reconocidos laboratorios, lo que garantiza la confianza y seguridad de nuestros clientes.
@@ -53,23 +60,25 @@
         <img src="/static/Imagenes/hoja-tropical.png" alt="Deco">
     </div>
     <hr class="footer-line">
-    <footer>
-        <div class="box11">
+<footer>
+        <div class="box7">
             <img src="{{ url_for('static', filename='Imagenes/hoja.png') }}" alt="Deco">
-            <ul class="lista11">
+            <ul class="lista7">
                 <li><a href="{{ url_for('termin_cond') }}">Términos y condiciones</a></li>
                 <li>adrianabarajas1970@gmail.com</li>
                 <li>3013817308</li>
                 <li>Carrera 36 A # 46-63 Ciudad Verde</li>
             </ul>
         </div>
-        <div class="box12">
+
+        <div class="box8">
             <p>© 2024 Oro Verde Productos Naturales. Todos los derechos reservados. Powered by Grupo 9.</p>
         </div>
-        <div class="box13">
+
+        <div class="box9">
             <img src="{{ url_for('static', filename='Imagenes/hoja-de-monstera.png') }}" alt="Deco">
             <p>La salud es el pilar de la vida</p>
         </div>
-    </footer>    
+</footer>    
 </body>
 </html>
