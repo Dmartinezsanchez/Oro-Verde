@@ -29,7 +29,7 @@ socketio = SocketIO(app)
 # Configuración de la conexión a MySQL
 app.config['MYSQL_HOST'] = 'localhost'
 app.config['MYSQL_USER'] = 'root'
-app.config['MYSQL_PASSWORD'] = '123456789'
+app.config['MYSQL_PASSWORD'] = '1234'
 app.config['MYSQL_DB'] = 'tienda_naturista'
 
 # Ruta del login
