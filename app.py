@@ -16,6 +16,8 @@ from flask_mysqldb import MySQL
 import bcrypt
 from flask_socketio import SocketIO, send
 from config import Config
+from functools import wraps
+from flask_login import login_required
 
 
 app = Flask(__name__)
@@ -27,8 +29,29 @@ socketio = SocketIO(app)
 # Configuración de la conexión a MySQL
 app.config['MYSQL_HOST'] = 'localhost'
 app.config['MYSQL_USER'] = 'root'
-app.config['MYSQL_PASSWORD'] = '123456789'
+app.config['MYSQL_PASSWORD'] = '1234'
 app.config['MYSQL_DB'] = 'tienda_naturista'
+
+# Ruta del login
+def login_required(f):
+    @wraps(f)
+    def decorated_function(*args, **kwargs):
+        if 'user_id' not in session:
+            flash('Debes estar registrado e iniciar sesión para acceder a esta sección.', 'error')
+            return redirect(url_for('index'))
+        return f(*args, **kwargs)
+    return decorated_function
+
+# Ruta para cerrar sesion
+@app.route('/cerrar_sesion')
+def cerrar_sesion():
+    """
+    Cierra la sesión del usuario y redirige a la página de inicio.
+    """
+    session.pop('user_id', None)  # Elimina el user_id de la sesión
+    flash('Has cerrado sesión exitosamente.', 'success')  # Mensaje de éxito
+    return redirect(url_for('index'))  # Redirige al inicio
+
 
 # Ruta de verificación
 @app.route('/ping', methods=['GET'])
@@ -43,7 +66,6 @@ def ping():
         y un código de estado HTTP 200.
     """
     return jsonify({'message': 'Servidor en funcionamiento'}), 200
-
 
 # Ruta principal
 @app.route('/')
@@ -143,30 +165,28 @@ def admon_productos():
     return render_template('admon_productos.html', producto=producto)
 
 @app.route('/producto', methods=['POST'])
-def crear_producto():
+def insertar_producto():
     """
     Crea un nuevo producto en la base de datos.
-
-    Obtiene los detalles del producto del JSON en la solicitud POST y los inserta
-    en la base de datos.
-
-    Returns:
-        Response: Un objeto JSON con un mensaje de éxito y un código de estado HTTP 201.
     """
     data = request.json
-    nombre_producto = data.get('nombre_producto')
-    valor = data.get('valor')
-    cantidad = data.get('cantidad')
-    imagen_url = data.get('imagen_url')
-    descripcion = data.get('descripcion')  # Obtener la descripción del JSON
+    required_fields = ['nombre_producto', 'valor', 'cantidad', 'imagen_url', 'descripcion']
+    
+    # Verificar que se reciban todos los campos necesarios
+    for field in required_fields:
+        if field not in data:
+            return jsonify({'error': f'Campo {field} es requerido.'}), 400
 
-    cur = mysql.connection.cursor()
-    cur.execute('INSERT INTO productos (nombre_producto, valor, cantidad, imagen_url, descripcion) VALUES (%s, %s, %s, %s, %s)', 
-                (nombre_producto, valor, cantidad, imagen_url, descripcion))
-    mysql.connection.commit()
-    cur.close()
+    try:
+        cur = mysql.connection.cursor()
+        cur.execute('INSERT INTO productos (nombre_producto, valor, cantidad, imagen_url, descripcion) VALUES (%s, %s, %s, %s, %s)', 
+                    (data['nombre_producto'], data['valor'], data['cantidad'], data['imagen_url'], data['descripcion']))
+        mysql.connection.commit()
+        cur.close()
+        return jsonify({'mensaje': 'Producto creado correctamente'}), 201
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500  # Mensaje de error genérico para el cliente
 
-    return jsonify({'mensaje': 'Producto creado correctamente'}), 201
 
 @app.route('/producto/<int:producto_id>', methods=['PUT'])
 def actualizar_producto(producto_id):
@@ -297,18 +317,18 @@ def mostrar_productos():
     return render_template('productos.html', productos=productos)
 
 # Otras rutas
+
 @app.route('/gestion_de_pagos')
+@login_required
 def gestion_de_pagos():
     """
-    Renderiza la página de gestión de pagos.
-
-    Esta función renderiza la plantilla `gestion_de_pagos.html`, que muestra la interfaz
-    para la gestión de pagos.
-
-    Returns:
-        Response: La plantilla `gestion_de_pagos.html`.
+    Muestra la página de gestión de pagos con el código QR de Nequi.
+    Solo accesible para usuarios autenticados.
     """
-    return render_template('gestion_de_pagos.html')
+    # Aquí puedes pasar la URL o la ruta del QR si lo tienes almacenado
+    qr_url = url_for('static', filename='Imagenes/Qr.jpeg')  # Asegúrate de colocar tu QR en static/images/
+    return render_template('gestion_de_pagos.html', qr_url=qr_url)
+
 
 @app.route('/nosotros')
 def nosotros():
@@ -379,34 +399,23 @@ def user_admon():
 
 @app.route('/registrarse', methods=['POST'])
 def registrarse():
-    """
-    Registra un nuevo usuario en el sistema.
-
-    Esta función maneja la solicitud POST para registrar un nuevo usuario. Obtiene los datos
-    del formulario (nombre, email y contraseña), asigna el rol por defecto como 'cliente',
-    encripta la contraseña utilizando bcrypt, y almacena la información del usuario en la base de datos.
-
-    Después de completar el registro, muestra un mensaje de éxito y redirige al usuario a la página de inicio.
-
-    Returns:
-        Response: Redirige a la página principal (`index`) con un mensaje de éxito en un flash.
-    """
     nombre = request.form.get('nombre')
     email = request.form.get('email')
     contrasena = request.form.get('contrasena')
 
-    # Asignar el rol por defecto como cliente
     rol = 'cliente'
-
     hashed_password = bcrypt.hashpw(contrasena.encode('utf-8'), bcrypt.gensalt())
 
     cur = mysql.connection.cursor()
     cur.execute("INSERT INTO usuarios (nombre, email, contrasena, rol) VALUES (%s, %s, %s, %s)", 
                 (nombre, email, hashed_password, rol))
     mysql.connection.commit()
+    user_id = cur.lastrowid  # Obtiene el ID del nuevo usuario
     cur.close()
 
-    flash('Registro exitoso! Puedes iniciar sesión.', 'success')
+    session['user_id'] = user_id  # Iniciar sesión automáticamente después del registro
+
+    flash('Registro exitoso! ya has iniciado sesión.', 'success')
     return redirect(url_for('index'))
 
 # Ruta para ingresar
@@ -494,146 +503,6 @@ def user_is_admin():
             return True
     return False
 
-# Ruta para obtener los detalles de un usuario con GET
-
-@app.route('/usuario/<int:usuario_id>', methods=['GET'])
-def obtener_usuario(usuario_id):
-    """
-    Obtiene los detalles de un usuario específico por su ID.
-
-    Esta función maneja una solicitud GET para recuperar los detalles de un usuario basado en su ID. Realiza
-    una consulta a la base de datos para obtener la información del usuario (ID, nombre y correo electrónico).
-    Si el usuario es encontrado, devuelve los datos en formato JSON con un código de estado HTTP 200. Si el 
-    usuario no se encuentra, devuelve un mensaje de error con un código de estado HTTP 404. En caso de error 
-    en la base de datos o en el servidor, devuelve un mensaje de error con un código de estado HTTP 500.
-
-    Args:
-        usuario_id (int): El ID del usuario a recuperar.
-
-    Returns:
-        Response: 
-        - Si el usuario es encontrado, devuelve un JSON con los detalles del usuario y un código de estado HTTP 200.
-        - Si el usuario no es encontrado, devuelve un JSON con un mensaje de error y un código de estado HTTP 404.
-        - En caso de error en el servidor, devuelve un JSON con un mensaje de error y un código de estado HTTP 500.
-    """
-    print(f"Obteniendo usuario con ID: {usuario_id}")  # Para depurar
-    try:
-        cur = mysql.connection.cursor()
-        cur.execute("SELECT id, nombre, email FROM usuarios WHERE id = %s", (usuario_id,))
-        usuario = cur.fetchone()
-        cur.close()
-    
-        print(f"Usuario encontrado: {usuario}")  # Para depurar
-
-        if usuario:
-            usuario_data = {
-                'id': usuario[0],
-                'nombre': usuario[1],
-                'email': usuario[2]
-            }
-            return jsonify(usuario_data), 200
-        else:
-            return jsonify({'mensaje': 'Usuario no encontrado', 'status': 'error'}), 404
-
-    except Exception as e:
-        print(f"Error al obtener usuario: {e}")
-        return jsonify({'mensaje': 'Error en el servidor', 'status': 'error'}), 500
-
-# Ruta para actualizar un usuario existente con PUT
-@app.route('/usuario/<int:usuario_id>', methods=['PUT'])
-def actualizar_usuario(usuario_id):
-    """
-    Actualiza los detalles de un usuario existente por su ID.
-
-    Esta función maneja una solicitud PUT para actualizar los detalles de un usuario basado en su ID. 
-    Verifica que la solicitud sea en formato JSON y que contenga los campos requeridos (`nombre` y `email`). 
-    Luego, comprueba si el usuario con el ID proporcionado existe. Si el usuario existe, actualiza sus detalles 
-    en la base de datos. Si el usuario no se encuentra, devuelve un mensaje de error con un código de estado HTTP 404. 
-    En caso de error en la base de datos o en el servidor, devuelve un mensaje de error con un código de estado HTTP 500.
-
-    Args:
-        usuario_id (int): El ID del usuario a actualizar.
-
-    Returns:
-        Response: 
-        - Si la solicitud es válida y el usuario es encontrado y actualizado, devuelve un JSON con un mensaje de éxito y un código de estado HTTP 200.
-        - Si la solicitud no es válida o faltan datos requeridos, devuelve un JSON con un mensaje de error y un código de estado HTTP 400.
-        - Si el usuario no es encontrado, devuelve un JSON con un mensaje de error y un código de estado HTTP 404.
-        - En caso de error en el servidor, devuelve un JSON con un mensaje de error y un código de estado HTTP 500.
-    """
-    print(f"PUT request received for usuario_id: {usuario_id}")  # Agrega esto para depuración
-
-    # Verificar que los datos se reciban en formato JSON
-    if not request.is_json:
-        return jsonify({'mensaje': 'Formato de solicitud no válido', 'status': 'error'}), 400
-
-    data = request.json
-    nuevo_nombre = data.get('nombre')
-    nuevo_email = data.get('email')
-
-    # Verificar que los datos requeridos están presentes
-    if not nuevo_nombre or not nuevo_email:
-        return jsonify({'mensaje': 'Nombre y correo electrónico son requeridos', 'status': 'error'}), 400
-
-    try:
-        cur = mysql.connection.cursor()
-
-        # Verificar si el usuario existe
-        cur.execute("SELECT id FROM usuarios WHERE id = %s", (usuario_id,))
-        usuario_existente = cur.fetchone()
-
-        if not usuario_existente:
-            cur.close()
-            return jsonify({'mensaje': 'Usuario no encontrado', 'status': 'error'}), 404
-
-        # Actualizar el usuario
-        cur.execute("UPDATE usuarios SET nombre = %s, email = %s WHERE id = %s", 
-                    (nuevo_nombre, nuevo_email, usuario_id))
-        mysql.connection.commit()
-        cur.close()
-
-        return jsonify({'mensaje': 'Usuario actualizado correctamente', 'status': 'success'}), 200
-
-    except Exception as e:
-        print(f"Error al actualizar usuario: {e}")
-        return jsonify({'mensaje': 'Error en el servidor', 'status': 'error'}), 500
-
-# Ruta para eliminar un usuario existente con DELETE
-@app.route('/usuario/<int:usuario_id>', methods=['DELETE'])
-def borrar_usuario(usuario_id):
-    """
-    Elimina un usuario existente por su ID.
-
-    Esta función maneja una solicitud DELETE para eliminar un usuario basado en su ID. 
-    Primero, verifica si el usuario con el ID proporcionado existe en la base de datos. 
-    Si el usuario existe, procede a eliminarlo. Si el usuario no se encuentra, devuelve un mensaje de error 
-    con un código de estado HTTP 404. En caso de éxito, devuelve un mensaje de éxito con un código de estado HTTP 200.
-
-    Args:
-        usuario_id (int): El ID del usuario a eliminar.
-
-    Returns:
-        Response: 
-        - Si el usuario es encontrado y eliminado correctamente, devuelve un JSON con un mensaje de éxito y un código de estado HTTP 200.
-        - Si el usuario no es encontrado, devuelve un JSON con un mensaje de error y un código de estado HTTP 404.
-    """
-    cur = mysql.connection.cursor()
-
-    # Verificar si el usuario existe
-    cur.execute("SELECT id FROM usuarios WHERE id = %s", (usuario_id,))
-    usuario_existente = cur.fetchone()
-
-    if not usuario_existente:
-        cur.close()
-        return jsonify({'mensaje': 'Usuario no encontrado', 'status': 'error'}), 404
-
-    # Borrar el usuario
-    cur.execute("DELETE FROM usuarios WHERE id = %s", (usuario_id,))
-    mysql.connection.commit()
-    cur.close()
-
-    return jsonify({'mensaje': 'Usuario eliminado correctamente', 'status': 'success'}), 200
-
 # Manejador de mensajes enviados desde el chatbox
 @socketio.on('message')
 def handle_message(msg):
@@ -666,6 +535,10 @@ def handle_message(msg):
         respuesta = "¡Hasta luego! No dudes en volver si tienes más preguntas."
     elif "horarios" in msg.lower():
         respuesta = "Nuestro horario de atención es de lunes a viernes, de 9:00 AM a 6:00 PM."
+    elif "compra" in msg.lower():
+        respuesta = "Para realizar tus compras debes estar logeado en la página y acceder a la sección: Pagar con Nequi o a la bolsa de compra.Recuerda que también puedes realizar pago contra entrega."
+    elif "pago" in msg.lower():
+        respuesta = "Recuerda que puedes pagar con Nequi y también puedes realizar pago contra entrega."              
     else:
         respuesta = "No entendí tu mensaje. ¿Podrías reformularlo?"
 

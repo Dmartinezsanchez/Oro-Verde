@@ -45,13 +45,14 @@
     <div class="box1">
         <nav>
             <ul class="lista1">
+                <a href="{{ url_for('index') }}"><img src="{{ url_for('static', filename='Imagenes/home.png') }}" alt="Home" class="imagen-lista1"></a>
                 <li><a href="#productos">Productos</a></li>
                 <li><a href="{{ url_for('promociones') }}">Promociones</a></li>
                 <li><a href="{{ url_for('nosotros') }}">Nosotros</a></li>
                 <li><a href="#ingreso">Ingreso</a></li>
                 <li><a href="#registrarse">Registrarse</a></li>
                 <li><a href="{{ url_for('tratam_dat') }}">Tratamiento de datos</a></li>
-                <li><a href="{{ url_for('gestion_de_pagos') }}"><img src="{{ url_for('static', filename='Imagenes/bolsa-de-la-compra.png') }}" alt="Compras" class="imagen-lista1"></a></li>
+                <a href="{{ url_for('gestion_de_pagos') }}"><img src="{{ url_for('static', filename='Imagenes/bolsa-de-la-compra.png') }}" alt="Compras" class="imagen-lista1"></a>
 
                 <!-- Formulario de búsqueda de productos -->
                 <li>
@@ -61,7 +62,9 @@
                             <img src="{{ url_for('static', filename='Imagenes/lupa.png') }}" alt="Buscar" class="imagen-lista1">
                         </button>
                     </form>
-                </li>    
+                </li>  
+                <li><a href="{{ url_for('cerrar_sesion') }}" class="btn btn-danger">Cerrar Sesión</a>
+                </li>      
             </ul>
         </nav>
     </div>

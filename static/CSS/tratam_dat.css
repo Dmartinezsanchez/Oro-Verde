@@ -1,9 +1,14 @@
-/* Estilo general */
 body {
-    font-family: 'Poppins', sans-serif;
-    margin: 0;
-    height: 100%;
     background-color: #ffffff;
+}
+
+.header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    background-color: rgb(146, 203, 158); /* Verde pastel suave */
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .header__logo-container {
@@ -26,6 +31,18 @@ body {
     margin-top: 20px;
 }
 
+nav ul.lista1 {
+    list-style-type: none;
+    display: flex;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul.lista1 li {
+    margin: 0 40px;
+}
+
 /* Botones personalizados */
 nav ul.lista1 li a {
     padding: 8px 12px;
@@ -40,37 +57,24 @@ nav ul.lista1 li a:hover {
     color: #4A6056;
 }
 
-
-h1 {
-    color: rgb(146, 203, 158);
-    font-family: 'Kaushan Script';
-    font-size: 5vh;
-    text-align: center;
-    font-style: italic;
+/*letra de los botones*/
+nav ul.lista1 li a {
+    text-decoration: none;
+    color: #163e15; /* Verde oscuro */
+    font-weight: 500;
+    transition: color 0.3s ease;
+    font-size: 16px;
 }
 
-.box1 {
-    display: flex;
-    justify-content: center; /* Centra los elementos en el contenedor */
-    align-items: center;
-    padding: 10px 20px;
-    background-color: rgb(146, 203, 158); /* Verde pastel suave */
-    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+/*color al poner el mouse sobre el boton*/
+nav ul.lista1 li a:hover {
+    color: #8AB78B; /* Verde más claro en hover */
 }
 
-.lista1 {
-    list-style-type: none;
-    padding: 0; /* Elimina el padding predeterminado */
-    margin: 0; /* Elimina el margin predeterminado */
-    display: flex; /* Alinea los elementos en una fila */
-    justify-content: center; /* Centra los elementos dentro de la lista */
-    color: rgb(58, 59, 59);
-    font-size: 17px;
-}
+/* Estilo para las imágenes en la lista */
 
-.imagen-lista1 {
-    max-width: 100%;
-    height: 30px;
+.imagen-lista1:hover {
+    filter: brightness(1);
 }
 
 .imagen-lista1 {
@@ -81,28 +85,29 @@ h1 {
     transition: filter 0.3s ease;
 }
 
-nav ul.lista1 {
-    list-style-type: none;
-    display: flex;
-    align-items: center;
-    margin: 0;
-    padding: 0;
+/* Estilo para dispositivos móviles */
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        padding: 10px;
+    }
+
+    nav ul.lista1 {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    nav ul.lista1 li {
+        margin: 10px 0;
+    }
 }
 
-nav ul.lista1 li {
-    margin: 0 20px;
-}
-
-nav ul.lista1 li a {
-    text-decoration: none;
-    color: #4A6056; /* Verde oscuro suave */
-    font-weight: 500;
-    transition: color 0.3s ease;
-    font-size: 16px;
-}
-
-nav ul.lista1 li a:hover {
-    color: #8AB78B; /* Verde más claro en hover */
+h1 {
+    color: rgb(38, 93, 28);
+    font-family: 'Julee';
+    font-size: 5vh;
+    text-align: center;
+    font-style: italic;
 }
 
 h2 {
@@ -121,15 +126,32 @@ text-align: center;
 font-style: italic;
 }
 
-.box14 p {
-    margin: 0 auto;
-    text-align: center;
-    max-width: 800px;
+
+.box2 {
+    width: 50%;
+    margin: 50px;
+    box-sizing: border-box;
+    padding-top: 30px;
+    padding-bottom: 10px;
+    justify-content: center;
 }
 
-.box14 {
-    color: #163e15;
-    font-family: "sans-serif" ;
+.box2 p {
+    color: #4A6056;
+    padding: 10px;
+    margin: 10px;
+    max-height: 400px;
+    overflow: hidden;
+    margin-left: 30vh;
+}
+
+
+input[type="checkbox"] {
+    width: 15px;
+    height: 15px;
+    border: 2px solid #1e1b1b;
+    border-radius: 10px;
+    cursor: pointer;
 }
 
 .contenedor {
@@ -152,8 +174,8 @@ footer {
     flex-wrap: wrap;
     background-color: rgb(146, 203, 158);
 }
-/*pie de página*/
-.box15, .box16, .box17 {
+
+.box7, .box8, .box9 {
     flex: 1;
     margin: 10px;
     box-sizing: border-box;
@@ -164,82 +186,66 @@ footer {
     background-color: rgb(146, 203, 158);
 }
 
-/*pie de página*/
-.box15 {
+
+.box7 {
     display: flex;
     align-items: center;
     color: #163e15;
     background-color: rgb(146, 203, 158);
 }
 
-.lista15 {
+.lista7 {
     list-style-type: none;
     margin: 0 10px;
     padding: 10px;
     background-color: rgb(146, 203, 158);
 }
 
-.box15 img {
+.box7 img {
     max-width: 150px;
     margin-right: 10px;
     background-color: rgb(146, 203, 158);
 }
 
-.lista15 li {
+.lista7 li {
     margin-bottom: 10px;
     background-color: rgb(146, 203, 158);
 }
 
-.lista15 a {
+.lista7 a {
     color: #163e15;
     text-decoration: none;
     background-color: rgb(146, 203, 158);
 }
-/*pie de página*/
-.box16 p {
+
+.box8 p {
     color: #163e15;
     background-color: rgb(146, 203, 158);
 }
 
-/*pie de página*/
-.box17 {
+.box9 {
     text-align: center;
     padding-top: 20px;
     background-color: rgb(146, 203, 158);
 }
 
-.box17 img {
+.box9 img {
     max-width: 100px;
     display: block;
     margin: 0 auto 10px;
     background-color: rgb(146, 203, 158);
 }
-#myBtn {
-    width: 60px; /* Ajusta el ancho del botón */
-    height: 60px; /* Ajusta la altura del botón */
-    background-color: #163e15; /* Color del botón */
-    color: white; /* Color del texto o ícono */
-    border-radius: 50%; /* Para que siga siendo redondo */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 24px; /* Tamaño del ícono o texto */
-    position: fixed;
-    bottom: 20px; /* Ajusta la distancia desde la parte inferior */
-    right: 20px; /* Ajusta la distancia desde la parte derecha */
-    cursor: pointer;
-}
 
-button {
-    padding: 10px 20px;
+
+#showMoreBtn,
+#showLessBtn {
+    padding: 8px 12px;
     border-radius: 25px;
     background-color: rgb(146, 203, 158);
     border: 2px solid #D4E4D1; /* Verde pastel suave */
-    text-align: center;
-    display: inline-block;
-    margin: 50px 800px;
-    cursor: pointer;
-    
+    padding-top: 10px;
+    margin-left: 300px;
+    color: #4A6056;
 }
 
 

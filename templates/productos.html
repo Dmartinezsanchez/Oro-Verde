@@ -23,16 +23,18 @@
         <img src="{{ url_for('static', filename='Imagenes/logo-oro-verde.png') }}" alt="Logo" class="imagen-logo"></a>
         <h1>Productos</h1>
     </div>
+
+    <header class="header">
         <div class="box1">
             <nav>
                 <ul class="lista1">
-                    <li><a href="{{ url_for('index') }}"><img src="{{ url_for('static', filename='Imagenes/home.png') }}" alt="Home" class="imagen-lista1"></a></li>
+                    <a href="{{ url_for('index') }}"><img src="{{ url_for('static', filename='Imagenes/home.png') }}" alt="Home" class="imagen-lista1"></a>
                     <li><a href="{{ url_for('promociones') }}">Promociones</a></li>
                     <li><a href="{{ url_for('nosotros') }}">Nosotros</a></li>
                     <li><a href="{{ url_for('index') }}">Ingreso</a></li>
                     <li><a href="{{ url_for('index') }}">Registrarse</a></li>
                     <li><a href="{{ url_for('tratam_dat') }}">Tratamiento de datos</a></li>
-                    <li><a href="{{ url_for('gestion_de_pagos') }}"><img src="{{ url_for('static', filename='Imagenes/bolsa-de-la-compra.png') }}" alt="Compras" class="imagen-lista1"></a></li>
+                    <a href="{{ url_for('gestion_de_pagos') }}"><img src="{{ url_for('static', filename='Imagenes/bolsa-de-la-compra.png') }}" alt="Compras" class="imagen-lista1"></a>
                     <li>
                         <form action="{{ url_for('buscar_productos') }}" method="GET" class="search-form">
                             <input type="text" name="query" placeholder="Buscar productos..." class="search-input">
@@ -44,7 +46,7 @@
                 </ul>
             </nav>
         </div>
-    </header>
+    </header>    
 
     {% if producto %}
     <!-- Mostrar detalles del producto si existe -->
@@ -54,7 +56,7 @@
         <p>Cantidad en existencia: {{ producto.cantidad }}</p>
         <p>Precio: $ {{ producto.valor }}</p>
         <p><strong>Descripción:</strong> {{ producto.descripcion }}</p>
-    </div>
+</div>
     {% else %}
     <!-- Mostrar mensaje si no se encuentra el producto -->
     <h2>Producto no encontrado</h2>
@@ -64,7 +66,6 @@
     <div class="contenedor">
         <img src="/static/Imagenes/hoja-tropical.png" alt="Deco">
     </div> 
-
     <hr class="footer-line">
     <footer>
         <div class="box7">
@@ -76,14 +77,16 @@
                 <li>Carrera 36 A # 46-63 Ciudad Verde</li>
             </ul>
         </div>
+
         <div class="box8">
             <p>© 2024 Oro Verde Productos Naturales. Todos los derechos reservados. Powered by Grupo 9.</p>
         </div>
+
         <div class="box9">
             <img src="{{ url_for('static', filename='Imagenes/hoja-de-monstera.png') }}" alt="Deco">
             <p>La salud es el pilar de la vida</p>
         </div>
-    </footer>  
+    </footer>
 </body>
 </html>
 

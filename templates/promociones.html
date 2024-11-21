@@ -23,22 +23,18 @@
         <img src="{{ url_for('static', filename='Imagenes/logo-oro-verde.png') }}" alt="Logo" class="imagen-logo"></a>
         <h1>Promociones</h1>
     </div>
-
-    <h1>Promociones</h1>
+    
     <header class="header">
-        <div class="header__logo-container">
-            <a href="index.html"><img src="../imagenes/logo-oro-verde.png" alt="Logo" class="imagen-lista2"></a>
-        </div>
         <div class="box1">
             <nav>
                 <ul class="lista1">
-                    <li><a href="{{ url_for('index') }}"><img src="{{ url_for('static', filename='Imagenes/home.png') }}" alt="Home" class="imagen-lista1"></a></li>
+                    <a href="{{ url_for('index') }}"><img src="{{ url_for('static', filename='Imagenes/home.png') }}" alt="Home" class="imagen-lista1"></a>
                     <li><a href="{{ url_for('index') }}">Productos</a></li>
                     <li><a href="{{ url_for('nosotros') }}">Nosotros</a></li>
                     <li><a href="{{ url_for('index') }}">Ingreso</a></li>
                     <li><a href="{{ url_for('index') }}">Registrarse</a></li>
                     <li><a href="{{ url_for('tratam_dat') }}">Tratamiento de datos</a></li>
-                    <li><a href="{{ url_for('gestion_de_pagos') }}"><img src="{{ url_for('static', filename='Imagenes/bolsa-de-la-compra.png') }}" alt="Compras" class="imagen-lista1"></a></li>
+                    <a href="{{ url_for('gestion_de_pagos') }}"><img src="{{ url_for('static', filename='Imagenes/bolsa-de-la-compra.png') }}" alt="Compras" class="imagen-lista1"></a></li>
                 </ul>
             </nav>
         </div>
@@ -58,14 +54,15 @@
                 <li>Carrera 36 A # 46-63 Ciudad Verde</li>
             </ul>
         </div>
+
         <div class="box8">
             <p>© 2024 Oro Verde Productos Naturales. Todos los derechos reservados. Powered by Grupo 9.</p>
         </div>
+
         <div class="box9">
             <img src="{{ url_for('static', filename='Imagenes/hoja-de-monstera.png') }}" alt="Deco">
             <p>La salud es el pilar de la vida</p>
         </div>
     </footer>
-    
 </body>
 </html>

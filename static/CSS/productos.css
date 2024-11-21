@@ -1,13 +1,14 @@
 /* Estilo general */
 body {
+    font-family: 'Poppins', sans-serif;
     background-color: #ffffff;
 }
 
 .header {
     display: flex;
-    justify-content: space-between;
+    justify-content:center;
     align-items: center;
-    padding: 10px 20px;
+    padding: 10px;
     background-color: rgb(146, 203, 158); /* Verde pastel suave */
     box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
 }
@@ -32,27 +33,44 @@ body {
     margin-top: 20px;
 }
 
-.box1 {
+nav ul.lista1 {
+    list-style-type: none;
     display: flex;
     align-items: center;
-    padding: 0px 200px;
-    background-color: rgb(146, 203, 158);
-    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-.lista1 {
-    list-style-type: none;
-    padding: 0;
     margin: 0;
-    display: flex;
-    text-align: center;
-    justify-content: center; /* Centra los elementos dentro de la lista */
-    color: rgb(58, 59, 59);
-    font-size: 17px;
+    padding: 0;
 }
 
-.lista1 li {
-    margin: 0 10px; /* Espacio entre los elementos de la lista */
+nav ul.lista1 li {
+    margin: 0 40px;
+}
+
+/* Botones personalizados */
+nav ul.lista1 li a {
+    padding: 8px 12px;
+    border-radius: 25px;
+    background-color: #FDFDFB; /* Blanco hueso */
+    border: 2px solid #D4E4D1; /* Verde pastel suave */
+}
+
+nav ul.lista1 li a:hover {
+    background-color: #E6F0E6; /* Verde pastel */
+    border-color: #8AB78B;
+    color: #4A6056;
+}
+
+/*letra de los botones*/
+nav ul.lista1 li a {
+    text-decoration: none;
+    color: #163e15; /* Verde oscuro */
+    font-weight: 500;
+    transition: color 0.3s ease;
+    font-size: 16px;
+}
+
+/*color al poner el mouse sobre el boton*/
+nav ul.lista1 li a:hover {
+    color: #8AB78B; /* Verde más claro en hover */
 }
 
 /* Estilo para las imágenes en la lista */
@@ -68,32 +86,6 @@ body {
     filter: brightness(0.7); /* Estilo suave a las imágenes */
     transition: filter 0.3s ease;
 }
-
-
-nav ul.lista1 {
-    list-style-type: none;
-    display: flex;
-    align-items: center;
-    margin: 0;
-    padding: 0;
-}
-
-nav ul.lista1 li {
-    margin: 0 20px;
-}
-
-nav ul.lista1 li a {
-    text-decoration: none;
-    color: #163e15;
-    font-weight: 500;
-    transition: color 0.3s ease;
-    font-size: 16px;
-}
-
-nav ul.lista1 li a:hover {
-    color: #8AB78B; /* Verde más claro en hover */
-}
-
 
 /* Estilo para dispositivos móviles */
 @media (max-width: 768px) {
@@ -112,20 +104,6 @@ nav ul.lista1 li a:hover {
     }
 }
 
-/* Botones personalizados */
-nav ul.lista1 li a {
-    padding: 8px 12px;
-    border-radius: 25px;
-    background-color: #FDFDFB; /* Blanco hueso */
-    border: 2px solid #D4E4D1; /* Verde pastel suave */
-}
-
-nav ul.lista1 li a:hover {
-    background-color: #E6F0E6; /* Verde pastel */
-    border-color: #8AB78B;
-    color: #4A6056;
-}
-
 /* Estilo del formulario de búsqueda */
 .search-form {
     display: flex;
@@ -134,14 +112,13 @@ nav ul.lista1 li a:hover {
 }
 
 .search-input {
-    padding: 8px 12px;
-    border-radius: 25px;
+    padding: 8px;
+    border: 2px solid #D4E4D1; /* Verde pastel */
+    border-radius: 20px;
     background-color: #FDFDFB; /* Blanco hueso */
-    border: 2px solid #D4E4D1; /* Verde pastel suave */
-    color: #163e15; /* Verde oscuro */
+    color: #4A6056; /* Verde oscuro */
     outline: none;
-    font-family: "sans-serif";
-    font-size: 17px;
+    font-size: 14px;
     width: 0;
     transition: width 0.4s ease; /* Animación para ampliar el campo */
     width: 150px;
@@ -162,7 +139,6 @@ nav ul.lista1 li a:hover {
     align-items: center;
 }
 
-
 .search-button img {
     height: 30px;
     width: 30px;
@@ -173,30 +149,20 @@ nav ul.lista1 li a:hover {
     filter: brightness(1);
 }
 
-/* Alineación en pantallas pequeñas */
-@media (max-width: 768px) {
-    .search-form {
-        margin-top: 10px;
-    }
 
-    .search-input:focus {
-        width: 100%; /* Ampliar más en dispositivos pequeños */
-    }
-}
-
-h1 {
-    color: rgb(146, 203, 158);
-    font-family: 'Kaushan Script';
-    font-size: 6vh;
+h1, h2 {
+    color: rgb(38, 93, 28);
+    font-family: 'Julee';
+    font-size: 5vh;
     text-align: center;
     font-style: italic;
 }
 
-h2 {
-    color: #163e15;
-    font-family: 'Kaushan Script';
-    font-size: 6vh;
+p {
+    font-family: 'Julee';
+    font-size: 3vh;
     text-align: center;
+    font-style: italic; 
 }
 
 /* Estilo para el contenedor del producto */
@@ -222,7 +188,7 @@ h2 {
     width: 100%;
     max-width: 320px;
     padding: 10px;
-    background-color: #c7fdc5; /* Color de fondo de la caja */
+    background-color: #f5f5f5; /* Color de fondo de la caja */
     border-radius: 15px; /* Esquinas redondeadas de la caja */
     display: flex;
     justify-content: center; /* Centra la imagen horizontalmente */
@@ -233,10 +199,10 @@ h2 {
 
 /* Estilo para el texto del producto */
 .productos p {
-    font-size: 20px;
-    color: #163e15;
+    font-size: 1.2em;
+    color: #4c907a;
     text-align: center;
-    font-family: "sans-serif";
+    font-family: 'Poppins';
 }
 
 .contenedor {
@@ -260,7 +226,6 @@ footer {
     background-color: rgb(146, 203, 158);
 }
 
-/*pie de página*/
 .box7, .box8, .box9 {
     flex: 1;
     margin: 10px;
@@ -270,9 +235,10 @@ footer {
     font-family: "Kaushan Script";
     font-size: 20px;
     background-color: rgb(146, 203, 158);
+    color: #163e15;
 }
 
-/*pie de página*/
+
 .box7 {
     display: flex;
     align-items: center;
@@ -303,13 +269,12 @@ footer {
     text-decoration: none;
     background-color: rgb(146, 203, 158);
 }
-/*pie de página*/
+
 .box8 p {
     color: #163e15;
     background-color: rgb(146, 203, 158);
 }
 
-/*pie de página*/
 .box9 {
     text-align: center;
     padding-top: 20px;
@@ -321,16 +286,4 @@ footer {
     display: block;
     margin: 0 auto 10px;
     background-color: rgb(146, 203, 158);
-}
-
-button {
-    padding: 10px 20px;
-    border-radius: 25px;
-    background-color: rgb(146, 203, 158);
-    border: 2px solid #D4E4D1; /* Verde pastel suave */
-    text-align: center;
-    display: inline-block;
-    margin: 50px 800px;
-    cursor: pointer;
-    
 }

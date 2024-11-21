@@ -19,64 +19,67 @@
 </head>
 <body>
     <script src="/static/JS/tratam_dat.js"></script>
-    <script src="../JS/tratam_dat.js"></script>
-    <header class="header">
-        <div class="header__logo-container">
-            <a href="{{ url_for('index') }}">
-            <img src="{{ url_for('static', filename='Imagenes/logo-oro-verde.png') }}" alt="Logo" class="imagen-logo"></a>
-            <h1>Tratamiento de datos</h1>
-        </div>
-        <div class="box1">
-            <nav>
-                <ul class="lista1">
-                <li><a href="{{ url_for('index') }}"></a><img src="{{ url_for('static', filename='Imagenes/home.png') }}" alt="Home" class="imagen-lista1"></li>
-                <li><a href="#productos">Productos</a></li>
+    
+    <div class="header__logo-container">
+        <a href="{{ url_for('index') }}">
+        <img src="{{ url_for('static', filename='Imagenes/logo-oro-verde.png') }}" alt="Logo" class="imagen-logo"></a>
+        <h1>Tratamiento de datos</h1>
+    </div>
+
+<header class="header">
+    <div class="box1">
+        <nav>
+            <ul class="lista1">
+                <a href="{{ url_for('index') }}"><img src="{{ url_for('static', filename='Imagenes/home.png') }}" alt="Home" class="imagen-lista1"></a>
+                <li><a href="{{ url_for('index') }}">Productos</a></li>
                 <li><a href="{{ url_for('promociones') }}">Promociones</a></li>
                 <li><a href="{{ url_for('nosotros') }}">Nosotros</a></li>
                 <li><a href="#ingreso">Ingreso</a></li>
                 <li><a href="#registrarse">Registrarse</a></li>
                 <li><a href="{{ url_for('tratam_dat') }}">Tratamiento de datos</a></li>
-                <li><a href="{{ url_for('gestion_de_pagos') }}"><img src="{{ url_for('static', filename='Imagenes/bolsa-de-la-compra.png') }}" alt="Compras" class="imagen-lista1"></a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+            </ul>
+        </nav>
+    </div>
+</header>
     
-    <div class="box14">
+    <div class="box2">
         <div id="terms_section" class="terms-section" style="display: none;">
-            <h5></h5>
+            <h5>Tratamiento de datos</h5>
             <p id="datos1" class="parrafo-expandido1">
                 De conformidad con lo previsto en la Ley 1581 de 2012 “por la cual se dictan las disposiciones generales para la protección de datos personales” y el Decreto 1377 de 2013, que la reglamentan parcialmente, manifiesto que otorgo mi autorización expresa y clara para que Oro Verde, pueda hacer tratamiento y uso de mis datos personales, los cuales estarán reportados en la base de datos de la que es responsable dicha organización y que han sido recolectados en las relaciones contractuales que ésta realiza en desarrollo de su objeto comercial. 
                 De acuerdo a la normatividad citada, Oro Verde queda autorizado de manera expresa e inequívoca para mantener y manejar la información suministrada, solo para aquellas finalidades para las que se encuentra facultado y respetando en todo caso, la normatividad vigente sobre protección de datos personales. 
                 No obstante la presente autorización, me reservo el derecho a ejercer en cualquier momento la posibilidad de conocer, actualizar, rectificar y solicitar la supresión de mis datos personales en la base de datos de la organización, cuando así lo estime conveniente.  
                 Declaro que he leído y comprendido.
+                <input type="checkbox" id="miCheckbox" required>
             </p>
         </div>
         <button id="showMoreBtn">Mostrar Más</button>
         <button id="showLessBtn" style="display: none;">Mostrar Menos</button>
     </div>
+
     <div class="contenedor">
         <img src="/static/Imagenes/hoja-tropical.png" alt="Deco">
-    </div>
+    </div> 
     <hr class="footer-line">
     <footer>
-        <div class="box15">
+        <div class="box7">
             <img src="{{ url_for('static', filename='Imagenes/hoja.png') }}" alt="Deco">
-            <ul class="lista15">
+            <ul class="lista7">
                 <li><a href="{{ url_for('termin_cond') }}">Términos y condiciones</a></li>
                 <li>adrianabarajas1970@gmail.com</li>
                 <li>3013817308</li>
                 <li>Carrera 36 A # 46-63 Ciudad Verde</li>
             </ul>
         </div>
-        <div class="box16">
+
+        <div class="box8">
             <p>© 2024 Oro Verde Productos Naturales. Todos los derechos reservados. Powered by Grupo 9.</p>
         </div>
-        <div class="box17">
+
+        <div class="box9">
             <img src="{{ url_for('static', filename='Imagenes/hoja-de-monstera.png') }}" alt="Deco">
             <p>La salud es el pilar de la vida</p>
         </div>
-    </footer>
-    <script src="/static/JS/tratam_dat.js"></script>
+    </footer>    
 </body>
 </html>

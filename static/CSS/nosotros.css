@@ -1,15 +1,12 @@
 body {
-    font-family: 'Poppins', sans-serif;
-    margin: 0;
-    height: 100%;
     background-color: #ffffff;
 }
 
 .header {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-    padding: 10px 20px;
+    padding: 10px;
     background-color: rgb(146, 203, 158); /* Verde pastel suave */
     box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
 }
@@ -34,25 +31,27 @@ body {
     margin-top: 20px;
 }
 
-.lista1 {
+nav ul.lista1 {
     list-style-type: none;
-    padding: 0; /* Elimina el padding predeterminado */
-    margin: 0; /* Elimina el margin predeterminado */
-    display: flex; /* Alinea los elementos en una fila */
-    justify-content: center; /* Centra los elementos dentro de la lista */
-    color: rgb(58, 59, 59);
-    font-size: 17px;
+    display: flex;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul.lista1 li {
+    margin: 0 40px;
 }
 
 /* Botones personalizados */
-.lista1 li a {
+nav ul.lista1 li a {
     padding: 8px 12px;
     border-radius: 25px;
     background-color: #FDFDFB; /* Blanco hueso */
     border: 2px solid #D4E4D1; /* Verde pastel suave */
 }
 
-.lista1 li a:hover {
+nav ul.lista1 li a:hover {
     background-color: #E6F0E6; /* Verde pastel */
     border-color: #8AB78B;
     color: #4A6056;
@@ -74,9 +73,8 @@ nav ul.lista1 li a:hover {
 
 /* Estilo para las imágenes en la lista */
 
-.imagen-lista1 {
-    max-width: 100%;
-    height: 30px;
+.imagen-lista1:hover {
+    filter: brightness(1);
 }
 
 .imagen-lista1 {
@@ -86,31 +84,6 @@ nav ul.lista1 li a:hover {
     filter: brightness(0.7); /* Estilo suave a las imágenes */
     transition: filter 0.3s ease;
 }
-
-.lista1 li {
-    margin: 0 20px;
-}
-
-.box1 {
-    display: flex;
-    justify-content: center; /* Centra los elementos en el contenedor */
-    align-items: center;
-    padding: 15px 300px;
-    background-color:
-    box-shadow 0px 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-.box10  {
-    margin: 0 auto;
-    text-align: center;
-    max-width: 800px;
-}
-
-.box10 p {
-    color: #163e15;
-    font-family: "sans-serif" 
-}
-
 
 /* Estilo para dispositivos móviles */
 @media (max-width: 768px) {
@@ -129,22 +102,19 @@ nav ul.lista1 li a:hover {
     }
 }
 
-/*letra de los botones*/
-.lista1 li a {
-    text-decoration: none;
-    color: #163e15; /* Verde oscuro */
-    font-weight: 500;
-    transition: color 0.3s ease;
-    font-size: 16px;
-}
-
 /*titulo pagina*/
+
 h1 {
-    color: rgb(146, 203, 158);
-    font-family: 'Kaushan Script';
-    font-size: 6vh;
+    color: rgb(38, 93, 28);
+    font-family: 'Julee';
+    font-size: 5vh;
     text-align: center;
     font-style: italic;
+}
+
+.imagen-lista2 {
+    max-width: 200px;
+    height: auto;
 }
 
 .contenedor {
@@ -168,8 +138,7 @@ footer {
     background-color: rgb(146, 203, 158);
 }
 
-/*pie de página*/
-.box11, .box12, .box13 {
+.box7, .box8, .box9 {
     flex: 1;
     margin: 10px;
     box-sizing: border-box;
@@ -180,65 +149,86 @@ footer {
     background-color: rgb(146, 203, 158);
 }
 
-/*pie de página*/
-.box11 {
+.box7 {
     display: flex;
     align-items: center;
     color: #163e15;
     background-color: rgb(146, 203, 158);
 }
 
-.lista11 {
+.lista7 {
     list-style-type: none;
     margin: 0 10px;
     padding: 10px;
     background-color: rgb(146, 203, 158);
 }
 
-.box11 img {
+.box7 img {
     max-width: 150px;
     margin-right: 10px;
     background-color: rgb(146, 203, 158);
 }
 
-.lista11 li {
+.lista7 li {
     margin-bottom: 10px;
     background-color: rgb(146, 203, 158);
 }
 
-.lista11 a {
+.lista7 a {
     color: #163e15;
     text-decoration: none;
     background-color: rgb(146, 203, 158);
 }
-/*pie de página*/
-.box12 p {
+
+.box8 p {
     color: #163e15;
     background-color: rgb(146, 203, 158);
 }
 
-/*pie de página*/
-.box13 {
+.box9 {
     text-align: center;
     padding-top: 20px;
     background-color: rgb(146, 203, 158);
 }
 
-.box13 img {
+.box9 img {
     max-width: 100px;
     display: block;
     margin: 0 auto 10px;
     background-color: rgb(146, 203, 158);
 }
 
-button {
-    padding: 10px 20px;
+p {
+    color: rgb(13, 54, 34);
+    margin: 2vh;
+    justify-content: center;
+    padding: 10px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+
+#showMoreBtn,
+#showLessBtn {
+    padding: 8px 20px;
     border-radius: 25px;
     background-color: rgb(146, 203, 158);
     border: 2px solid #D4E4D1; /* Verde pastel suave */
-    text-align: center;
-    display: inline-block;
-    margin: 50px 800px;
-    cursor: pointer;
-    
+    padding-top: 10px;
+    margin-left: 300px;
+    color: #4A6056;
 }
+
+
+#showMoreBtn:hover,
+#showLessBtn:hover {
+    background-color: #89be8c;
+}
+
+.box13 ul li {
+    margin-bottom: 7px;
+}
+
+.box13 .terms-section p {
+    margin-bottom: 7px;
+}
+
